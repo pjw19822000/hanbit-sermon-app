@@ -646,7 +646,7 @@ const Store = (() => {
       associate: vis.filter(v => v.bucket === 'associate'),
       events: vis.filter(v => v.bucket && String(v.bucket).startsWith('events-')),
       praise: vis.filter(v => v.bucket === 'praise'),
-      miscUnclassified: vis.filter(v => v.bucket === MISC_UNCLASSIFIED_BUCKET)
+      miscUnclassified: vis.filter(isMiscFolderVideo)
     };
   }
 
@@ -1233,7 +1233,8 @@ const Store = (() => {
   }
 
   function getHomeMenuCount(view) {
-    if (listCache) {
+    /* 샤드가 일부만 로드된 listCache는 0으로 보일 수 있어 index 숫자를 우선 사용 */
+    if (listCache && allShardsReady) {
       switch (view) {
         case 'baek-hub': return countVideos(listCache.baekRegular);
         case 'prayer-hub': return countVideos(listCache.prayer);
@@ -1283,8 +1284,13 @@ const Store = (() => {
     return allVisible().filter(v => v.bucket === 'baek-regular' && v.isBaek);
   }
 
+  function isMiscFolderVideo(v) {
+    const b = v.bucket || '';
+    return b === MISC_UNCLASSIFIED_BUCKET || b === 'other';
+  }
+
   function miscUnclassifiedVideos() {
-    return allVisible().filter(v => v.bucket === MISC_UNCLASSIFIED_BUCKET);
+    return allVisible().filter(isMiscFolderVideo);
   }
 
   function prayerMinistry(series) {

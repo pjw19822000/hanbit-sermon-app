@@ -70,7 +70,7 @@ function main() {
     'events-hub': grouped.events.filter(v => isPublicVisible(v) && String(v.bucket || '').startsWith('events-')).length,
     testimony: grouped.events.filter(v => isPublicVisible(v) && v.bucket === 'events-testimony').length,
     'praise-hub': grouped.praise.filter(isPublicVisible).length,
-    'misc-unclassified': grouped.misc.filter(v => isPublicVisible(v) && v.bucket === 'misc-unclassified').length,
+    'misc-unclassified': grouped.misc.filter(isPublicVisible).length,
     'worship-regular': baekReg.filter(v => v.worship).length
   };
 

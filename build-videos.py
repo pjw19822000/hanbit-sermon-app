@@ -433,7 +433,7 @@ def write_shards_and_index(videos, out):
     'events-hub': len([v for v in grouped['events'] if is_public_visible(v) and str(v.get('bucket', '')).startswith('events-')]),
     'testimony': len([v for v in grouped['events'] if is_public_visible(v) and v.get('bucket') == 'events-testimony']),
     'praise-hub': len([v for v in grouped['praise'] if is_public_visible(v)]),
-    'misc-unclassified': len([v for v in grouped['misc'] if is_public_visible(v) and v.get('bucket') == 'misc-unclassified']),
+    'misc-unclassified': len([v for v in grouped['misc'] if is_public_visible(v)]),
     'worship-regular': len([v for v in baek_reg if v.get('worship')]),
   }
 

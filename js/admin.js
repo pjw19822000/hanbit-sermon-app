@@ -123,27 +123,41 @@ const Admin = (() => {
     settings: '설정'
   };
 
+  function renderAdminTabs() {
+    const tabsEl = document.getElementById('admin-tabs');
+    if (!tabsEl) return;
+    tabsEl.innerHTML =
+      tabBtn('home', '홈 문구', currentTab) +
+      tabBtn('menus', '메뉴', currentTab) +
+      tabBtn('im', '이임 목사', currentTab) +
+      tabBtn('videos', '영상', currentTab) +
+      tabBtn('bulk', '일괄 이동', currentTab) +
+      tabBtn('add', '추가', currentTab) +
+      tabBtn('logs', '업로드 기록', currentTab);
+  }
+
   function renderDashboard(el, tab) {
     currentTab = tab || 'home';
+    renderAdminTabs();
+    if (!el) return;
     const cfg = Store.getConfig();
-    const tabs = `<div class="sub-nav admin-tabs">${tabBtn('home', '홈 문구', currentTab)}${tabBtn('menus', '메뉴', currentTab)}${tabBtn('im', '이임 목사', currentTab)}${tabBtn('videos', '영상', currentTab)}${tabBtn('bulk', '일괄 이동', currentTab)}${tabBtn('add', '추가', currentTab)}${tabBtn('logs', '업로드 기록', currentTab)}</div>`;
 
     if (currentTab === 'menus') {
-      el.innerHTML = tabs + renderMenusPanel();
+      el.innerHTML = renderMenusPanel();
       initMenuSort();
     }
-    else if (currentTab === 'im') el.innerHTML = tabs + renderImPastorPanel();
-    else if (currentTab === 'videos') el.innerHTML = tabs + renderVideosPanel();
+    else if (currentTab === 'im') el.innerHTML = renderImPastorPanel();
+    else if (currentTab === 'videos') el.innerHTML = renderVideosPanel();
     else if (currentTab === 'bulk') {
-      el.innerHTML = tabs + renderBulkPanel();
+      el.innerHTML = renderBulkPanel();
       initBulkRouteForms();
     }
-    else if (currentTab === 'add') el.innerHTML = tabs + renderAddPanel();
+    else if (currentTab === 'add') el.innerHTML = renderAddPanel();
     else if (currentTab === 'logs') {
-      el.innerHTML = tabs + renderUploadLogPanel();
+      el.innerHTML = renderUploadLogPanel();
       loadUploadLogPanel();
     }
-    else el.innerHTML = tabs + renderHomePanel(cfg);
+    else el.innerHTML = renderHomePanel(cfg);
   }
 
   function renderHomePanel(cfg) {

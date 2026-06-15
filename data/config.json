@@ -11,7 +11,10 @@
     "fontWeight": "500",
     "color": "#2c5282"
   },
-  "lastUpdated": "2025-12",
+  "lastUpdated": "2026-06",
+  "youtubeChannelId": "UC5rJi-E3aMkb46vVHJArvYg",
+  "youtubeChannelHandle": "@HanbitMethodistChurch",
+  "rssLookbackHours": 72,
   "showPromo": false,
   "adminPassword": "0000"
 }

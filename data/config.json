@@ -1,0 +1,17 @@
+{
+  "homeTitle": {
+    "text": "Hanbit Church Sermon",
+    "fontSize": "1.35rem",
+    "fontWeight": "700",
+    "color": "#1a2744"
+  },
+  "homeTagline": {
+    "text": "기도로 고도를 결정하라",
+    "fontSize": "1rem",
+    "fontWeight": "500",
+    "color": "#2c5282"
+  },
+  "lastUpdated": "2025-12",
+  "showPromo": false,
+  "adminPassword": "0000"
+}

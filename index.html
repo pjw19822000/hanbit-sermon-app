@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Hanbit Sermon">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1a365d">
+  <meta name="hanbit-app-build" content="43">
+  <title>Hanbit Church Sermon</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css?v=43">
+  <script>
+    window.__hanbitBip = null;
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      window.__hanbitBip = e;
+    });
+  </script>
+</head>
+<body>
+
+<div id="screen-loading" class="screen active">
+  <div class="loading"><div class="spinner"></div>영상 목록 불러오는 중…</div>
+</div>
+
+<!-- 글자 크기 -->
+<div id="screen-font" class="screen">
+  <div class="fp-title">Hanbit Church Sermon</div>
+  <div class="fp-sub">한빛감리교회 설교·기도 영상</div>
+  <div class="font-options">
+    <div class="font-opt xs" data-sz="xs" onclick="App.pickFont('xs')"><div class="font-opt-sample">가나다</div><div class="font-opt-label">아주 작게</div></div>
+    <div class="font-opt s" data-sz="small" onclick="App.pickFont('small')"><div class="font-opt-sample">가나다</div><div class="font-opt-label">작게</div></div>
+    <div class="font-opt m sel" data-sz="medium" onclick="App.pickFont('medium')"><div class="font-opt-sample">가나다</div><div class="font-opt-label">보통</div></div>
+    <div class="font-opt l" data-sz="large" onclick="App.pickFont('large')"><div class="font-opt-sample">가나다</div><div class="font-opt-label">크게</div></div>
+    <div class="font-opt xl" data-sz="xl" onclick="App.pickFont('xl')"><div class="font-opt-sample">가나다</div><div class="font-opt-label">아주 크게</div></div>
+  </div>
+  <button class="btn btn-primary" onclick="App.startApp()" style="padding:0.75rem 2rem">시작하기 →</button>
+</div>
+
+<!-- 홈 -->
+<div id="screen-home" class="screen">
+  <div class="home-topright">
+    <div class="home-topright-row">
+      <button class="dark-toggle" onclick="App.toggleDark()" title="다크모드">🌙</button>
+      <button class="settings-btn" onclick="App.go('settings')" title="설정">⚙️</button>
+    </div>
+    <div class="home-topright-row">
+      <button type="button" class="font-step-btn" id="font-step-down" onclick="App.fontStepDown()" title="글자 작게">A−</button>
+      <button type="button" class="font-step-btn" id="font-step-up" onclick="App.fontStepUp()" title="글자 크게">A+</button>
+    </div>
+  </div>
+  <div class="home-header">
+    <span id="admin-home-badge" class="admin-home-badge" hidden>관리자</span>
+    <div class="home-title" id="home-title">Hanbit Church Sermon</div>
+    <div class="home-tagline" id="home-tagline">기도로 고도를 결정하라</div>
+    <div class="search-box home-search">
+      <span>🔍</span>
+      <input type="search" class="search-input" id="home-search-input" placeholder="제목 · 성경 · 목사 검색…"
+             onkeydown="if(event.key==='Enter')App.doSearch(this.value.trim())">
+    </div>
+  </div>
+
+  <div id="home-cards"></div>
+  <div id="home-links" class="home-links"></div>
+
+  <div class="home-youtube-wrap">
+    <a class="home-youtube" href="https://www.youtube.com/@HanbitMethodistChurch" target="_blank" rel="noopener noreferrer">
+      <span class="home-youtube-icon">▶</span> 한빛교회 YouTube 채널
+    </a>
+  </div>
+
+  <footer class="app-footer">
+    영상 목록은 매년 12월에 CSV 기준으로 한 번 갱신됩니다.<br>
+    마지막 반영: <span id="footer-updated">2025-12</span>
+  </footer>
+</div>
+
+<!-- 목록 -->
+<div id="screen-list" class="screen">
+  <div class="topbar">
+    <button class="btn-back" onclick="history.back()">←</button>
+    <div class="topbar-title" id="list-title">목록</div>
+  </div>
+  <div class="list-sticky-head" id="list-sticky-head">
+    <div class="sub-nav" id="list-subnav"></div>
+    <div class="search-box list-folder-search" id="list-folder-search-wrap" hidden>
+      <span>🔍</span>
+      <input type="search" class="search-input" id="list-folder-search" placeholder="이 폴더에서 검색…"
+             autocomplete="off" oninput="App.filterListFolder(this.value)">
+    </div>
+  </div>
+  <div class="content-scroll" id="list-content"></div>
+</div>
+
+<!-- 검색 -->
+<div id="screen-search" class="screen">
+  <div class="topbar">
+    <button class="btn-back" onclick="history.back()">←</button>
+    <div class="topbar-title">검색</div>
+  </div>
+  <div class="search-sticky-head" id="search-sticky-head">
+    <div class="search-box">
+      <span>🔍</span>
+      <input type="search" class="search-input" id="search-input" placeholder="검색…"
+             oninput="App.renderSearch(this.value)">
+    </div>
+    <div class="sub-nav" id="search-admin-bar" hidden></div>
+  </div>
+  <div class="content-scroll" id="search-results"><div class="no-data">검색어를 입력하세요.</div></div>
+</div>
+
+<!-- 설정 -->
+<div id="screen-settings" class="screen">
+  <div class="topbar">
+    <button class="btn-back" onclick="history.back()">←</button>
+    <div class="topbar-title">설정</div>
+  </div>
+  <div class="content-scroll" id="settings-content"></div>
+</div>
+
+<!-- 관리자 로그인 -->
+<div id="screen-admin-login" class="screen">
+  <div class="topbar">
+    <button class="btn-back" onclick="history.back()">←</button>
+    <div class="topbar-title">관리자</div>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:1rem">
+    <div class="login-box">
+      <div style="font-weight:600;margin-bottom:0.5rem">🔐 관리자 로그인</div>
+      <p class="adm-hint" style="margin-bottom:0.75rem;font-size:0.82em;color:var(--muted,#666)">Firebase 계정으로 로그인하면 설정·영상 수정이 저장됩니다.<br>로그인 후 홈(또는 이전 목록)으로 이동합니다.</p>
+      <form id="admin-login-form" onsubmit="event.preventDefault();App.doLogin();">
+      <div class="form-group">
+        <label class="form-label">이메일</label>
+        <input type="email" class="form-input" id="admin-email" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label class="form-label">비밀번호</label>
+        <input type="password" class="form-input" id="admin-pw" autocomplete="current-password">
+      </div>
+      <div class="form-error" id="login-err" style="display:none;color:var(--red,#c0504a);font-size:0.82em;margin-bottom:0.5rem"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-bottom:0.5rem">로그인 · 홈으로</button>
+      </form>
+      <button type="button" class="btn btn-outline" style="width:100%" onclick="App.doLogin(true)">로그인 · 관리자 설정</button>
+    </div>
+  </div>
+</div>
+
+<!-- 관리자 -->
+<div id="screen-admin" class="screen">
+  <div class="topbar">
+    <button class="btn-back" onclick="history.back()">←</button>
+    <div class="topbar-title">관리자</div>
+  </div>
+  <div class="content-scroll" id="admin-content"></div>
+</div>
+
+<div id="admin-modal" class="modal-overlay" onclick="if(event.target===this)Admin.closeModal()">
+  <div class="modal" id="admin-modal-body"></div>
+</div>
+
+<div id="pwa-install" class="pwa-install hidden" role="dialog" aria-labelledby="pwa-install-title">
+  <div class="pwa-install-inner">
+    <div class="pwa-install-icon"><img src="icons/icon-192.png" alt="" width="48" height="48"></div>
+    <div class="pwa-install-text">
+      <div class="pwa-install-title" id="pwa-install-title">앱 설치</div>
+      <div class="pwa-install-desc">한빛 설교 앱을 홈 화면에 추가하세요.</div>
+      <p class="pwa-ios-hint" hidden>Safari에서 <strong>공유(↑)</strong> → <strong>홈 화면에 추가</strong>를 누르세요.</p>
+    </div>
+    <div class="pwa-install-actions">
+      <button type="button" class="btn btn-primary pwa-install-btn" onclick="Pwa.install()">설치하기</button>
+      <button type="button" class="btn btn-outline btn-sm" onclick="Pwa.dismiss()">나중에</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/firebase-config.js?v=43"></script>
+<script src="js/firebase.js?v=43"></script>
+<script src="js/store.js?v=43"></script>
+<script src="js/ui.js?v=43"></script>
+<script src="js/admin.js?v=43"></script>
+<script src="js/app.js?v=43"></script>
+<script src="js/pwa.js?v=43"></script>
+<script>Pwa.init();</script>
+</body>
+</html>

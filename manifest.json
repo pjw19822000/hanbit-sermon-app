@@ -1,0 +1,35 @@
+{
+  "id": "/hanbit-sermon/",
+  "name": "Hanbit Church Sermon",
+  "short_name": "Hanbit Sermon",
+  "description": "한빛감리교회 설교·기도 영상",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#e8f0f8",
+  "theme_color": "#1a365d",
+  "lang": "ko",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

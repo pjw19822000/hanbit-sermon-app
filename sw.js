@@ -1,0 +1,77 @@
+/* Hanbit Church Sermon — offline shell + data cache */
+const CACHE = 'hanbit-sermon-v43';
+
+const DATA_PATHS = ['index.json', 'config.json', 'videos.json'];
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open(CACHE).then((cache) =>
+      cache.addAll([
+        './icons/favicon-32.png',
+        './icons/apple-touch-icon.png',
+        './icons/icon-192.png',
+        './icons/icon-512.png',
+        './manifest.json'
+      ])
+    ).then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+
+function isSameOrigin(url) {
+  return url.origin === self.location.origin;
+}
+
+function isDataRequest(url) {
+  if (DATA_PATHS.some((p) => url.pathname.endsWith(p))) return true;
+  return url.pathname.includes('/shards/');
+}
+
+function isNetworkFirst(url) {
+  const p = url.pathname;
+  if (isDataRequest(url)) return true;
+  if (p.endsWith('.js') || p.endsWith('.css')) return true;
+  if (p.endsWith('.html') || p.endsWith('/') || p.endsWith('index.html')) return true;
+  return false;
+}
+
+function putCache(req, res) {
+  if (!res.ok) return;
+  const copy = res.clone();
+  caches.open(CACHE).then((c) => c.put(req, copy));
+}
+
+function networkFirst(req) {
+  return fetch(req).then((res) => {
+    putCache(req, res);
+    return res;
+  }).catch(() => caches.match(req));
+}
+
+function cacheFirst(req) {
+  return caches.match(req).then((cached) => {
+    if (cached) return cached;
+    return fetch(req).then((res) => {
+      putCache(req, res);
+      return res;
+    });
+  });
+}
+
+self.addEventListener('fetch', (e) => {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  if (!isSameOrigin(url)) return;
+
+  if (url.pathname.endsWith('sw.js')) return;
+
+  e.respondWith(isNetworkFirst(url) ? networkFirst(req) : cacheFirst(req));
+});

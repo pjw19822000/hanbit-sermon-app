@@ -180,8 +180,6 @@ const UI = (() => {
       ge.style.fontWeight = g.fontWeight || '500';
       ge.style.color = g.color || 'var(--primary-light)';
     }
-    const fu = document.getElementById('footer-updated');
-    if (fu) fu.textContent = cfg.lastUpdated || '—';
     renderHomeMenus();
   }
 

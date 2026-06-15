@@ -1,5 +1,5 @@
 /* Hanbit Church Sermon — offline shell + data cache */
-const CACHE = 'hanbit-sermon-v45';
+const CACHE = 'hanbit-sermon-v46';
 
 const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json'];
 

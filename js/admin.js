@@ -185,9 +185,6 @@ const Admin = (() => {
       </div>
       <div class="login-box adm-box">
         <label class="adm-check-row"><input type="checkbox" id="adm-promo" ${cfg.showPromo ? 'checked' : ''} onchange="Admin.togglePromo(this.checked)"> 홍보·스트리밍 영상 표시</label>
-        <div class="form-group"><label class="form-label">마지막 갱신 (YYYY-MM)</label>
-          <input class="form-input" id="adm-updated" value="${UI.esc(cfg.lastUpdated || '')}"></div>
-        <button class="btn btn-outline btn-sm" onclick="Admin.saveUpdated()">갱신일 저장</button>
         <button class="btn btn-outline btn-sm" style="margin-top:0.75rem" onclick="App.nav({s:'list',view:'associate',sub:'이임목사',adminIm:true})">이임 목사 관리</button>
         <button class="btn btn-outline btn-sm" onclick="Admin.logout()">로그아웃</button>
       </div>`;
@@ -1098,16 +1095,6 @@ const Admin = (() => {
     }
   }
 
-  async function saveUpdated() {
-    try {
-      await Store.saveConfig({ lastUpdated: document.getElementById('adm-updated').value });
-      UI.applyHomeText();
-      UI.toast('갱신일 저장');
-    } catch (e) {
-      UI.toast('저장 실패');
-    }
-  }
-
   function isSortMode() { return sortEditMode && isIn(); }
 
   function toggleSortMode() {
@@ -1168,7 +1155,7 @@ const Admin = (() => {
 
   return {
     login, logout, isIn, setImPastor, renderDashboard, showTab,
-    saveTagline, cancelTagline, openAdmin, togglePromo, saveUpdated,
+    saveTagline, cancelTagline, openAdmin, togglePromo,
     saveMenus, searchVideos, toggleHidden, openEdit, saveEdit,
     submitAdd, deleteCustom, closeModal, toggleAssociateMenu, toggleImSpeakerHidden,
     openBulkFromList, openBulkSelected, updateBulkRoute, updateRouteSelects, updatePrayerYearSelect, onPrayerSeriesChange, applySourceRoute,

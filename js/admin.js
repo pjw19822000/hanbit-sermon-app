@@ -126,7 +126,7 @@ const Admin = (() => {
   function renderDashboard(el, tab) {
     currentTab = tab || 'home';
     const cfg = Store.getConfig();
-    const tabs = `<div class="sub-nav admin-tabs">${tabBtn('home', '홈 문구', currentTab)}${tabBtn('menus', '메뉴', currentTab)}${tabBtn('im', '이임 목사', currentTab)}${tabBtn('videos', '영상', currentTab)}${tabBtn('bulk', '일괄 이동', currentTab)}${tabBtn('add', '추가', currentTab)}</div>`;
+    const tabs = `<div class="sub-nav admin-tabs">${tabBtn('home', '홈 문구', currentTab)}${tabBtn('menus', '메뉴', currentTab)}${tabBtn('im', '이임 목사', currentTab)}${tabBtn('videos', '영상', currentTab)}${tabBtn('bulk', '일괄 이동', currentTab)}${tabBtn('add', '추가', currentTab)}${tabBtn('logs', '업로드 기록', currentTab)}</div>`;
 
     if (currentTab === 'menus') {
       el.innerHTML = tabs + renderMenusPanel();
@@ -139,6 +139,10 @@ const Admin = (() => {
       initBulkRouteForms();
     }
     else if (currentTab === 'add') el.innerHTML = tabs + renderAddPanel();
+    else if (currentTab === 'logs') {
+      el.innerHTML = tabs + renderUploadLogPanel();
+      loadUploadLogPanel();
+    }
     else el.innerHTML = tabs + renderHomePanel(cfg);
   }
 
@@ -777,6 +781,58 @@ const Admin = (() => {
       </div>
       <div id="adm-video-results"><div class="no-data">검색어를 입력하세요.</div></div>
     </div>`;
+  }
+
+  function renderUploadLogPanel() {
+    return `<div class="adm-box">
+      <p class="adm-hint">최근 7일간 RSS 자동 동기화·관리자 수동 추가 기록입니다. 7일이 지나면 기록만 삭제되고 영상은 유지됩니다.</p>
+      <div id="admin-upload-log"><div class="no-data">불러오는 중…</div></div>
+    </div>`;
+  }
+
+  function formatUploadLogTime(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso.slice(0, 16).replace('T', ' ');
+    return d.toLocaleString('ko-KR', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function renderUploadLogRows(rows) {
+    if (!rows.length) return '<div class="no-data">최근 7일 업로드 기록이 없습니다.</div>';
+    const head = `<div class="adm-log-head adm-log-row">
+      <span>일시</span><span>출처</span><span>분류</span><span>상태</span><span>제목</span>
+    </div>`;
+    const body = rows.map(r => {
+      const src = r.source === 'rss' ? 'RSS' : '수동';
+      const status = r.status === 'needs_review'
+        ? `<span class="adm-log-badge warn">검수</span>`
+        : `<span class="adm-log-badge ok">완료</span>`;
+      const issues = (r.issues || []).length
+        ? `<div class="adm-log-issues">${UI.esc(r.issues.join(' · '))}</div>` : '';
+      const title = UI.esc((r.title || '').slice(0, 72));
+      const url = UI.esc(r.url || `https://www.youtube.com/watch?v=${r.videoId || ''}`);
+      return `<div class="adm-log-row">
+        <span class="adm-log-time">${UI.esc(formatUploadLogTime(r.syncedAt))}</span>
+        <span>${src}</span>
+        <span class="adm-log-folder">${UI.esc(r.folderLabel || r.bucket || '')}</span>
+        <span>${status}</span>
+        <span class="adm-log-title"><a href="${url}" target="_blank" rel="noopener">${title}</a>${issues}</span>
+      </div>`;
+    }).join('');
+    return `<div class="adm-log-list">${head}${body}</div>`;
+  }
+
+  async function loadUploadLogPanel() {
+    const el = document.getElementById('admin-upload-log');
+    if (!el) return;
+    try {
+      if (Firebase.isEnabled()) await Firebase.requireAuth();
+      const rows = await Store.getUploadHistory();
+      el.innerHTML = renderUploadLogRows(rows);
+    } catch (e) {
+      console.error(e);
+      el.innerHTML = '<div class="no-data">기록을 불러오지 못했습니다. 다시 로그인해 주세요.</div>';
+    }
   }
 
   function renderAddPanel() {

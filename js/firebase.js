@@ -236,6 +236,57 @@ const Firebase = (() => {
     }
   }
 
+  const UPLOAD_LOG_RETENTION_DAYS = 7;
+
+  function uploadLogCutoffIso() {
+    const d = new Date(Date.now() - UPLOAD_LOG_RETENTION_DAYS * 86400000);
+    return d.toISOString();
+  }
+
+  async function getUploadLogs() {
+    await requireAuth();
+    const cutoff = uploadLogCutoffIso();
+    try {
+      const snap = await fs.collection('uploadLogs').get();
+      return snap.docs
+        .map(doc => ({ id: doc.id, ...doc.data() }))
+        .filter(e => (e.syncedAt || '') >= cutoff)
+        .sort((a, b) => (b.syncedAt || '').localeCompare(a.syncedAt || ''));
+    } catch (e) {
+      throw mapWriteError(e);
+    }
+  }
+
+  async function addUploadLog(entry) {
+    await requireAuth();
+    if (!entry?.videoId) return;
+    const id = entry.id || `${entry.source || 'manual'}_${entry.videoId}_${Date.now()}`;
+    try {
+      await fs.collection('uploadLogs').doc(id).set({ ...entry, id });
+    } catch (e) {
+      throw mapWriteError(e);
+    }
+  }
+
+  async function purgeOldUploadLogs() {
+    await requireAuth();
+    const cutoff = uploadLogCutoffIso();
+    try {
+      const snap = await fs.collection('uploadLogs').get();
+      const batch = fs.batch();
+      let n = 0;
+      snap.docs.forEach(doc => {
+        if ((doc.data().syncedAt || '') < cutoff) {
+          batch.delete(doc.ref);
+          n += 1;
+        }
+      });
+      if (n) await batch.commit();
+    } catch (e) {
+      throw mapWriteError(e);
+    }
+  }
+
   function adminEmail() {
     return CFG().adminEmail || 'admin@hanbit.kr';
   }
@@ -243,6 +294,7 @@ const Firebase = (() => {
   return {
     init, isEnabled, isAdmin, signIn, signOut, requireAuth, waitForAuthUser,
     getConfig, saveConfig, getOverrides, saveOverride, saveOverridesBatch, verifyOverridesSaved,
-    getCustomVideos, saveCustomVideos, adminEmail
+    getCustomVideos, saveCustomVideos, adminEmail,
+    getUploadLogs, addUploadLog, purgeOldUploadLogs
   };
 })();

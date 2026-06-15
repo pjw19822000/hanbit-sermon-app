@@ -1,7 +1,7 @@
 /* Hanbit Church Sermon — offline shell + data cache */
-const CACHE = 'hanbit-sermon-v43';
+const CACHE = 'hanbit-sermon-v44';
 
-const DATA_PATHS = ['index.json', 'config.json', 'videos.json'];
+const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(

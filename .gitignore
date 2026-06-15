@@ -10,6 +10,9 @@ data/videos.json
 data/index.json
 data/shards/
 
+# RSS sync temp (build pipeline)
+data/.rss-added-ids.json
+
 # OS
 .DS_Store
 Thumbs.db

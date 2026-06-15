@@ -11,6 +11,8 @@ const Store = (() => {
   const LS_FAV = 'hanbit-fav';
   const LS_RECENT = 'hanbit-recent';
   const LS_APP_BUILD = 'hanbit-app-build';
+  const LS_UPLOAD_LOG = 'hanbit-upload-log';
+  const UPLOAD_LOG_RETENTION_MS = 7 * 86400000;
   const SHARD_NAMES = ['baek', 'prayer', 'associate', 'events', 'praise', 'misc'];
   let shardLoadState = {};
   let allShardsReady = false;
@@ -887,6 +889,98 @@ const Store = (() => {
     return next;
   }
 
+  function describeUploadFolder(v) {
+    const b = v.bucket || 'other';
+    const bucketDef = BUCKETS.find(x => x.id === b);
+    const parts = [bucketDef?.label || b];
+    if (b === 'associate') {
+      const aid = v.associateId || effectiveAssociateId(v);
+      if (aid) parts.push(ASSOC_DISPLAY[aid] || aid);
+    } else if (b === 'baek-regular' && v.worship) {
+      parts.push(v.worship);
+    } else if (b === 'prayer-ministry' && v.prayerSeries) {
+      parts.push(PRAYER_LABELS[v.prayerSeries] || v.prayerSeries);
+    } else if (b === 'praise' && v.praiseSub) {
+      parts.push(v.praiseSub);
+    } else if (v.scripture) {
+      parts.push(v.scripture);
+    }
+    return parts.filter(Boolean).join(' · ');
+  }
+
+  function buildUploadLogEntry(v, source) {
+    const issues = classifyIssue(v);
+    return {
+      id: `${source}_${v.id}_${Date.now()}`,
+      videoId: v.id,
+      title: v.title || v.displayTitle || '',
+      url: v.url || `https://www.youtube.com/watch?v=${v.id}`,
+      bucket: v.bucket || 'other',
+      folderLabel: describeUploadFolder(v),
+      status: issues.length ? 'needs_review' : 'classified',
+      issues,
+      source,
+      syncedAt: new Date().toISOString()
+    };
+  }
+
+  function purgeUploadLogEntries(entries) {
+    const cutoff = Date.now() - UPLOAD_LOG_RETENTION_MS;
+    return (entries || []).filter(e => {
+      const t = Date.parse(e?.syncedAt || '');
+      return !Number.isNaN(t) && t >= cutoff;
+    });
+  }
+
+  async function fetchStaticUploadLogs() {
+    try {
+      const res = await fetch('data/upload-log.json');
+      if (!res.ok) return [];
+      const data = await res.json();
+      return purgeUploadLogEntries(data.entries || []);
+    } catch {
+      return [];
+    }
+  }
+
+  async function getUploadHistory() {
+    const staticEntries = await fetchStaticUploadLogs();
+    let remote = [];
+    if (Firebase.isEnabled() && Firebase.isAdmin()) {
+      try {
+        await Firebase.requireAuth();
+        remote = await Firebase.getUploadLogs();
+      } catch (e) {
+        console.warn('uploadLogs fetch failed', e);
+      }
+    } else if (!Firebase.isEnabled()) {
+      remote = purgeUploadLogEntries(lsGet(LS_UPLOAD_LOG, []));
+    }
+    const seen = new Set();
+    const merged = [];
+    [...staticEntries, ...remote]
+      .sort((a, b) => (b.syncedAt || '').localeCompare(a.syncedAt || ''))
+      .forEach(e => {
+        const key = `${e.source}|${e.videoId}|${(e.syncedAt || '').slice(0, 19)}`;
+        if (seen.has(key)) return;
+        seen.add(key);
+        merged.push(e);
+      });
+    return merged;
+  }
+
+  async function logUploadEvent(video, source) {
+    const entry = buildUploadLogEntry(video, source);
+    if (Firebase.isEnabled()) {
+      await Firebase.addUploadLog(entry);
+      await Firebase.purgeOldUploadLogs();
+      return;
+    }
+    let list = purgeUploadLogEntries(lsGet(LS_UPLOAD_LOG, []));
+    list.unshift(entry);
+    lsSet(LS_UPLOAD_LOG, list);
+  }
+
   async function addCustomVideo(raw) {
     const id = parseYoutubeId(raw.url);
     if (!id) throw new Error('YouTube URL을 확인하세요');
@@ -921,6 +1015,11 @@ const Store = (() => {
     customVideos.push(video);
     await persistCustomVideos();
     rebuildVideoList();
+    try {
+      await logUploadEvent(video, 'manual');
+    } catch (e) {
+      console.warn('upload log failed', e);
+    }
     return video;
   }
 
@@ -1908,6 +2007,7 @@ const Store = (() => {
     filterByTestament, getHomeMenuCount, ensureViewReady, isViewReady, areAllShardsReady, prefetchAllShards,
     toggleFav, isFav, recordRecent, applyOverride, toggleAdminHidden,
     addCustomVideo, removeCustomVideo, getMenus, saveMenus, parseYoutubeId,
+    getUploadHistory, describeUploadFolder, buildUploadLogEntry,
     rebuildVideoList, DEFAULT_MENUS, HOME_CARD_ORDER, HOME_LINK_ORDER, BUCKETS,
     PRAYER_LABELS, ASSOCIATES, OT_BOOKS, NT_BOOKS,
     canonicalSpeakerKey, canonicalSpeakerLabel, speakerLabelFromKey, effectiveAssociateId,

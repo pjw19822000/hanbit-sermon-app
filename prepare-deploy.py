@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parent
 UPLOAD = ROOT / 'upload'
 
 INCLUDE = ['index.html', 'manifest.json', 'css', 'js', 'icons', 'sw.js', '_redirects', '_headers']
-DATA_FILES = ['index.json', 'config.json', 'videos.json']
+DATA_FILES = ['index.json', 'config.json', 'videos.json', 'upload-log.json']
 
 
 def copy_item(src, dst):

@@ -25,11 +25,14 @@ jobs:
       - name: Validate video build
         run: python build-videos.py
 
+      - name: Record upload log
+        run: python scripts/record-upload-log.py
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add HanbitMethodistChurch_Videos.csv data/config.json
+          git add HanbitMethodistChurch_Videos.csv data/config.json data/upload-log.json
           if git diff --staged --quiet; then
             echo "No CSV changes — skipping commit."
           else

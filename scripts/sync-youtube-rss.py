@@ -191,6 +191,10 @@ def main() -> int:
         body = new_rows + body
         write_csv(header, body)
         touch_config_last_updated(cfg)
+        added_ids_path = os.path.join(ROOT, "data", ".rss-added-ids.json")
+        os.makedirs(os.path.dirname(added_ids_path), exist_ok=True)
+        with open(added_ids_path, "w", encoding="utf-8") as f:
+            json.dump([v["id"] for v in to_add], f)
 
     print(f"channel={channel} lookback={hours}h rss={len(rss_entries)} in_window={in_window}")
     print(f"added={len(to_add)} skipped_duplicate={skipped_known} skipped_older_than_window={skipped_old}")

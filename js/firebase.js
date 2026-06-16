@@ -52,7 +52,7 @@ const Firebase = (() => {
     app = firebase.apps.length ? firebase.app() : firebase.initializeApp(CFG().config);
     fs = firebase.firestore();
     auth = firebase.auth();
-    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
     if (!authInitDone) {
       authInitDone = true;
       auth.onAuthStateChanged(() => { /* 세션 복원 */ });

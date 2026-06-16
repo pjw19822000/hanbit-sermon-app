@@ -93,7 +93,7 @@ const Admin = (() => {
   }
 
   function initAutoLogout() {
-    /* 탭 전환·유튜브 새 창 등으로 포커스가 빠져도 관리자 세션 유지. 로그아웃은 버튼으로만. */
+    /* Firebase SESSION persistence: 탭/창 닫으면 세션 종료. 재진입 시 홈(비관리자). */
   }
 
   function isIn() {

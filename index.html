@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-title" content="Hanbit Sermon">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#1a365d">
-  <meta name="hanbit-app-build" content="47">
+  <meta name="hanbit-app-build" content="48">
   <title>Hanbit Church Sermon</title>
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css?v=47">
+  <link rel="stylesheet" href="css/style.css?v=48">
   <script>
     window.__hanbitBip = null;
     window.addEventListener('beforeinstallprompt', function(e) {
@@ -166,6 +166,10 @@
   <div class="modal" id="admin-modal-body"></div>
 </div>
 
+<div id="app-toolbar" class="app-toolbar" hidden>
+  <button type="button" class="toolbar-home-btn" onclick="App.goHome()" title="홈" aria-label="홈으로">🏠</button>
+</div>
+
 <div id="pwa-install" class="pwa-install hidden" role="dialog" aria-labelledby="pwa-install-title">
   <div class="pwa-install-inner">
     <div class="pwa-install-icon"><img src="icons/icon-192.png" alt="" width="48" height="48"></div>
@@ -185,13 +189,13 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/firebase-config.js?v=47"></script>
-<script src="js/firebase.js?v=47"></script>
-<script src="js/store.js?v=47"></script>
-<script src="js/ui.js?v=47"></script>
-<script src="js/admin.js?v=47"></script>
-<script src="js/app.js?v=47"></script>
-<script src="js/pwa.js?v=47"></script>
+<script src="js/firebase-config.js?v=48"></script>
+<script src="js/firebase.js?v=48"></script>
+<script src="js/store.js?v=48"></script>
+<script src="js/ui.js?v=48"></script>
+<script src="js/admin.js?v=48"></script>
+<script src="js/app.js?v=48"></script>
+<script src="js/pwa.js?v=48"></script>
 <script>Pwa.init();</script>
 </body>
 </html>

@@ -81,9 +81,21 @@ const App = (() => {
     if (el) el.classList.add('active');
   }
 
+  function syncAppToolbar(st) {
+    const el = document.getElementById('app-toolbar');
+    const show = !!(st?.s && st.s !== 'home' && st.s !== 'font' && st.s !== 'loading');
+    if (el) el.hidden = !show;
+    document.body.classList.toggle('app-toolbar-visible', show);
+  }
+
+  function goHome() {
+    navReplace({ s: 'home' });
+  }
+
   function navRender(st) {
     state = st;
     showScreen(st.s);
+    syncAppToolbar(st);
     UI.applyHomeText();
     syncAdminScreenClasses();
 
@@ -937,7 +949,7 @@ const App = (() => {
   }
 
   return {
-    init, go, nav, navPush, pickFont, applyFont, fontStepDown, fontStepUp, startApp, toggleDark,
+    init, go, goHome, nav, navPush, pickFont, applyFont, fontStepDown, fontStepUp, startApp, toggleDark,
     openVideo, shareVideo, toggleFav, doLogin, openAdminLogin, finishLoginRedirect, prepareAdminLogin, exportPdf, doSearch, renderSearch, renderAdminVideoSearch, refreshList, getListState, getListVideoIds, updateSelectionUi, renderSettings, onAdminLogout, onShardsReady, refreshHomeCounts, loadMoreList, selectionAdminBar, setSelectionPool, clearPagedList, filterListFolder
   };
 })();

@@ -1,5 +1,5 @@
 /* Hanbit Church Sermon — offline shell + data cache */
-const CACHE = 'hanbit-sermon-v46';
+const CACHE = 'hanbit-sermon-v47';
 
 const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json'];
 
@@ -34,11 +34,18 @@ function isDataRequest(url) {
   return url.pathname.includes('/shards/');
 }
 
-function isNetworkFirst(url) {
+function isHtmlRequest(url) {
   const p = url.pathname;
+  if (p.endsWith('.html') || p.endsWith('index.html')) return true;
+  if (p.endsWith('/') && !/\.[a-z0-9]+$/i.test(p.slice(0, -1))) return true;
+  return false;
+}
+
+function isNetworkFirst(url) {
   if (isDataRequest(url)) return true;
+  const p = url.pathname;
   if (p.endsWith('.js') || p.endsWith('.css')) return true;
-  if (p.endsWith('.html') || p.endsWith('/') || p.endsWith('index.html')) return true;
+  if (isHtmlRequest(url)) return true;
   return false;
 }
 
@@ -49,8 +56,10 @@ function putCache(req, res) {
 }
 
 function networkFirst(req) {
+  const url = new URL(req.url);
+  const html = isHtmlRequest(url);
   return fetch(req).then((res) => {
-    putCache(req, res);
+    if (!html) putCache(req, res);
     return res;
   }).catch(() => caches.match(req));
 }

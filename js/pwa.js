@@ -126,9 +126,13 @@ const Pwa = (() => {
     }
   }
 
+  function appBuild() {
+    return document.querySelector('meta[name="hanbit-app-build"]')?.content || '47';
+  }
+
   function registerSw() {
     if (!('serviceWorker' in navigator)) return;
-    navigator.serviceWorker.register('./sw.js?v=43').catch((e) => console.warn('SW', e));
+    navigator.serviceWorker.register(`./sw.js?v=${appBuild()}`).catch((e) => console.warn('SW', e));
   }
 
   function initInstallUi() {

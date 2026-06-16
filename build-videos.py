@@ -407,6 +407,75 @@ def is_public_visible(v):
   return not v.get('hidden')
 
 
+def resolve_associate_from_speaker(sp, title=''):
+  normalized = normalize_speaker(sp, title)
+  key = norm_sp_key(normalized)
+  if not key:
+    return ''
+  if '백용현' in key or '벡용현' in key:
+    return '__baek__'
+  for a in ASSOCIATES:
+    if a in key:
+      return a
+  return ''
+
+
+def apply_client_routing(v):
+  """store.js mergedVideo + applySpeakerRouting 과 동일한 bucket 보정"""
+  out = dict(v)
+  sp = (out.get('speaker') or '').strip()
+  if not sp:
+    sp = speaker(out.get('title') or '')
+  sp = normalize_speaker(sp, out.get('title') or '')
+  out['speaker'] = sp
+  bucket = out.get('bucket') or 'other'
+  if is_guest_revival(sp):
+    out['bucket'] = 'events-revival'
+    out['eventBucket'] = 'revival'
+    out['associateId'] = ''
+    return out
+  resolved = resolve_associate_from_speaker(sp, out.get('title') or '')
+  if resolved == '__baek__':
+    out['isBaek'] = True
+    out['associateId'] = ''
+    if bucket in ('associate', 'other'):
+      out['bucket'] = 'baek-regular'
+  return out
+
+
+def client_visible(v, show_promo=False):
+  """store.js visible() — showPromo 기본 false"""
+  if v.get('hidden'):
+    return bool(show_promo)
+  bucket = v.get('bucket') or ''
+  if bucket == 'events-promo' and not show_promo and not is_samoritreat(v.get('title') or ''):
+    return False
+  return True
+
+
+def is_misc_folder_video(v):
+  bucket = v.get('bucket') or ''
+  return bucket in ('other', 'misc-unclassified')
+
+
+def compute_home_counts(videos, show_promo=False):
+  """홈 메뉴 숫자 — 앱 listCache 와 동일 기준"""
+  routed = [apply_client_routing(v) for v in videos]
+  vis = [v for v in routed if client_visible(v, show_promo)]
+  baek_reg = [v for v in vis if v.get('bucket') == 'baek-regular' and v.get('isBaek')]
+  events = [v for v in vis if str(v.get('bucket', '')).startswith('events-')]
+  return {
+    'baek-hub': len(baek_reg),
+    'prayer-hub': len([v for v in vis if v.get('bucket') == 'prayer-ministry']),
+    'associate-hub': len([v for v in vis if v.get('bucket') == 'associate']),
+    'events-hub': len(events),
+    'testimony': len([v for v in vis if v.get('bucket') == 'events-testimony']),
+    'praise-hub': len([v for v in vis if v.get('bucket') == 'praise']),
+    'misc-unclassified': len([v for v in vis if is_misc_folder_video(v)]),
+    'worship-regular': len([v for v in baek_reg if v.get('worship')]),
+  }
+
+
 def write_shards_and_index(videos, out):
   shards_dir = os.path.join(ROOT, 'data', 'shards')
   os.makedirs(shards_dir, exist_ok=True)
@@ -423,19 +492,7 @@ def write_shards_and_index(videos, out):
     shard_meta[name] = {'path': path, 'count': len(items), 'visibleCount': len(vis)}
 
   vis_all = [v for v in videos if is_public_visible(v)]
-  baek_vis = [v for v in grouped['baek'] if is_public_visible(v) and v.get('isBaek')]
-  baek_reg = [v for v in baek_vis if v.get('bucket') == 'baek-regular']
-
-  home_counts = {
-    'baek-hub': len(baek_reg),
-    'prayer-hub': len([v for v in grouped['prayer'] if is_public_visible(v)]),
-    'associate-hub': len([v for v in grouped['associate'] if is_public_visible(v)]),
-    'events-hub': len([v for v in grouped['events'] if is_public_visible(v) and str(v.get('bucket', '')).startswith('events-')]),
-    'testimony': len([v for v in grouped['events'] if is_public_visible(v) and v.get('bucket') == 'events-testimony']),
-    'praise-hub': len([v for v in grouped['praise'] if is_public_visible(v)]),
-    'misc-unclassified': len([v for v in grouped['misc'] if is_public_visible(v)]),
-    'worship-regular': len([v for v in baek_reg if v.get('worship')]),
-  }
+  home_counts = compute_home_counts(videos)
 
   index = {
     'meta': out['meta'],

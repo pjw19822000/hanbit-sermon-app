@@ -638,6 +638,10 @@ const App = (() => {
     }
   }
 
+  function refreshHomeCounts() {
+    if (state.s === 'home') renderHome();
+  }
+
   function onShardsReady() {
     if (state.s === 'home') renderHome();
     else if (state.s === 'list') renderList(state);
@@ -934,7 +938,7 @@ const App = (() => {
 
   return {
     init, go, nav, navPush, pickFont, applyFont, fontStepDown, fontStepUp, startApp, toggleDark,
-    openVideo, shareVideo, toggleFav, doLogin, openAdminLogin, finishLoginRedirect, prepareAdminLogin, exportPdf, doSearch, renderSearch, renderAdminVideoSearch, refreshList, getListState, getListVideoIds, updateSelectionUi, renderSettings, onAdminLogout, onShardsReady, loadMoreList, selectionAdminBar, setSelectionPool, clearPagedList, filterListFolder
+    openVideo, shareVideo, toggleFav, doLogin, openAdminLogin, finishLoginRedirect, prepareAdminLogin, exportPdf, doSearch, renderSearch, renderAdminVideoSearch, refreshList, getListState, getListVideoIds, updateSelectionUi, renderSettings, onAdminLogout, onShardsReady, refreshHomeCounts, loadMoreList, selectionAdminBar, setSelectionPool, clearPagedList, filterListFolder
   };
 })();
 

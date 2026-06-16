@@ -159,7 +159,11 @@ const UI = (() => {
       </div>`;
     }
     cardsEl.innerHTML = cards;
-    if (linksEl) linksEl.innerHTML = '';
+    cardsEl.classList.toggle('home-counts-ready', Store.areHomeCountsReady?.() === true);
+    if (linksEl) {
+      linksEl.innerHTML = '';
+      linksEl.classList.toggle('home-counts-ready', Store.areHomeCountsReady?.() === true);
+    }
   }
 
   function applyHomeText() {

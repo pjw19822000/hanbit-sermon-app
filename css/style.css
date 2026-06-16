@@ -107,11 +107,17 @@ body.font-xl { font-size: 22px; }
 }
 .app-toolbar[hidden] { display: none !important; }
 .toolbar-home-btn {
-  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
-  padding: 0.35rem 0.55rem; cursor: pointer; font-size: 1.15em; line-height: 1.2;
-  min-width: 2.35rem; color: var(--primary);
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: var(--card); border: 1px solid var(--primary); border-radius: 999px;
+  padding: 0.35rem 0.75rem 0.35rem 0.6rem; cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 0.82em; font-weight: 600;
+  line-height: 1.2; color: var(--primary);
+  box-shadow: var(--shadow); transition: background 0.15s, transform 0.12s;
 }
-body.app-toolbar-visible .topbar { padding-right: 3.25rem; }
+.toolbar-home-btn:active { transform: scale(0.97); }
+.toolbar-home-icon { flex-shrink: 0; opacity: 0.9; }
+.toolbar-home-label { letter-spacing: -0.02em; }
+body.app-toolbar-visible .topbar { padding-right: 4.75rem; }
 .font-step-btn {
   background: var(--card); border: 1px solid var(--border); border-radius: 8px;
   padding: 0.3rem 0.55rem; cursor: pointer; font-size: 0.88em; font-weight: 700;
@@ -129,6 +135,8 @@ body.app-toolbar-visible .topbar { padding-right: 3.25rem; }
 .nav-card-lg:active { transform: scale(0.98); }
 .nav-card-lg .nc-icon { font-size: 1.8em; }
 .nav-card-lg .nc-title { font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 1.05em; color: var(--primary); }
+#home-cards:not(.home-counts-ready) .nav-card-lg .nc-title { color: var(--primary); }
+#home-cards.home-counts-ready .nav-card-lg .nc-title { transition: color 0.2s; }
 .nav-card-lg .nc-sub { font-size: 0.78em; color: var(--text-muted); margin-top: 0.15rem; }
 .nav-card-admin {
   border: 1px dashed var(--amber, #c9a227);

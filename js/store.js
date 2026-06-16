@@ -1085,11 +1085,9 @@ const Store = (() => {
   function mergeShardVideosIntoBase() {
     baseVideos = SHARD_NAMES.flatMap(n => shardLoadState[n]?.videos || []);
     rebuildVideoList();
-    if (shardLoadState.misc?.loaded && typeof window !== 'undefined' && window.App?.refreshHomeCounts) {
-      try { window.App.refreshHomeCounts(); } catch { /* ignore */ }
-    }
     if (SHARD_NAMES.every(n => shardLoadState[n]?.loaded)) {
       allShardsReady = true;
+      syncHomeCountsFromListCache();
       if (typeof window !== 'undefined' && window.App?.onShardsReady) {
         try { window.App.onShardsReady(); } catch { /* ignore */ }
       }
@@ -1251,26 +1249,21 @@ const Store = (() => {
   }
 
   function getHomeMenuCount(view) {
-    /* 샤드가 일부만 로드된 listCache는 0으로 보일 수 있어 index 숫자를 우선 사용 */
-    if (listCache) {
-      if (allShardsReady) {
-        switch (view) {
-          case 'baek-hub': return countVideos(listCache.baekRegular);
-          case 'prayer-hub': return countVideos(listCache.prayer);
-          case 'associate-hub': return countVideos(listCache.associate);
-          case 'events-hub': return countVideos(listCache.events);
-          case 'testimony': return countVideos(listCache.events.filter(v => v.bucket === 'events-testimony'));
-          case 'praise-hub': return countVideos(listCache.praise);
-          case 'misc-unclassified': return countVideos(listCache.miscUnclassified);
-          case 'worship-regular': return countVideos(listCache.baekRegular.filter(v => v.worship));
-          default: break;
-        }
-      } else if (view === 'misc-unclassified' && isViewReady('misc-unclassified')) {
-        return countVideos(listCache.miscUnclassified);
-      }
+    if (!listCache || !allShardsReady) return null;
+    switch (view) {
+      case 'baek-hub': return countVideos(listCache.baekRegular);
+      case 'prayer-hub': return countVideos(listCache.prayer);
+      case 'associate-hub': return countVideos(listCache.associate);
+      case 'events-hub': return countVideos(listCache.events);
+      case 'testimony': return countVideos(listCache.events.filter(v => v.bucket === 'events-testimony'));
+      case 'praise-hub': return countVideos(listCache.praise);
+      case 'misc-unclassified': return countVideos(listCache.miscUnclassified);
+      case 'worship-regular': return countVideos(listCache.baekRegular.filter(v => v.worship));
+      default: return null;
     }
-    return indexHomeCounts?.[view] ?? null;
   }
+
+  function areHomeCountsReady() { return allShardsReady; }
 
   function areAllShardsReady() { return allShardsReady; }
 
@@ -2032,7 +2025,7 @@ const Store = (() => {
     load, getConfig, saveConfig, getOverrides, setOverride,
     allVisible, baekRegular, miscUnclassifiedVideos, prayerMinistry, associates, events, praise, testimony,
     byBaekView, groupBaekWorship, groupAssociate, sermonDedupeKey, countUniqueSermons, countVideos, thumb, search, filterVideosByQuery, getVideo,
-    filterByTestament, getHomeMenuCount, ensureViewReady, isViewReady, areAllShardsReady, prefetchAllShards,
+    filterByTestament, getHomeMenuCount, areHomeCountsReady, ensureViewReady, isViewReady, areAllShardsReady, prefetchAllShards,
     toggleFav, isFav, recordRecent, applyOverride, toggleAdminHidden,
     addCustomVideo, removeCustomVideo, getMenus, saveMenus, parseYoutubeId,
     getUploadHistory, describeUploadFolder, buildUploadLogEntry,

@@ -1082,15 +1082,26 @@ const Store = (() => {
     listCache = null;
   }
 
+  function notifyShardsReady() {
+    if (typeof UI !== 'undefined' && UI.renderHomeMenus) {
+      try { UI.renderHomeMenus(); } catch { /* ignore */ }
+    }
+    const app = typeof App !== 'undefined' ? App : (typeof window !== 'undefined' ? window.App : null);
+    if (app?.onShardsReady) {
+      try { app.onShardsReady(); } catch { /* ignore */ }
+    }
+    if (typeof document !== 'undefined') {
+      try { document.dispatchEvent(new CustomEvent('hanbit-shards-ready')); } catch { /* ignore */ }
+    }
+  }
+
   function mergeShardVideosIntoBase() {
     baseVideos = SHARD_NAMES.flatMap(n => shardLoadState[n]?.videos || []);
     rebuildVideoList();
     if (SHARD_NAMES.every(n => shardLoadState[n]?.loaded)) {
       allShardsReady = true;
       syncHomeCountsFromListCache();
-      if (typeof window !== 'undefined' && window.App?.onShardsReady) {
-        try { window.App.onShardsReady(); } catch { /* ignore */ }
-      }
+      notifyShardsReady();
     }
   }
 

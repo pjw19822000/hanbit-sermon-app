@@ -52,6 +52,12 @@ const App = (() => {
     } else {
       navReplace({ s: 'font' });
     }
+    Store.prefetchAllShards().then(() => {
+      if (Store.areHomeCountsReady?.()) {
+        UI.renderHomeMenus();
+        if (state.s === 'home') renderHome();
+      }
+    }).catch(() => {});
     window.addEventListener('popstate', (e) => {
       const st = e.state || { s: 'home' };
       state = st;
@@ -655,6 +661,7 @@ const App = (() => {
   }
 
   function onShardsReady() {
+    UI.renderHomeMenus();
     if (state.s === 'home') renderHome();
     else if (state.s === 'list') renderList(state);
   }
@@ -953,5 +960,7 @@ const App = (() => {
     openVideo, shareVideo, toggleFav, doLogin, openAdminLogin, finishLoginRedirect, prepareAdminLogin, exportPdf, doSearch, renderSearch, renderAdminVideoSearch, refreshList, getListState, getListVideoIds, updateSelectionUi, renderSettings, onAdminLogout, onShardsReady, refreshHomeCounts, loadMoreList, selectionAdminBar, setSelectionPool, clearPagedList, filterListFolder
   };
 })();
+
+window.App = App;
 
 document.addEventListener('DOMContentLoaded', () => App.init());

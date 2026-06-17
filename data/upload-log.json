@@ -1,6 +1,78 @@
 {
   "entries": [
     {
+      "id": "34acff48-a16b-4cd3-8611-81f13decbd57",
+      "videoId": "74Dz3JzUWwc",
+      "title": "[한빛감리교회] 260617_새벽기도회_응답 받을 때까지 기도를 계속 하십시오_고린도후서 8장 10-12절_김대웅 전도사",
+      "url": "https://www.youtube.com/watch?v=74Dz3JzUWwc",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 김대웅",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-17T00:24:12Z"
+    },
+    {
+      "id": "d1637170-ee0c-42a2-8829-5bdee9dacacc",
+      "videoId": "AkvTmTntB8Y",
+      "title": "[한빛감리교회] 260617_새벽기도회_응답 받을 때까지 기도를 계속 하십시오_고린도후서 8장 10-12절_김대웅 전도사",
+      "url": "https://www.youtube.com/watch?v=AkvTmTntB8Y",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 김대웅",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-17T00:24:12Z"
+    },
+    {
+      "id": "0e96e682-6d88-498a-a79c-5422a21bfdfb",
+      "videoId": "ruAQBy08ZlQ",
+      "title": "[한빛감리교회] 260616_저녁기도회_우리의 무기는 하나님의 능력이라_고린도후서 10장 4절_이진협 목사",
+      "url": "https://www.youtube.com/watch?v=ruAQBy08ZlQ",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진협",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-17T00:24:12Z"
+    },
+    {
+      "id": "fc121f11-57a2-43dc-881e-de6f445e8bb4",
+      "videoId": "wrUS-L_Radg",
+      "title": "[한빛감리교회] 2025 100일 감사 일천번제 스케치 영상",
+      "url": "https://www.youtube.com/watch?v=wrUS-L_Radg",
+      "bucket": "events-promo",
+      "folderLabel": "홍보",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-17T00:24:12Z"
+    },
+    {
+      "id": "64cf2c9f-fae6-4b46-8f63-ad8d527b3ac6",
+      "videoId": "OsSNgshbKxY",
+      "title": "[한빛감리교회] 2026 아웃리치 발대식 영상",
+      "url": "https://www.youtube.com/watch?v=OsSNgshbKxY",
+      "bucket": "events-outreach",
+      "folderLabel": "아웃리치·선교",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-17T00:24:12Z"
+    },
+    {
+      "id": "517e8a17-ae87-4960-b8d8-b0c54a93ff4a",
+      "videoId": "oVns0EUb24I",
+      "title": "[한빛감리교회] 2026 기도학교를 위한 목회자세미나 스케치 영상",
+      "url": "https://www.youtube.com/watch?v=oVns0EUb24I",
+      "bucket": "prayer-ministry",
+      "folderLabel": "기도사역말씀 · 목회자 세미나",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-17T00:24:12Z"
+    },
+    {
       "id": "71e9ca20-66c0-4eed-8989-0ec552f5e33e",
       "videoId": "iCyCxeh6L5M",
       "title": "[한빛감리교회] 260616_새벽기도회_우리의 무기는 하나님의 능력이라_고린도후서 10장 4절_이진협 목사",

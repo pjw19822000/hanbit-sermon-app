@@ -1,5 +1,5 @@
 /* Hanbit Church Sermon — offline shell + data cache */
-const CACHE = 'hanbit-sermon-v50';
+const CACHE = 'hanbit-sermon-v51';
 
 const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json'];
 
@@ -31,6 +31,12 @@ function isSameOrigin(url) {
 
 function isDataRequest(url) {
   if (DATA_PATHS.some((p) => url.pathname.endsWith(p))) return true;
+  return url.pathname.includes('/shards/');
+}
+
+/** 영상 목록·샤드는 항상 네트워크만 (SW 캐시로 구버전 목록 고착 방지) */
+function isFreshDataRequest(url) {
+  if (url.pathname.endsWith('index.json')) return true;
   return url.pathname.includes('/shards/');
 }
 
@@ -81,6 +87,11 @@ self.addEventListener('fetch', (e) => {
   if (!isSameOrigin(url)) return;
 
   if (url.pathname.endsWith('sw.js')) return;
+
+  if (isFreshDataRequest(url)) {
+    e.respondWith(fetch(req));
+    return;
+  }
 
   e.respondWith(isNetworkFirst(url) ? networkFirst(req) : cacheFirst(req));
 });

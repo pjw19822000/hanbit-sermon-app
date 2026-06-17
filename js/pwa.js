@@ -132,7 +132,30 @@ const Pwa = (() => {
 
   function registerSw() {
     if (!('serviceWorker' in navigator)) return;
-    navigator.serviceWorker.register(`./sw.js?v=${appBuild()}`).catch((e) => console.warn('SW', e));
+
+    let reloadPending = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!reloadPending) return;
+      reloadPending = false;
+      window.location.reload();
+    });
+
+    navigator.serviceWorker.register(`./sw.js?v=${appBuild()}`)
+      .then((reg) => {
+        reg.update();
+        reg.addEventListener('updatefound', () => {
+          const worker = reg.installing;
+          if (!worker) return;
+          worker.addEventListener('statechange', () => {
+            if (worker.state !== 'installed' || !navigator.serviceWorker.controller) return;
+            reloadPending = true;
+            if (typeof UI !== 'undefined' && UI.toast) {
+              UI.toast('새 버전을 반영합니다…');
+            }
+          });
+        });
+      })
+      .catch((e) => console.warn('SW', e));
   }
 
   function initInstallUi() {

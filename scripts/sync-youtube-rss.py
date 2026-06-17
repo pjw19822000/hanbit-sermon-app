@@ -14,6 +14,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -88,13 +89,48 @@ def parse_published_dt(iso: str) -> datetime | None:
         return None
 
 
+DEFAULT_CHANNEL_ID = "UC5rJi-E3aMkb46vVHJArvYg"
+DEFAULT_LOOKBACK_HOURS = 72
+USER_AGENT = "Mozilla/5.0 (compatible; HanbitSermonRSS/1.0)"
+RSS_FETCH_ATTEMPTS = 3
+RSS_RETRY_DELAYS_SEC = (5, 10, 15)
+
+
+def _rss_fetch_retryable(exc: BaseException) -> bool:
+    if isinstance(exc, urllib.error.HTTPError):
+        return exc.code == 404 or exc.code >= 500
+    if isinstance(exc, urllib.error.URLError):
+        return True
+    return False
+
+
 def fetch_rss_entries(channel: str) -> list[dict]:
     url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel}"
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    try:
-        data = urllib.request.urlopen(req, timeout=45).read()
-    except urllib.error.URLError as e:
-        raise SystemExit(f"RSS fetch failed: {e}") from e
+    last_err: BaseException | None = None
+    for attempt in range(1, RSS_FETCH_ATTEMPTS + 1):
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        try:
+            data = urllib.request.urlopen(req, timeout=45).read()
+            last_err = None
+            break
+        except urllib.error.HTTPError as e:
+            last_err = e
+            if attempt < RSS_FETCH_ATTEMPTS and _rss_fetch_retryable(e):
+                delay = RSS_RETRY_DELAYS_SEC[min(attempt - 1, len(RSS_RETRY_DELAYS_SEC) - 1)]
+                print(f"RSS fetch attempt {attempt}/{RSS_FETCH_ATTEMPTS} failed: HTTP {e.code}, retry in {delay}s", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            raise SystemExit(f"RSS fetch failed: HTTP Error {e.code}: {e.reason}") from e
+        except urllib.error.URLError as e:
+            last_err = e
+            if attempt < RSS_FETCH_ATTEMPTS:
+                delay = RSS_RETRY_DELAYS_SEC[min(attempt - 1, len(RSS_RETRY_DELAYS_SEC) - 1)]
+                print(f"RSS fetch attempt {attempt}/{RSS_FETCH_ATTEMPTS} failed: {e}, retry in {delay}s", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            raise SystemExit(f"RSS fetch failed: {e}") from e
+    if last_err is not None:
+        raise SystemExit(f"RSS fetch failed: {last_err}") from last_err
 
     root = ET.fromstring(data)
     entries = []

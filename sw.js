@@ -1,5 +1,5 @@
 /* Hanbit Church Sermon — offline shell + data cache */
-const CACHE = 'hanbit-sermon-v51';
+const CACHE = 'hanbit-sermon-v52';
 
 const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json'];
 
@@ -37,6 +37,7 @@ function isDataRequest(url) {
 /** 영상 목록·샤드는 항상 네트워크만 (SW 캐시로 구버전 목록 고착 방지) */
 function isFreshDataRequest(url) {
   if (url.pathname.endsWith('index.json')) return true;
+  if (url.pathname.endsWith('upload-log.json')) return true;
   return url.pathname.includes('/shards/');
 }
 

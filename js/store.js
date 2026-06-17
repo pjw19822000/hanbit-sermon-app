@@ -958,6 +958,31 @@ const Store = (() => {
     }
   }
 
+  async function getLastRssSyncSummary() {
+    const entries = (await fetchStaticUploadLogs()).filter((e) => e.source === 'rss' && e.syncedAt);
+    if (!entries.length) return null;
+    const batches = new Map();
+    entries.forEach((e) => {
+      const key = e.syncedAt;
+      batches.set(key, (batches.get(key) || 0) + 1);
+    });
+    const [syncedAt, count] = [...batches.entries()].sort((a, b) => b[0].localeCompare(a[0]))[0];
+    const d = new Date(syncedAt);
+    if (Number.isNaN(d.getTime())) return null;
+    const parts = {};
+    new Intl.DateTimeFormat('ko-KR', {
+      timeZone: 'Asia/Seoul',
+      month: 'numeric',
+      day: 'numeric',
+      hour: 'numeric',
+      hour12: false
+    }).formatToParts(d).forEach((p) => {
+      if (p.type !== 'literal') parts[p.type] = p.value;
+    });
+    const dateLabel = `${parts.month}월 ${parts.day}일 ${parts.hour}시`;
+    return { syncedAt, count, dateLabel };
+  }
+
   async function getUploadHistory() {
     const staticEntries = await fetchStaticUploadLogs();
     let remote = [];
@@ -1142,8 +1167,22 @@ const Store = (() => {
   function prefetchAllShards() {
     if (!db?.shards || allShardsReady) return Promise.resolve();
     if (!shardPrefetchPromise) {
-      shardPrefetchPromise = ensureShards(SHARD_NAMES).catch((e) => {
-        console.warn('shard prefetch failed', e);
+      shardPrefetchPromise = (async () => {
+        for (let attempt = 0; attempt < 3; attempt++) {
+          try {
+            await ensureShards(SHARD_NAMES);
+            if (allShardsReady) return;
+          } catch (e) {
+            console.warn(`shard prefetch attempt ${attempt + 1} failed`, e);
+            if (attempt < 2) {
+              await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+            } else {
+              throw e;
+            }
+          }
+        }
+      })().catch((e) => {
+        console.warn('shard prefetch gave up', e);
         shardPrefetchPromise = null;
       });
     }
@@ -1259,22 +1298,30 @@ const Store = (() => {
     return loadLocal();
   }
 
+  function homeCountShardsReady(view) {
+    if (!db?.shards) return baseVideos.length > 0;
+    return shardsForView(view).every((n) => shardLoadState[n]?.loaded);
+  }
+
   function getHomeMenuCount(view) {
-    if (!listCache || !allShardsReady) return null;
+    if (!db || !homeCountShardsReady(view)) return null;
     switch (view) {
-      case 'baek-hub': return countVideos(listCache.baekRegular);
-      case 'prayer-hub': return countVideos(listCache.prayer);
-      case 'associate-hub': return countVideos(listCache.associate);
-      case 'events-hub': return countVideos(listCache.events);
-      case 'testimony': return countVideos(listCache.events.filter(v => v.bucket === 'events-testimony'));
-      case 'praise-hub': return countVideos(listCache.praise);
-      case 'misc-unclassified': return countVideos(listCache.miscUnclassified);
-      case 'worship-regular': return countVideos(listCache.baekRegular.filter(v => v.worship));
+      case 'baek-hub': return countVideos(baekRegular());
+      case 'prayer-hub': return countVideos(prayerMinistry());
+      case 'associate-hub': return countVideos(associates());
+      case 'events-hub': return countVideos(events());
+      case 'testimony': return countVideos(testimony());
+      case 'praise-hub': return countVideos(praise());
+      case 'misc-unclassified': return countVideos(miscUnclassifiedVideos());
+      case 'worship-regular': return countVideos(baekRegular().filter((v) => v.worship));
       default: return null;
     }
   }
 
-  function areHomeCountsReady() { return allShardsReady; }
+  function areHomeCountsReady() {
+    if (!db?.shards) return baseVideos.length > 0;
+    return allShardsReady;
+  }
 
   function areAllShardsReady() { return allShardsReady; }
 
@@ -2039,7 +2086,7 @@ const Store = (() => {
     filterByTestament, getHomeMenuCount, areHomeCountsReady, ensureViewReady, isViewReady, areAllShardsReady, prefetchAllShards,
     toggleFav, isFav, recordRecent, applyOverride, toggleAdminHidden,
     addCustomVideo, removeCustomVideo, getMenus, saveMenus, parseYoutubeId,
-    getUploadHistory, describeUploadFolder, buildUploadLogEntry,
+    getUploadHistory, getLastRssSyncSummary, describeUploadFolder, buildUploadLogEntry,
     rebuildVideoList, DEFAULT_MENUS, HOME_CARD_ORDER, HOME_LINK_ORDER, BUCKETS,
     PRAYER_LABELS, ASSOCIATES, OT_BOOKS, NT_BOOKS,
     canonicalSpeakerKey, canonicalSpeakerLabel, speakerLabelFromKey, effectiveAssociateId,

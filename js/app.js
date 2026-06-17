@@ -53,11 +53,10 @@ const App = (() => {
       navReplace({ s: 'font' });
     }
     Store.prefetchAllShards().then(() => {
-      if (Store.areHomeCountsReady?.()) {
-        UI.renderHomeMenus();
-        if (state.s === 'home') renderHome();
-      }
-    }).catch(() => {});
+      UI.renderHomeMenus();
+      if (state.s === 'home') renderHome();
+    }).catch((e) => console.warn('shard prefetch', e));
+    UI.refreshAppFooter();
     window.addEventListener('popstate', (e) => {
       const st = e.state || { s: 'home' };
       state = st;
@@ -96,6 +95,9 @@ const App = (() => {
 
   function goHome() {
     navReplace({ s: 'home' });
+    Store.prefetchAllShards().then(() => {
+      UI.renderHomeMenus();
+    }).catch((e) => console.warn('shard prefetch', e));
   }
 
   function navRender(st) {
@@ -124,6 +126,7 @@ const App = (() => {
   function renderHome() {
     UI.applyHomeText();
     UI.renderHomeMenus();
+    UI.refreshAppFooter();
     syncAdminScreenClasses();
     syncHomeFontBtns();
     const badge = document.getElementById('admin-home-badge');

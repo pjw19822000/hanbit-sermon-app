@@ -187,6 +187,19 @@ const UI = (() => {
     renderHomeMenus();
   }
 
+  async function refreshAppFooter() {
+    const el = document.getElementById('footer-upload-summary');
+    if (!el || typeof Store === 'undefined' || !Store.getLastRssSyncSummary) return;
+    try {
+      const summary = await Store.getLastRssSyncSummary();
+      el.textContent = summary
+        ? ` (${summary.dateLabel} ${summary.count}개의 영상이 업로드되었습니다.)`
+        : '';
+    } catch {
+      el.textContent = '';
+    }
+  }
+
   function toast(msg) {
     let t = document.getElementById('toast');
     if (!t) {
@@ -200,5 +213,5 @@ const UI = (() => {
     setTimeout(() => t.classList.remove('show'), 2200);
   }
 
-  return { esc, videoCard, navCard, renderNavCards, renderGrouped, renderFlat, toggleGroup, applyHomeText, renderHomeMenus, toast, fmtDate };
+  return { esc, videoCard, navCard, renderNavCards, renderGrouped, renderFlat, toggleGroup, applyHomeText, renderHomeMenus, refreshAppFooter, toast, fmtDate };
 })();

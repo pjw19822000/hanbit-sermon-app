@@ -11,7 +11,6 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(ROOT, "HanbitMethodistChurch_Videos.csv")
 CONFIG_PATH = os.path.join(ROOT, "data", "config.json")
 ADDED_IDS_PATH = os.path.join(ROOT, "data", ".rss-added-ids.json")
-LIVE_STATUS_PATH = os.path.join(ROOT, "data", "live-status.json")
 
 DEFAULT_CHANNEL_ID = "UC5rJi-E3aMkb46vVHJArvYg"
 DEFAULT_LOOKBACK_HOURS = 72
@@ -147,10 +146,19 @@ def touch_config_last_updated(cfg: dict) -> None:
         f.write("\n")
 
 
-def write_added_ids(ids: list[str], source: str) -> None:
+def write_sync_ids(added: list[str], updated: list[str], source: str) -> None:
+    """Write sync payload for record-upload-log (added + title/published updates)."""
+    added = [i for i in added if i]
+    updated = [i for i in updated if i]
+    if not added and not updated:
+        return
     os.makedirs(os.path.dirname(ADDED_IDS_PATH), exist_ok=True)
     with open(ADDED_IDS_PATH, "w", encoding="utf-8") as f:
-        json.dump({"source": source, "ids": ids}, f)
+        json.dump({"source": source, "added": added, "updated": updated}, f)
+
+
+def write_added_ids(ids: list[str], source: str) -> None:
+    write_sync_ids(ids, [], source)
 
 
 def merge_entries_into_csv(entries: list[dict], hours: int) -> dict:

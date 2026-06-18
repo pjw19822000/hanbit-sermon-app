@@ -1,7 +1,7 @@
 /* Hanbit Church Sermon — offline shell + data cache */
-const CACHE = 'hanbit-sermon-v54';
+const CACHE = 'hanbit-sermon-v55';
 
-const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json', 'live-status.json'];
+const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
@@ -38,7 +38,6 @@ function isDataRequest(url) {
 function isFreshDataRequest(url) {
   if (url.pathname.endsWith('index.json')) return true;
   if (url.pathname.endsWith('upload-log.json')) return true;
-  if (url.pathname.endsWith('live-status.json')) return true;
   return url.pathname.includes('/shards/');
 }
 

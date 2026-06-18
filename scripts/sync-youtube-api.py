@@ -19,7 +19,7 @@ from youtube_common import (  # noqa: E402
     merge_entries_into_csv,
     normalize_published,
     print_merge_summary,
-    write_added_ids,
+    write_sync_ids,
 )
 
 API_BASE = "https://www.googleapis.com/youtube/v3"
@@ -99,8 +99,12 @@ def main() -> int:
     print(f"API OK: fetched {len(entries)} upload items", file=sys.stderr)
 
     result = merge_entries_into_csv(entries, hours)
-    if result["added"]:
-        write_added_ids([v["id"] for v in result["added"]], "api")
+    if result["added"] or result["updated"]:
+        write_sync_ids(
+            [v["id"] for v in result["added"]],
+            [v["id"] for v in result["updated"]],
+            "api",
+        )
 
     print_merge_summary("api", ch, hours, len(entries), result)
     return 0

@@ -24,7 +24,7 @@ from youtube_common import (  # noqa: E402
     merge_entries_into_csv,
     normalize_published,
     print_merge_summary,
-    write_added_ids,
+    write_sync_ids,
 )
 
 NS = {
@@ -151,8 +151,12 @@ def main() -> int:
 
     rss_entries = fetch_rss_entries(ch)
     result = merge_entries_into_csv(rss_entries, hours)
-    if result["added"]:
-        write_added_ids([v["id"] for v in result["added"]], "rss")
+    if result["added"] or result["updated"]:
+        write_sync_ids(
+            [v["id"] for v in result["added"]],
+            [v["id"] for v in result["updated"]],
+            "rss",
+        )
 
     print_merge_summary("rss", ch, hours, len(rss_entries), result)
     return 0

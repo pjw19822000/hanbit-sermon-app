@@ -991,16 +991,6 @@ const Store = (() => {
     return { syncedAt, count, dateLabel };
   }
 
-  async function fetchLiveStatus() {
-    try {
-      const res = await freshFetch('data/live-status.json');
-      if (!res.ok) return { isLive: false };
-      return await res.json();
-    } catch {
-      return { isLive: false };
-    }
-  }
-
   async function getUploadHistory() {
     const staticEntries = await fetchStaticUploadLogs();
     let remote = [];
@@ -2104,7 +2094,7 @@ const Store = (() => {
     filterByTestament, getHomeMenuCount, areHomeCountsReady, ensureViewReady, isViewReady, areAllShardsReady, prefetchAllShards,
     toggleFav, isFav, recordRecent, applyOverride, toggleAdminHidden,
     addCustomVideo, removeCustomVideo, getMenus, saveMenus, parseYoutubeId,
-    getUploadHistory, getLastRssSyncSummary, fetchLiveStatus, describeUploadFolder, buildUploadLogEntry,
+    getUploadHistory, getLastRssSyncSummary, describeUploadFolder, buildUploadLogEntry,
     rebuildVideoList, DEFAULT_MENUS, HOME_CARD_ORDER, HOME_LINK_ORDER, BUCKETS,
     PRAYER_LABELS, ASSOCIATES, OT_BOOKS, NT_BOOKS,
     canonicalSpeakerKey, canonicalSpeakerLabel, speakerLabelFromKey, effectiveAssociateId,

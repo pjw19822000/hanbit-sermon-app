@@ -130,7 +130,7 @@ def folder_label(v: dict) -> str:
     return " · ".join(p for p in parts if p)
 
 
-def entry_from_video(v: dict, source: str, synced_at: str | None = None) -> dict:
+def entry_from_video(v: dict, source: str, synced_at: str | None = None, action: str = "added") -> dict:
     issues = classify_issues(v)
     return {
         "id": str(uuid.uuid4()),
@@ -142,6 +142,7 @@ def entry_from_video(v: dict, source: str, synced_at: str | None = None) -> dict
         "status": "needs_review" if issues else "classified",
         "issues": issues,
         "source": source,
+        "action": action,
         "syncedAt": synced_at or _utcnow_iso(),
     }
 
@@ -161,9 +162,43 @@ def append_entries(new_entries: list[dict]) -> int:
 
 def append_from_videos(videos: list[dict], source: str) -> list[dict]:
     synced = _utcnow_iso()
-    entries = [entry_from_video(v, source, synced) for v in videos if v.get("id")]
+    entries = [entry_from_video(v, source, synced, "added") for v in videos if v.get("id")]
     append_entries(entries)
     return entries
+
+
+def upsert_from_videos(videos: list[dict], source: str) -> list[dict]:
+    """Update existing log row by videoId when title/classification changed."""
+    if not videos:
+        return []
+    synced = _utcnow_iso()
+    data = load_log()
+    entries = purge_old_entries(data["entries"])
+    index_by_vid: dict[str, int] = {}
+    for i, e in enumerate(entries):
+        vid = e.get("videoId") if isinstance(e, dict) else ""
+        if vid and vid not in index_by_vid:
+            index_by_vid[vid] = i
+
+    touched: list[dict] = []
+    for v in videos:
+        if not v.get("id"):
+            continue
+        entry = entry_from_video(v, source, synced, "updated")
+        vid = v["id"]
+        if vid in index_by_vid:
+            prev = entries[index_by_vid[vid]]
+            entry["id"] = prev.get("id") or entry["id"]
+            entries[index_by_vid[vid]] = entry
+        else:
+            entry["action"] = "added"
+            index_by_vid[vid] = len(entries)
+            entries.append(entry)
+        touched.append(entry)
+
+    entries.sort(key=lambda e: e.get("syncedAt") or "", reverse=True)
+    save_log({"entries": entries})
+    return touched
 
 
 def push_to_firestore(entries: list[dict]) -> int:

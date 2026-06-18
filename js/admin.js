@@ -815,7 +815,9 @@ const Admin = (() => {
     </div>`;
     const body = rows.map(r => {
       const src = r.source === 'api' ? 'API' : r.source === 'rss' ? 'RSS' : '수동';
-      const status = r.status === 'needs_review'
+      const status = r.action === 'updated'
+        ? `<span class="adm-log-badge info">수정</span>`
+        : r.status === 'needs_review'
         ? `<span class="adm-log-badge warn">검수</span>`
         : `<span class="adm-log-badge ok">완료</span>`;
       const issues = (r.issues || []).length

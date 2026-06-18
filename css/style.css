@@ -147,45 +147,6 @@ body.app-toolbar-visible .topbar { padding-right: 4.75rem; }
 }
 .nav-card-grid { padding: 0.15rem 0 1rem; }
 
-.home-live-wrap {
-  margin: 0 1rem 1rem;
-  padding: 0.85rem 1rem 1rem;
-  border-radius: var(--radius);
-  border: 1px solid color-mix(in srgb, #e53e3e 35%, var(--border));
-  background: color-mix(in srgb, #e53e3e 6%, var(--card));
-  box-shadow: var(--shadow);
-}
-.home-live-badge {
-  color: #e53e3e;
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.35rem;
-}
-.home-live-title {
-  font-size: 0.92rem;
-  font-weight: 600;
-  line-height: 1.4;
-  margin: 0 0 0.65rem;
-  color: var(--text);
-}
-.home-live-player {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #000;
-}
-.home-live-player iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
 .home-links { display: none; }
 
 .home-youtube-wrap { padding: 0 1rem 0.75rem; text-align: center; }
@@ -353,6 +314,7 @@ body.app-toolbar-visible .topbar { padding-right: 4.75rem; }
 .adm-log-badge { display: inline-block; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.88em; font-weight: 600; }
 .adm-log-badge.ok { background: #dcfce7; color: #166534; }
 .adm-log-badge.warn { background: #fef3c7; color: #92400e; }
+.adm-log-badge.info { background: #dbeafe; color: #1e40af; }
 @media (max-width: 640px) {
   .adm-log-row { grid-template-columns: 1fr; }
   .adm-log-head { display: none; }

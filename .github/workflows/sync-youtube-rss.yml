@@ -2,8 +2,8 @@ name: Sync YouTube RSS
 
 on:
   schedule:
-    # UTC 00:00 = KST 09:00
-    - cron: "0 0 * * *"
+    # UTC 01:35 = KST 10:35 (예약 동작 테스트용 — 확인 후 0 0 * * * 로 9시 복귀)
+    - cron: "35 1 * * *"
   workflow_dispatch:
 
 permissions:

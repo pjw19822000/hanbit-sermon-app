@@ -1,5 +1,5 @@
 /* Hanbit Church Sermon — offline shell + data cache */
-const CACHE = 'hanbit-sermon-v52';
+const CACHE = 'hanbit-sermon-v53';
 
 const DATA_PATHS = ['index.json', 'config.json', 'videos.json', 'upload-log.json'];
 
@@ -90,7 +90,7 @@ self.addEventListener('fetch', (e) => {
   if (url.pathname.endsWith('sw.js')) return;
 
   if (isFreshDataRequest(url)) {
-    e.respondWith(fetch(req));
+    e.respondWith(fetch(new Request(req, { cache: 'no-store' })));
     return;
   }
 

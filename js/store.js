@@ -20,6 +20,12 @@ const Store = (() => {
   let listCache = null;
   let shardPrefetchPromise = null;
 
+  /** 브라우저·CDN HTTP 캐시를 우회해 항상 최신 JSON을 받는다 */
+  function freshFetch(url) {
+    const bust = url + (url.includes('?') ? '&' : '?') + '_=' + Date.now();
+    return fetch(bust, { cache: 'no-store' });
+  }
+
   function syncAppBuildCache() {
     const build = document.querySelector('meta[name="hanbit-app-build"]')?.content || '';
     if (!build) return;
@@ -949,7 +955,7 @@ const Store = (() => {
 
   async function fetchStaticUploadLogs() {
     try {
-      const res = await fetch('data/upload-log.json');
+      const res = await freshFetch('data/upload-log.json');
       if (!res.ok) return [];
       const data = await res.json();
       return purgeUploadLogEntries(data.entries || []);

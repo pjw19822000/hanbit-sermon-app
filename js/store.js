@@ -965,7 +965,9 @@ const Store = (() => {
   }
 
   async function getLastRssSyncSummary() {
-    const entries = (await fetchStaticUploadLogs()).filter((e) => e.source === 'rss' && e.syncedAt);
+    const entries = (await fetchStaticUploadLogs()).filter(
+      (e) => (e.source === 'rss' || e.source === 'api') && e.syncedAt
+    );
     if (!entries.length) return null;
     const batches = new Map();
     entries.forEach((e) => {
@@ -987,6 +989,16 @@ const Store = (() => {
     });
     const dateLabel = `${parts.month}월 ${parts.day}일 ${parts.hour}시`;
     return { syncedAt, count, dateLabel };
+  }
+
+  async function fetchLiveStatus() {
+    try {
+      const res = await freshFetch('data/live-status.json');
+      if (!res.ok) return { isLive: false };
+      return await res.json();
+    } catch {
+      return { isLive: false };
+    }
   }
 
   async function getUploadHistory() {
@@ -2092,7 +2104,7 @@ const Store = (() => {
     filterByTestament, getHomeMenuCount, areHomeCountsReady, ensureViewReady, isViewReady, areAllShardsReady, prefetchAllShards,
     toggleFav, isFav, recordRecent, applyOverride, toggleAdminHidden,
     addCustomVideo, removeCustomVideo, getMenus, saveMenus, parseYoutubeId,
-    getUploadHistory, getLastRssSyncSummary, describeUploadFolder, buildUploadLogEntry,
+    getUploadHistory, getLastRssSyncSummary, fetchLiveStatus, describeUploadFolder, buildUploadLogEntry,
     rebuildVideoList, DEFAULT_MENUS, HOME_CARD_ORDER, HOME_LINK_ORDER, BUCKETS,
     PRAYER_LABELS, ASSOCIATES, OT_BOOKS, NT_BOOKS,
     canonicalSpeakerKey, canonicalSpeakerLabel, speakerLabelFromKey, effectiveAssociateId,

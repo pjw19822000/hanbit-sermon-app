@@ -796,7 +796,7 @@ const Admin = (() => {
 
   function renderUploadLogPanel() {
     return `<div class="adm-box">
-      <p class="adm-hint">최근 7일간 RSS 자동 동기화·관리자 수동 추가 기록입니다. 7일이 지나면 기록만 삭제되고 영상은 유지됩니다.</p>
+      <p class="adm-hint">최근 7일간 API/RSS 자동 동기화·관리자 수동 추가 기록입니다. 7일이 지나면 기록만 삭제되고 영상은 유지됩니다.</p>
       <div id="admin-upload-log"><div class="no-data">불러오는 중…</div></div>
     </div>`;
   }
@@ -814,7 +814,7 @@ const Admin = (() => {
       <span>일시</span><span>출처</span><span>분류</span><span>상태</span><span>제목</span>
     </div>`;
     const body = rows.map(r => {
-      const src = r.source === 'rss' ? 'RSS' : '수동';
+      const src = r.source === 'api' ? 'API' : r.source === 'rss' ? 'RSS' : '수동';
       const status = r.status === 'needs_review'
         ? `<span class="adm-log-badge warn">검수</span>`
         : `<span class="adm-log-badge ok">완료</span>`;

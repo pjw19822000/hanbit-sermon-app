@@ -200,6 +200,34 @@ const UI = (() => {
     }
   }
 
+  async function refreshHomeLive() {
+    const el = document.getElementById('home-live');
+    if (!el || typeof Store === 'undefined' || !Store.fetchLiveStatus) return;
+    try {
+      const status = await Store.fetchLiveStatus();
+      if (!status?.isLive || !status.videoId) {
+        el.hidden = true;
+        el.innerHTML = '';
+        return;
+      }
+      const title = esc((status.title || '라이브 방송').slice(0, 100));
+      const vid = esc(status.videoId);
+      el.hidden = false;
+      el.innerHTML = `
+        <div class="home-live-badge" aria-hidden="true">● LIVE</div>
+        <p class="home-live-title">${title}</p>
+        <div class="home-live-player">
+          <iframe src="https://www.youtube.com/embed/${vid}?rel=0"
+            title="${title}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen loading="lazy"></iframe>
+        </div>`;
+    } catch {
+      el.hidden = true;
+      el.innerHTML = '';
+    }
+  }
+
   function toast(msg) {
     let t = document.getElementById('toast');
     if (!t) {
@@ -213,5 +241,5 @@ const UI = (() => {
     setTimeout(() => t.classList.remove('show'), 2200);
   }
 
-  return { esc, videoCard, navCard, renderNavCards, renderGrouped, renderFlat, toggleGroup, applyHomeText, renderHomeMenus, refreshAppFooter, toast, fmtDate };
+  return { esc, videoCard, navCard, renderNavCards, renderGrouped, renderFlat, toggleGroup, applyHomeText, renderHomeMenus, refreshAppFooter, refreshHomeLive, toast, fmtDate };
 })();

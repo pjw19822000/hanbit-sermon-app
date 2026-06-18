@@ -9,6 +9,7 @@ const App = (() => {
   const LIST_PAGE_SIZE = 40;
   const FONT_STEPS = ['xs', 'small', 'medium', 'large', 'xl'];
   const FONT_CLASS_NAMES = FONT_STEPS.map(s => 'font-' + s);
+  let livePollTimer = null;
 
   const ASSOC_LABEL = {
     '김대웅': '김대웅 전도사',
@@ -108,12 +109,29 @@ const App = (() => {
     syncAdminScreenClasses();
 
     if (st.s === 'home') renderHome();
-    else if (st.s === 'list') renderList(st);
-    else if (st.s === 'search') renderSearch(document.getElementById('search-input')?.value || '');
-    else if (st.s === 'admin-login') prepareAdminLogin();
-    else if (st.s === 'admin' && Admin.isIn()) {
-      Admin.renderDashboard(document.getElementById('admin-content'), st.adminTab || 'home');
-    } else if (st.s === 'settings') renderSettings();
+    else {
+      stopLivePoll();
+      if (st.s === 'list') renderList(st);
+      else if (st.s === 'search') renderSearch(document.getElementById('search-input')?.value || '');
+      else if (st.s === 'admin-login') prepareAdminLogin();
+      else if (st.s === 'admin' && Admin.isIn()) {
+        Admin.renderDashboard(document.getElementById('admin-content'), st.adminTab || 'home');
+      } else if (st.s === 'settings') renderSettings();
+    }
+  }
+
+  function startLivePoll() {
+    stopLivePoll();
+    livePollTimer = setInterval(() => {
+      if (state.s === 'home') UI.refreshHomeLive();
+    }, 180000);
+  }
+
+  function stopLivePoll() {
+    if (livePollTimer) {
+      clearInterval(livePollTimer);
+      livePollTimer = null;
+    }
   }
 
   function syncAdminScreenClasses() {
@@ -127,6 +145,8 @@ const App = (() => {
     UI.applyHomeText();
     UI.renderHomeMenus();
     UI.refreshAppFooter();
+    UI.refreshHomeLive();
+    startLivePoll();
     syncAdminScreenClasses();
     syncHomeFontBtns();
     const badge = document.getElementById('admin-home-badge');

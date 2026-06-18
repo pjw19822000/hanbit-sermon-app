@@ -31,7 +31,12 @@ NS = {
 
 DEFAULT_CHANNEL_ID = "UC5rJi-E3aMkb46vVHJArvYg"
 DEFAULT_LOOKBACK_HOURS = 72
-USER_AGENT = "Mozilla/5.0 (compatible; HanbitSermonRSS/1.0)"
+BROWSER_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+)
+RSS_FETCH_ATTEMPTS = 5
+RSS_RETRY_DELAYS_SEC = (15, 30, 45, 60, 90)
 
 
 def load_config() -> dict:
@@ -89,11 +94,22 @@ def parse_published_dt(iso: str) -> datetime | None:
         return None
 
 
-DEFAULT_CHANNEL_ID = "UC5rJi-E3aMkb46vVHJArvYg"
-DEFAULT_LOOKBACK_HOURS = 72
-USER_AGENT = "Mozilla/5.0 (compatible; HanbitSermonRSS/1.0)"
-RSS_FETCH_ATTEMPTS = 3
-RSS_RETRY_DELAYS_SEC = (5, 10, 15)
+def browser_headers(channel: str) -> dict[str, str]:
+    return {
+        "User-Agent": BROWSER_UA,
+        "Accept": "application/atom+xml, application/xml, text/xml, */*;q=0.8",
+        "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Referer": f"https://www.youtube.com/channel/{channel}",
+        "Accept-Encoding": "identity",
+    }
+
+
+def rss_feed_urls(channel: str) -> list[str]:
+    q = f"channel_id={channel}"
+    return [
+        f"https://www.youtube.com/feeds/videos.xml?{q}",
+        f"http://www.youtube.com/feeds/videos.xml?{q}",
+    ]
 
 
 def _rss_fetch_retryable(exc: BaseException) -> bool:
@@ -104,34 +120,43 @@ def _rss_fetch_retryable(exc: BaseException) -> bool:
     return False
 
 
-def fetch_rss_entries(channel: str) -> list[dict]:
-    url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel}"
+def _fetch_rss_bytes(url: str, headers: dict[str, str]) -> bytes:
     last_err: BaseException | None = None
     for attempt in range(1, RSS_FETCH_ATTEMPTS + 1):
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        req = urllib.request.Request(url, headers=headers)
         try:
-            data = urllib.request.urlopen(req, timeout=45).read()
-            last_err = None
-            break
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                return resp.read()
         except urllib.error.HTTPError as e:
             last_err = e
             if attempt < RSS_FETCH_ATTEMPTS and _rss_fetch_retryable(e):
                 delay = RSS_RETRY_DELAYS_SEC[min(attempt - 1, len(RSS_RETRY_DELAYS_SEC) - 1)]
-                print(f"RSS fetch attempt {attempt}/{RSS_FETCH_ATTEMPTS} failed: HTTP {e.code}, retry in {delay}s", file=sys.stderr)
+                print(
+                    f"RSS fetch {url} attempt {attempt}/{RSS_FETCH_ATTEMPTS} "
+                    f"failed: HTTP {e.code}, retry in {delay}s",
+                    file=sys.stderr,
+                )
                 time.sleep(delay)
                 continue
-            raise SystemExit(f"RSS fetch failed: HTTP Error {e.code}: {e.reason}") from e
+            raise
         except urllib.error.URLError as e:
             last_err = e
             if attempt < RSS_FETCH_ATTEMPTS:
                 delay = RSS_RETRY_DELAYS_SEC[min(attempt - 1, len(RSS_RETRY_DELAYS_SEC) - 1)]
-                print(f"RSS fetch attempt {attempt}/{RSS_FETCH_ATTEMPTS} failed: {e}, retry in {delay}s", file=sys.stderr)
+                print(
+                    f"RSS fetch {url} attempt {attempt}/{RSS_FETCH_ATTEMPTS} "
+                    f"failed: {e}, retry in {delay}s",
+                    file=sys.stderr,
+                )
                 time.sleep(delay)
                 continue
-            raise SystemExit(f"RSS fetch failed: {e}") from e
+            raise
     if last_err is not None:
-        raise SystemExit(f"RSS fetch failed: {last_err}") from last_err
+        raise last_err
+    raise RuntimeError("RSS fetch failed with no response")
 
+
+def _parse_rss_xml(data: bytes) -> list[dict]:
     root = ET.fromstring(data)
     entries = []
     for entry in root.findall("atom:entry", NS):
@@ -156,6 +181,21 @@ def fetch_rss_entries(channel: str) -> list[dict]:
             }
         )
     return entries
+
+
+def fetch_rss_entries(channel: str) -> list[dict]:
+    headers = browser_headers(channel)
+    errors: list[str] = []
+    for url in rss_feed_urls(channel):
+        try:
+            data = _fetch_rss_bytes(url, headers)
+            print(f"RSS OK: {url}", file=sys.stderr)
+            return _parse_rss_xml(data)
+        except Exception as e:
+            msg = f"{url}: {e}"
+            errors.append(msg)
+            print(f"RSS URL failed ({msg})", file=sys.stderr)
+    raise SystemExit("RSS fetch failed for all URLs — " + "; ".join(errors))
 
 
 def read_csv_rows() -> tuple[list[str], list[list[str]]]:

@@ -12,7 +12,7 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
 
@@ -36,7 +36,7 @@ jobs:
               echo "Pipeline failed after ${max} attempts."
               exit 1
             fi
-            wait_sec=$((attempt * 90))
+            wait_sec=$((attempt * 120))
             echo "Pipeline failed, retrying in ${wait_sec}s..."
             sleep "$wait_sec"
             attempt=$((attempt + 1))

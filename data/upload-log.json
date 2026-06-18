@@ -1,6 +1,104 @@
 {
   "entries": [
     {
+      "id": "14553e1f-ae95-4211-a114-e870a6bd14ec",
+      "videoId": "8k39BGpcxDA",
+      "title": "[한빛감리교회] 260618_새벽기도회_기도의 방향_마태복음 6장 9절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=8k39BGpcxDA",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
+      "id": "83940f26-e6a2-4fee-a4c0-adb20afc82f6",
+      "videoId": "A0RqC8NYeoA",
+      "title": "[한빛감리교회] 260510 샤론_어머니의 넓은 사랑",
+      "url": "https://www.youtube.com/watch?v=A0RqC8NYeoA",
+      "bucket": "praise",
+      "folderLabel": "찬양 · sharon",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
+      "id": "c5fbc44f-3d19-4d26-a16e-570fd3bb1b9c",
+      "videoId": "kpybYeKLQyI",
+      "title": "[한빛감리교회] 260510 할렐루야_어머니의 넓은 사랑",
+      "url": "https://www.youtube.com/watch?v=kpybYeKLQyI",
+      "bucket": "praise",
+      "folderLabel": "찬양 · hallelujah",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
+      "id": "603b13de-452a-4546-ac6f-835e0db84f57",
+      "videoId": "jkJOBnVADGA",
+      "title": "[한빛감리교회] 260503 샤론_주 예수 이름 높이어",
+      "url": "https://www.youtube.com/watch?v=jkJOBnVADGA",
+      "bucket": "praise",
+      "folderLabel": "찬양 · sharon",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
+      "id": "ce164e2b-b83b-4be1-8df1-b2bb2c7cd620",
+      "videoId": "-mOrRRPzrhM",
+      "title": "[한빛감리교회] 260503 할렐루야_예수님이 말씀하시니",
+      "url": "https://www.youtube.com/watch?v=-mOrRRPzrhM",
+      "bucket": "praise",
+      "folderLabel": "찬양 · hallelujah",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
+      "id": "aeebb69c-5245-43d4-aec3-a62bc7694f0c",
+      "videoId": "PkLQD61X5OM",
+      "title": "[한빛감리교회] 260503 임마누엘_사랑의 종소리",
+      "url": "https://www.youtube.com/watch?v=PkLQD61X5OM",
+      "bucket": "other",
+      "folderLabel": "관리자 · 분류되지 않음",
+      "status": "needs_review",
+      "issues": [
+        "분류(bucket) 없음"
+      ],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
+      "id": "e43867e7-23b7-4d2e-9edf-ae683d579a3d",
+      "videoId": "haQG4vvPrSo",
+      "title": "[한빛감리교회] 260512_새벽기도회 설교_너희로 능히 감당하게 하시느니라_고린도전서 10장 10-13절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=haQG4vvPrSo",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
+      "id": "a96c04b9-1a1b-48eb-8992-65f67a14fc8e",
+      "videoId": "McVEUeDS-TA",
+      "title": "[한빛감리교회] 260511_새벽기도회 설교_이름이 심히 귀하게 되니라_사무엘상 18장 28-30절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=McVEUeDS-TA",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "rss",
+      "syncedAt": "2026-06-18T00:36:49Z"
+    },
+    {
       "id": "34acff48-a16b-4cd3-8611-81f13decbd57",
       "videoId": "74Dz3JzUWwc",
       "title": "[한빛감리교회] 260617_새벽기도회_응답 받을 때까지 기도를 계속 하십시오_고린도후서 8장 10-12절_김대웅 전도사",

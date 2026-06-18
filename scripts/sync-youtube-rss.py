@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-YouTube channel RSS → HanbitMethodistChurch_Videos.csv (append-only, dedupe by video ID).
+YouTube channel RSS → HanbitMethodistChurch_Videos.csv.
 
-Fetches the latest ~15 entries from the channel RSS feed, keeps entries within the
-lookback window (default 72h) is logged for monitoring; any RSS entry whose
-video ID is not in the CSV is appended (RSS returns ~15 recent uploads).
+Fetches the latest ~15 entries from the channel RSS feed. New video IDs are
+appended; existing IDs with a different title or published date are updated in place.
 Unclassified titles are handled by build-videos.py (bucket=other → admin review).
 """
 from __future__ import annotations
@@ -219,6 +218,26 @@ def existing_video_ids(rows: list[list[str]]) -> set[str]:
     return ids
 
 
+def csv_row_matches_rss(row: list[str], item: dict) -> bool:
+    title = row[0].strip() if row else ""
+    pub = row[2].strip() if len(row) > 2 else ""
+    return title == item["title"] and pub == item["published"]
+
+
+def update_csv_rows_for_item(body: list[list[str]], item: dict) -> bool:
+    """Update every CSV row with this video ID when title or published differs."""
+    changed = False
+    new_row = [item["title"], item["url"], item["published"]]
+    for i, row in enumerate(body):
+        if extract_video_id(row[1].strip()) != item["id"]:
+            continue
+        if csv_row_matches_rss(row, item):
+            continue
+        body[i] = new_row
+        changed = True
+    return changed
+
+
 def write_csv(header: list[str], body: list[list[str]]) -> None:
     with open(CSV_PATH, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
@@ -247,7 +266,8 @@ def main() -> int:
 
     in_window = 0
     to_add: list[dict] = []
-    skipped_known = 0
+    to_update: list[dict] = []
+    skipped_unchanged = 0
     skipped_old = 0
 
     for item in rss_entries:
@@ -257,26 +277,38 @@ def main() -> int:
         else:
             skipped_old += 1
         if item["id"] in known:
-            skipped_known += 1
+            if update_csv_rows_for_item(body, item):
+                to_update.append(item)
+            else:
+                skipped_unchanged += 1
             continue
         to_add.append(item)
         known.add(item["id"])
 
+    csv_changed = bool(to_add or to_update)
     if to_add:
         new_rows = [[v["title"], v["url"], v["published"]] for v in to_add]
         body = new_rows + body
+    if csv_changed:
         write_csv(header, body)
         touch_config_last_updated(cfg)
+    if to_add:
         added_ids_path = os.path.join(ROOT, "data", ".rss-added-ids.json")
         os.makedirs(os.path.dirname(added_ids_path), exist_ok=True)
         with open(added_ids_path, "w", encoding="utf-8") as f:
             json.dump([v["id"] for v in to_add], f)
 
     print(f"channel={channel} lookback={hours}h rss={len(rss_entries)} in_window={in_window}")
-    print(f"added={len(to_add)} skipped_duplicate={skipped_known} skipped_older_than_window={skipped_old}")
+    print(
+        f"added={len(to_add)} updated={len(to_update)} "
+        f"skipped_unchanged={skipped_unchanged} skipped_older_than_window={skipped_old}"
+    )
     if to_add:
         for v in to_add:
             print(f"  + {v['id']} | {v['published'][:10]} | {v['title'][:80]}")
+    if to_update:
+        for v in to_update:
+            print(f"  ~ {v['id']} | {v['published'][:10]} | {v['title'][:80]}")
     return 0
 
 

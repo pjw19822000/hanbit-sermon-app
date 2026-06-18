@@ -1,6 +1,42 @@
 {
   "entries": [
     {
+      "id": "f69ffc72-e757-4b1e-8e4f-4cc9cdbe3cc9",
+      "videoId": "TCarzru1eAE",
+      "title": "[한빛감리교회] 260618_저녁기도회_기도의 방향_마태복음 6장 9절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=TCarzru1eAE",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "syncedAt": "2026-06-18T07:40:26Z"
+    },
+    {
+      "id": "8f2416b4-1bdf-4ffa-a23d-b1f5872fec98",
+      "videoId": "XPo7xKGVcAA",
+      "title": "[한빛감리교회] 260614_주일3부예배 설교_기도의 법칙_사무엘상 9장 14-16절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=XPo7xKGVcAA",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "syncedAt": "2026-06-18T07:40:26Z"
+    },
+    {
+      "id": "e4f3fec5-4352-4218-bab9-95732b757ffd",
+      "videoId": "RRppAcmwoX0",
+      "title": "[한빛감리교회] 260613_저녁기도회_믿음의 눈이 열리면 보이는 하나님의 세계_전도서 3장 11-14절_이다니엘 목사",
+      "url": "https://www.youtube.com/watch?v=RRppAcmwoX0",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "syncedAt": "2026-06-18T07:40:26Z"
+    },
+    {
       "id": "14553e1f-ae95-4211-a114-e870a6bd14ec",
       "videoId": "8k39BGpcxDA",
       "title": "[한빛감리교회] 260618_새벽기도회_기도의 방향_마태복음 6장 9절_이진현 목사",

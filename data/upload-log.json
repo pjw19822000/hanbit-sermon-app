@@ -1,16 +1,43 @@
 {
   "entries": [
     {
+      "id": "f4de2f7b-2e75-46a4-9b9f-19bef34ebb1c",
+      "videoId": "RomhDpnv-uU",
+      "title": "[한빛감리교회] 260619_새벽기도회_말씀이 문제를 이깁니다_여호수아 3장 7-13절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=RomhDpnv-uU",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-19T02:43:55Z"
+    },
+    {
       "id": "f69ffc72-e757-4b1e-8e4f-4cc9cdbe3cc9",
       "videoId": "TCarzru1eAE",
-      "title": "[한빛감리교회] 260618_저녁기도회_기도의 방향_마태복음 6장 9절_이진현 목사",
+      "title": "[한빛감리교회] 260618_저녁기도회_우리 아버지의 이름을 높여라_마태복음 6장 9절_이진현 목사",
       "url": "https://www.youtube.com/watch?v=TCarzru1eAE",
       "bucket": "associate",
       "folderLabel": "부사역자 · 이진현",
       "status": "classified",
       "issues": [],
       "source": "api",
-      "syncedAt": "2026-06-18T07:40:26Z"
+      "action": "updated",
+      "syncedAt": "2026-06-19T02:43:55Z"
+    },
+    {
+      "id": "14553e1f-ae95-4211-a114-e870a6bd14ec",
+      "videoId": "8k39BGpcxDA",
+      "title": "[한빛감리교회] 260618_새벽기도회_기도의 방향_마태복음 6장 9절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=8k39BGpcxDA",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-06-19T02:43:55Z"
     },
     {
       "id": "8f2416b4-1bdf-4ffa-a23d-b1f5872fec98",
@@ -35,18 +62,6 @@
       "issues": [],
       "source": "api",
       "syncedAt": "2026-06-18T07:40:26Z"
-    },
-    {
-      "id": "14553e1f-ae95-4211-a114-e870a6bd14ec",
-      "videoId": "8k39BGpcxDA",
-      "title": "[한빛감리교회] 260618_새벽기도회_기도의 방향_마태복음 6장 9절_이진현 목사",
-      "url": "https://www.youtube.com/watch?v=8k39BGpcxDA",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진현",
-      "status": "classified",
-      "issues": [],
-      "source": "rss",
-      "syncedAt": "2026-06-18T00:36:49Z"
     },
     {
       "id": "83940f26-e6a2-4fee-a4c0-adb20afc82f6",

@@ -1,6 +1,32 @@
 {
   "entries": [
     {
+      "id": "9b0062ea-73cd-4212-a0a7-c7d95fcb3c34",
+      "videoId": "lsfw4HyOiks",
+      "title": "[한빛감리교회] 260619_저녁기도회(다음세대를 위한 기도회)_말씀이 문제를 이깁니다_여호수아 3장 7-13절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=lsfw4HyOiks",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-20T02:03:59Z"
+    },
+    {
+      "id": "7045b124-d0bc-4a4c-b828-337daa5037da",
+      "videoId": "2rWtlBO5gAU",
+      "title": "[한빛감리교회] 260620_새벽기도회_구원의 감격을 회복하라_이사야 25장 6-9절_이다니엘 목사",
+      "url": "https://www.youtube.com/watch?v=2rWtlBO5gAU",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-20T02:03:59Z"
+    },
+    {
       "id": "f4de2f7b-2e75-46a4-9b9f-19bef34ebb1c",
       "videoId": "RomhDpnv-uU",
       "title": "[한빛감리교회] 260619_새벽기도회_말씀이 문제를 이깁니다_여호수아 3장 7-13절_백길부 목사",
@@ -10,8 +36,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-19T02:43:55Z"
+      "action": "updated",
+      "syncedAt": "2026-06-20T02:03:59Z"
     },
     {
       "id": "f69ffc72-e757-4b1e-8e4f-4cc9cdbe3cc9",

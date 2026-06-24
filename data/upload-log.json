@@ -1,17 +1,43 @@
 {
   "entries": [
     {
-      "id": "2e6ea86d-f2dd-4517-8b46-1f29c9ef44fe",
-      "videoId": "Td9U1cSVURk",
-      "title": "[한빛감리교회] 260622_저녁기도회_기도는 하나님의 뜻이 먼저 있다_사무엘상 1장 6-11절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=Td9U1cSVURk",
+      "id": "3c4997a4-79d4-450b-8391-c1daa9f224e8",
+      "videoId": "SeQDpRqmPCI",
+      "title": "[한빛감리교회] 260623_저녁기도회_이만한 믿음을 보지 못하였노라_마태복음 8장 5-13절_김은국 목사",
+      "url": "https://www.youtube.com/watch?v=SeQDpRqmPCI",
       "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
+      "folderLabel": "부사역자 · 김은국",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-06-23T01:57:58Z"
+      "syncedAt": "2026-06-24T01:58:06Z"
+    },
+    {
+      "id": "27b4065b-baf6-4cc7-b6d3-13362757cfaf",
+      "videoId": "_I1i02A8Fnc",
+      "title": "[한빛감리교회] 260624_새벽기도회_하나님의 편에 서는 사람_사무엘상 24장 8-12절_유영광 목사",
+      "url": "https://www.youtube.com/watch?v=_I1i02A8Fnc",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 유영광",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-24T01:58:06Z"
+    },
+    {
+      "id": "418b5fdf-3eaf-4a43-a198-214f9ae44005",
+      "videoId": "GT3I4GqFH44",
+      "title": "[한빛감리교회] 260624_새벽기도회_하나님의 편에 서는 사람_사무엘상 24장 8-12절_유영광 목사",
+      "url": "https://www.youtube.com/watch?v=GT3I4GqFH44",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 유영광",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-24T01:58:06Z"
     },
     {
       "id": "a1b768ca-b09f-4b60-9934-0d50343e66e1",
@@ -20,6 +46,19 @@
       "url": "https://www.youtube.com/watch?v=2RLzhyppI14",
       "bucket": "associate",
       "folderLabel": "부사역자 · 김은국",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-06-24T01:58:06Z"
+    },
+    {
+      "id": "2e6ea86d-f2dd-4517-8b46-1f29c9ef44fe",
+      "videoId": "Td9U1cSVURk",
+      "title": "[한빛감리교회] 260622_저녁기도회_기도는 하나님의 뜻이 먼저 있다_사무엘상 1장 6-11절_이동수 목사",
+      "url": "https://www.youtube.com/watch?v=Td9U1cSVURk",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이동수",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -345,79 +384,6 @@
       "issues": [],
       "source": "rss",
       "syncedAt": "2026-06-18T00:36:49Z"
-    },
-    {
-      "id": "34acff48-a16b-4cd3-8611-81f13decbd57",
-      "videoId": "74Dz3JzUWwc",
-      "title": "[한빛감리교회] 260617_수요저녁예배_기도의 세가지 원리_골로새서 4장 2절_박정원 목사",
-      "url": "https://www.youtube.com/watch?v=74Dz3JzUWwc",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 박정원",
-      "status": "classified",
-      "issues": [],
-      "source": "rss",
-      "action": "updated",
-      "syncedAt": "2026-06-17T00:24:12Z"
-    },
-    {
-      "id": "d1637170-ee0c-42a2-8829-5bdee9dacacc",
-      "videoId": "AkvTmTntB8Y",
-      "title": "[한빛감리교회] 260617_새벽기도회_응답 받을 때까지 기도를 계속 하십시오_고린도후서 8장 10-12절_김대웅 전도사",
-      "url": "https://www.youtube.com/watch?v=AkvTmTntB8Y",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 김대웅",
-      "status": "classified",
-      "issues": [],
-      "source": "rss",
-      "syncedAt": "2026-06-17T00:24:12Z"
-    },
-    {
-      "id": "0e96e682-6d88-498a-a79c-5422a21bfdfb",
-      "videoId": "ruAQBy08ZlQ",
-      "title": "[한빛감리교회] 260616_저녁기도회_우리의 무기는 하나님의 능력이라_고린도후서 10장 4절_이진협 목사",
-      "url": "https://www.youtube.com/watch?v=ruAQBy08ZlQ",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진협",
-      "status": "classified",
-      "issues": [],
-      "source": "rss",
-      "syncedAt": "2026-06-17T00:24:12Z"
-    },
-    {
-      "id": "fc121f11-57a2-43dc-881e-de6f445e8bb4",
-      "videoId": "wrUS-L_Radg",
-      "title": "[한빛감리교회] 2025 100일 감사 일천번제 스케치 영상",
-      "url": "https://www.youtube.com/watch?v=wrUS-L_Radg",
-      "bucket": "events-promo",
-      "folderLabel": "홍보",
-      "status": "classified",
-      "issues": [],
-      "source": "rss",
-      "syncedAt": "2026-06-17T00:24:12Z"
-    },
-    {
-      "id": "64cf2c9f-fae6-4b46-8f63-ad8d527b3ac6",
-      "videoId": "OsSNgshbKxY",
-      "title": "[한빛감리교회] 2026 아웃리치 발대식 영상",
-      "url": "https://www.youtube.com/watch?v=OsSNgshbKxY",
-      "bucket": "events-outreach",
-      "folderLabel": "아웃리치·선교",
-      "status": "classified",
-      "issues": [],
-      "source": "rss",
-      "syncedAt": "2026-06-17T00:24:12Z"
-    },
-    {
-      "id": "517e8a17-ae87-4960-b8d8-b0c54a93ff4a",
-      "videoId": "oVns0EUb24I",
-      "title": "[한빛감리교회] 2026 기도학교를 위한 목회자세미나 스케치 영상",
-      "url": "https://www.youtube.com/watch?v=oVns0EUb24I",
-      "bucket": "prayer-ministry",
-      "folderLabel": "기도사역말씀 · 목회자 세미나",
-      "status": "classified",
-      "issues": [],
-      "source": "rss",
-      "syncedAt": "2026-06-17T00:24:12Z"
     }
   ]
 }

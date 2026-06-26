@@ -1,6 +1,45 @@
 {
   "entries": [
     {
+      "id": "6dd1750a-2403-41c1-915b-3ca1709c69a8",
+      "videoId": "NTM11jxKCMo",
+      "title": "[한빛감리교회] 260625_저녁기도회_주님의 교회_데살로니가전서 1장 3절_박정원 목사",
+      "url": "https://www.youtube.com/watch?v=NTM11jxKCMo",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 박정원",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-26T02:02:26Z"
+    },
+    {
+      "id": "ffdcaaa6-fd8c-4604-954c-2a81bf9e7f0a",
+      "videoId": "A4mPHhJvNyc",
+      "title": "[한빛감리교회] 260626_저녁기도회(다음세대를 위한 기도회)_나라가 임하옵소서_마태복음 6장 10절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=A4mPHhJvNyc",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-26T02:02:26Z"
+    },
+    {
+      "id": "92faf187-0da0-48d9-836f-2e3b651a5a70",
+      "videoId": "KMfXHx_gbzo",
+      "title": "[한빛감리교회] 260626_새벽기도회_나라가 임하옵소서_마태복음 6장 10절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=KMfXHx_gbzo",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-26T02:02:26Z"
+    },
+    {
       "id": "8b485f41-2967-4fb4-9477-20f07b14d89d",
       "videoId": "e3lqDvZUqFQ",
       "title": "[한빛감리교회] 260625_새벽기도회_주님의 교회_데살로니가전서 1장 3절_박정원 목사",
@@ -10,8 +49,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-25T02:00:47Z"
+      "action": "updated",
+      "syncedAt": "2026-06-26T02:02:26Z"
     },
     {
       "id": "a0ce751f-6f25-4e4e-8cd9-dd40cedf94cc",
@@ -300,30 +339,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-19T02:43:55Z"
-    },
-    {
-      "id": "8f2416b4-1bdf-4ffa-a23d-b1f5872fec98",
-      "videoId": "XPo7xKGVcAA",
-      "title": "[한빛감리교회] 260614_주일3부예배 설교_기도의 법칙_사무엘상 9장 14-16절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=XPo7xKGVcAA",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "syncedAt": "2026-06-18T07:40:26Z"
-    },
-    {
-      "id": "e4f3fec5-4352-4218-bab9-95732b757ffd",
-      "videoId": "RRppAcmwoX0",
-      "title": "[한빛감리교회] 260613_저녁기도회_믿음의 눈이 열리면 보이는 하나님의 세계_전도서 3장 11-14절_이다니엘 목사",
-      "url": "https://www.youtube.com/watch?v=RRppAcmwoX0",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이다니엘",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "syncedAt": "2026-06-18T07:40:26Z"
     }
   ]
 }

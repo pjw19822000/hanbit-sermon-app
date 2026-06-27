@@ -1,30 +1,43 @@
 {
   "entries": [
     {
-      "id": "6dd1750a-2403-41c1-915b-3ca1709c69a8",
-      "videoId": "NTM11jxKCMo",
-      "title": "[한빛감리교회] 260625_저녁기도회_주님의 교회_데살로니가전서 1장 3절_박정원 목사",
-      "url": "https://www.youtube.com/watch?v=NTM11jxKCMo",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 박정원",
+      "id": "5db003e8-e26c-4da4-aa20-f03eeea727bf",
+      "videoId": "00JPvv5-hsw",
+      "title": "제39회 남부연회 평신도 영성수련회",
+      "url": "https://www.youtube.com/watch?v=00JPvv5-hsw",
+      "bucket": "events-seminar",
+      "folderLabel": "세미나/수련회",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-06-26T02:02:26Z"
+      "syncedAt": "2026-06-27T01:56:17Z"
+    },
+    {
+      "id": "acc5b178-989e-446b-ab57-95111a4bd51c",
+      "videoId": "AaTkUSQqFU4",
+      "title": "[한빛감리교회] 260627_새벽기도회_하나님께는 답이 있습니다_사무엘하 5장 19-24절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=AaTkUSQqFU4",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-27T01:56:17Z"
     },
     {
       "id": "ffdcaaa6-fd8c-4604-954c-2a81bf9e7f0a",
       "videoId": "A4mPHhJvNyc",
-      "title": "[한빛감리교회] 260626_저녁기도회(다음세대를 위한 기도회)_나라가 임하옵소서_마태복음 6장 10절_이진현 목사",
+      "title": "[한빛감리교회] 260626_저녁기도회(다음세대를 위한 기도회)_하나님의 마음에 합한 삶_시편 34편 9-16절_이진현 목사",
       "url": "https://www.youtube.com/watch?v=A4mPHhJvNyc",
       "bucket": "associate",
       "folderLabel": "부사역자 · 이진현",
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-26T02:02:26Z"
+      "action": "updated",
+      "syncedAt": "2026-06-27T01:56:17Z"
     },
     {
       "id": "92faf187-0da0-48d9-836f-2e3b651a5a70",
@@ -33,6 +46,19 @@
       "url": "https://www.youtube.com/watch?v=KMfXHx_gbzo",
       "bucket": "associate",
       "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-06-27T01:56:17Z"
+    },
+    {
+      "id": "6dd1750a-2403-41c1-915b-3ca1709c69a8",
+      "videoId": "NTM11jxKCMo",
+      "title": "[한빛감리교회] 260625_저녁기도회_주님의 교회_데살로니가전서 1장 3절_박정원 목사",
+      "url": "https://www.youtube.com/watch?v=NTM11jxKCMo",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 박정원",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -313,32 +339,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-20T02:03:59Z"
-    },
-    {
-      "id": "f69ffc72-e757-4b1e-8e4f-4cc9cdbe3cc9",
-      "videoId": "TCarzru1eAE",
-      "title": "[한빛감리교회] 260618_저녁기도회_우리 아버지의 이름을 높여라_마태복음 6장 9절_이진현 목사",
-      "url": "https://www.youtube.com/watch?v=TCarzru1eAE",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진현",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-19T02:43:55Z"
-    },
-    {
-      "id": "14553e1f-ae95-4211-a114-e870a6bd14ec",
-      "videoId": "8k39BGpcxDA",
-      "title": "[한빛감리교회] 260618_새벽기도회_기도의 방향_마태복음 6장 9절_이진현 목사",
-      "url": "https://www.youtube.com/watch?v=8k39BGpcxDA",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진현",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-19T02:43:55Z"
     }
   ]
 }

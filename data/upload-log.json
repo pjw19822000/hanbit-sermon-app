@@ -1,6 +1,71 @@
 {
   "entries": [
     {
+      "id": "d5ec03d8-7a74-4159-bace-3d9f26a7dd1f",
+      "videoId": "uvYojoUDucM",
+      "title": "[한빛감리교회] 260628_주일3부예배_기도를 오래해야 하는 이유_출애굽기 33장 8-11절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=uvYojoUDucM",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-28T02:06:43Z"
+    },
+    {
+      "id": "9aa0da2f-56ff-4694-915a-d7122f94dc3e",
+      "videoId": "Gl3kss69gFQ",
+      "title": "[한빛감리교회] 260627_저녁기도회_하나님께는 답이 있습니다_사무엘하 5장 19-24절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=Gl3kss69gFQ",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-28T02:06:43Z"
+    },
+    {
+      "id": "a00a91ea-4921-45c2-80cf-7aead7b3dbd8",
+      "videoId": "z20eD5WaEOU",
+      "title": "[한빛감리교회] 260628_주일2부예배_기도를 오래해야 하는 이유_출애굽기 33장 8-11절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=z20eD5WaEOU",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-28T02:06:43Z"
+    },
+    {
+      "id": "86544042-e98f-488e-8de3-b522a30418cb",
+      "videoId": "XwuzGaL0Huk",
+      "title": "[한빛감리교회] 260628_주일1부예배_기도를 오래해야 하는 이유_출애굽기 33장 8-11절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=XwuzGaL0Huk",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-28T02:06:43Z"
+    },
+    {
+      "id": "478c7346-9602-4e53-8e6f-a2d5f5029c0d",
+      "videoId": "qLqks4A34wc",
+      "title": "[한빛감리교회] 260628_새벽기도회_지체하지 않는 믿음_여호수아 18장 1-3절_유영광 목사",
+      "url": "https://www.youtube.com/watch?v=qLqks4A34wc",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 유영광",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-28T02:06:43Z"
+    },
+    {
       "id": "5db003e8-e26c-4da4-aa20-f03eeea727bf",
       "videoId": "00JPvv5-hsw",
       "title": "제39회 남부연회 평신도 영성수련회",
@@ -10,8 +75,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-27T01:56:17Z"
+      "action": "updated",
+      "syncedAt": "2026-06-28T02:06:43Z"
     },
     {
       "id": "acc5b178-989e-446b-ab57-95111a4bd51c",
@@ -23,8 +88,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-27T01:56:17Z"
+      "action": "updated",
+      "syncedAt": "2026-06-28T02:06:43Z"
     },
     {
       "id": "ffdcaaa6-fd8c-4604-954c-2a81bf9e7f0a",
@@ -37,7 +102,7 @@
       "issues": [],
       "source": "api",
       "action": "updated",
-      "syncedAt": "2026-06-27T01:56:17Z"
+      "syncedAt": "2026-06-28T02:06:43Z"
     },
     {
       "id": "92faf187-0da0-48d9-836f-2e3b651a5a70",
@@ -313,32 +378,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-21T02:16:07Z"
-    },
-    {
-      "id": "9b0062ea-73cd-4212-a0a7-c7d95fcb3c34",
-      "videoId": "lsfw4HyOiks",
-      "title": "[한빛감리교회] 260619_저녁기도회(다음세대를 위한 기도회)_말씀이 문제를 이깁니다_여호수아 3장 7-13절_백길부 목사",
-      "url": "https://www.youtube.com/watch?v=lsfw4HyOiks",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 백길부",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-20T02:03:59Z"
-    },
-    {
-      "id": "f4de2f7b-2e75-46a4-9b9f-19bef34ebb1c",
-      "videoId": "RomhDpnv-uU",
-      "title": "[한빛감리교회] 260619_새벽기도회_말씀이 문제를 이깁니다_여호수아 3장 7-13절_백길부 목사",
-      "url": "https://www.youtube.com/watch?v=RomhDpnv-uU",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 백길부",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-20T02:03:59Z"
     }
   ]
 }

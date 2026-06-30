@@ -1,6 +1,32 @@
 {
   "entries": [
     {
+      "id": "c6f5809b-e8f4-44b2-b469-f6ce8d2b0824",
+      "videoId": "496kmvawbno",
+      "title": "[한빛감리교회] 260629_저녁기도회_오늘을 사는 그리스도인_데살로니가후서 1장 1-4절_박정원 목사",
+      "url": "https://www.youtube.com/watch?v=496kmvawbno",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 박정원",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-30T02:01:18Z"
+    },
+    {
+      "id": "38d21d8d-4407-4542-a37d-f6a149970a89",
+      "videoId": "eqm2eZH2dHU",
+      "title": "[한빛감리교회] 260630_새벽기도회_마음의 허리를 동이고_베드로전서 1장 13-19절_이진협 목사",
+      "url": "https://www.youtube.com/watch?v=eqm2eZH2dHU",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진협",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-06-30T02:01:18Z"
+    },
+    {
       "id": "4e18ec00-1af1-4f2d-af0a-9ee46f7073bc",
       "videoId": "FZtSR2iOesg",
       "title": "[한빛감리교회] 260629_새벽기도회_오늘을 사는 그리스도인_데살로니가후서 1장 1-4절_박정원 목사",
@@ -10,21 +36,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-29T02:06:55Z"
-    },
-    {
-      "id": "b8d2a337-1f94-4da3-85ca-134287b88719",
-      "videoId": "kMSwjvP3XOU",
-      "title": "[한빛감리교회] 260628_젊은이예배_제자로 살아가기를 결단하라! 2_마태복음 22장 34-40절_이다니엘 목사",
-      "url": "https://www.youtube.com/watch?v=kMSwjvP3XOU",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이다니엘",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-29T02:06:55Z"
+      "action": "updated",
+      "syncedAt": "2026-06-30T02:01:18Z"
     },
     {
       "id": "daf254e8-e3ee-4d69-a2f8-1c563e824cd9",
@@ -33,6 +46,19 @@
       "url": "https://www.youtube.com/watch?v=q05AoZ3tB78",
       "bucket": "associate",
       "folderLabel": "부사역자 · 이동수",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-06-30T02:01:18Z"
+    },
+    {
+      "id": "b8d2a337-1f94-4da3-85ca-134287b88719",
+      "videoId": "kMSwjvP3XOU",
+      "title": "[한빛감리교회] 260628_젊은이예배_제자로 살아가기를 결단하라! 2_마태복음 22장 34-40절_이다니엘 목사",
+      "url": "https://www.youtube.com/watch?v=kMSwjvP3XOU",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -259,151 +285,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-24T01:58:06Z"
-    },
-    {
-      "id": "2e6ea86d-f2dd-4517-8b46-1f29c9ef44fe",
-      "videoId": "Td9U1cSVURk",
-      "title": "[한빛감리교회] 260622_저녁기도회_기도는 하나님의 뜻이 먼저 있다_사무엘상 1장 6-11절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=Td9U1cSVURk",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-23T01:57:58Z"
-    },
-    {
-      "id": "729cba08-fe2e-4a18-9218-4f84cf8845a9",
-      "videoId": "h6O82Tt5Ywo",
-      "title": "[한빛감리교회] 260622_새벽기도회_기도는 하나님의 뜻이 먼저 있다_사무엘상 1장 6-11절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=h6O82Tt5Ywo",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-23T01:57:58Z"
-    },
-    {
-      "id": "6cf3e034-90ce-4869-9696-cfaef7a06555",
-      "videoId": "IF-G3NB5K-o",
-      "title": "[한빛감리교회] 260621_주일저녁예배_큰 사명을 사모하라_고린도전서 4장 1-5절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=IF-G3NB5K-o",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일저녁예배",
-      "status": "needs_review",
-      "issues": [
-        "예배 종류 불명"
-      ],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-23T01:57:58Z"
-    },
-    {
-      "id": "9a3224f0-b589-471c-83b0-36f613530271",
-      "videoId": "nwuLXC1azaM",
-      "title": "[한빛감리교회] 260621_젊은이예배_제자로 살아가기를 결단하라!_요한복음 6장 56-69절_이다니엘 목사",
-      "url": "https://www.youtube.com/watch?v=nwuLXC1azaM",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이다니엘",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-22T02:30:36Z"
-    },
-    {
-      "id": "95458d25-9de3-4c1e-8c8b-361685ce95a3",
-      "videoId": "UVnWWG1rlkk",
-      "title": "[한빛감리교회] 260517 샤론_모퉁이 돌",
-      "url": "https://www.youtube.com/watch?v=UVnWWG1rlkk",
-      "bucket": "praise",
-      "folderLabel": "찬양 · sharon",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-22T02:30:36Z"
-    },
-    {
-      "id": "bb406793-694b-4953-93e7-aab50e4b8f79",
-      "videoId": "FwNprK90svE",
-      "title": "[한빛감리교회] 260517 할렐루야_내게 능력 주시는 자",
-      "url": "https://www.youtube.com/watch?v=FwNprK90svE",
-      "bucket": "praise",
-      "folderLabel": "찬양 · hallelujah",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-22T02:30:36Z"
-    },
-    {
-      "id": "93fd474e-fb0d-4371-a4c3-75295e53a3e5",
-      "videoId": "ireA5cyGDgc",
-      "title": "[한빛감리교회] 260621_주일3부예배 설교_너희 말이 내 귀에 들린 대로 내가 행하리라_민수기 14장 22-28절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=ireA5cyGDgc",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-22T02:30:36Z"
-    },
-    {
-      "id": "3bee7b40-e241-4433-9600-aa2f517d39b2",
-      "videoId": "B4K1l-GvgM4",
-      "title": "[한빛감리교회] 260621_주일3부예배_너희 말이 내 귀에 들린 대로 내가 행하리라_민수기 14장 22-28절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=B4K1l-GvgM4",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-22T02:30:36Z"
-    },
-    {
-      "id": "d54838aa-61d8-41a2-aab9-2711858ce741",
-      "videoId": "fPnfDTZE_w8",
-      "title": "[한빛감리교회] 260621_주일2부예배_너희 말이 내 귀에 들린 대로 내가 행하리라_민수기 14장 22-28절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=fPnfDTZE_w8",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-22T02:30:36Z"
-    },
-    {
-      "id": "99d573ee-e2dd-48db-a663-00868d10b12e",
-      "videoId": "y8OKBjauiw4",
-      "title": "[한빛감리교회] 260621_주일1부예배_너희 말이 내 귀에 들린 대로 내가 행하리라_민수기 14장 22-28절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=y8OKBjauiw4",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-22T02:30:36Z"
-    },
-    {
-      "id": "4f4c4ea5-2a57-4e81-8145-a40d71030e8f",
-      "videoId": "CVXpBb9LDks",
-      "title": "[한빛감리교회] 260621_새벽기도회_여호와께서_시편 121편 1-8절_이진협 목사",
-      "url": "https://www.youtube.com/watch?v=CVXpBb9LDks",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진협",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-22T02:30:36Z"
     }
   ]
 }

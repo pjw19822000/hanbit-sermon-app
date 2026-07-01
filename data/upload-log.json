@@ -1,17 +1,69 @@
 {
   "entries": [
     {
-      "id": "c6f5809b-e8f4-44b2-b469-f6ce8d2b0824",
-      "videoId": "496kmvawbno",
-      "title": "[한빛감리교회] 260629_저녁기도회_오늘을 사는 그리스도인_데살로니가후서 1장 1-4절_박정원 목사",
-      "url": "https://www.youtube.com/watch?v=496kmvawbno",
+      "id": "20e7e4c5-b0aa-4442-b1ca-a8a9926e4097",
+      "videoId": "UbPFi7Z_6-Q",
+      "title": "[한빛감리교회] 260630_저녁기도회_마음의 허리를 동이고_베드로전서 1장 13-19절_이진협 목사",
+      "url": "https://www.youtube.com/watch?v=UbPFi7Z_6-Q",
       "bucket": "associate",
-      "folderLabel": "부사역자 · 박정원",
+      "folderLabel": "부사역자 · 이진협",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-06-30T02:01:18Z"
+      "syncedAt": "2026-07-01T02:07:05Z"
+    },
+    {
+      "id": "9bd6be86-d46c-4321-83f5-33454f6176d3",
+      "videoId": "Bo9pa7M62FQ",
+      "title": "[한빛감리교회] 260701_수요저녁예배_하나님의 사랑에 뿌리내리라_마태복음 3장 13-17절_유영광 목사",
+      "url": "https://www.youtube.com/watch?v=Bo9pa7M62FQ",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 유영광",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-01T02:07:05Z"
+    },
+    {
+      "id": "e15e0206-160b-4955-b2dd-30a1734808c2",
+      "videoId": "Q_5AHG_D2Jo",
+      "title": "[한빛감리교회] 260701_새벽기도회_믿음의 경주를 완주하기 위하여_베드로전서 4장 7-11절_이다니엘 목사",
+      "url": "https://www.youtube.com/watch?v=Q_5AHG_D2Jo",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-01T02:07:05Z"
+    },
+    {
+      "id": "1c892707-ece0-483b-90e7-47040564e87f",
+      "videoId": "TQN2cV9R1Ss",
+      "title": "[한빛감리교회] 2026 기도 컨퍼런스 홍보 Shorts (CTS)",
+      "url": "https://www.youtube.com/watch?v=TQN2cV9R1Ss",
+      "bucket": "prayer-ministry",
+      "folderLabel": "기도사역말씀 · 기도 컨퍼런스",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-01T02:07:05Z"
+    },
+    {
+      "id": "109ebf92-7f9c-430e-a5bb-3bb0f799f9c1",
+      "videoId": "sEMQIqkSvOI",
+      "title": "[한빛감리교회] 2026 기도 컨퍼런스 홍보 Shorts",
+      "url": "https://www.youtube.com/watch?v=sEMQIqkSvOI",
+      "bucket": "prayer-ministry",
+      "folderLabel": "기도사역말씀 · 기도 컨퍼런스",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-01T02:07:05Z"
     },
     {
       "id": "38d21d8d-4407-4542-a37d-f6a149970a89",
@@ -20,6 +72,19 @@
       "url": "https://www.youtube.com/watch?v=eqm2eZH2dHU",
       "bucket": "associate",
       "folderLabel": "부사역자 · 이진협",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-01T02:07:05Z"
+    },
+    {
+      "id": "c6f5809b-e8f4-44b2-b469-f6ce8d2b0824",
+      "videoId": "496kmvawbno",
+      "title": "[한빛감리교회] 260629_저녁기도회_오늘을 사는 그리스도인_데살로니가후서 1장 1-4절_박정원 목사",
+      "url": "https://www.youtube.com/watch?v=496kmvawbno",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 박정원",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -259,32 +324,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-25T02:00:47Z"
-    },
-    {
-      "id": "3c4997a4-79d4-450b-8391-c1daa9f224e8",
-      "videoId": "SeQDpRqmPCI",
-      "title": "[한빛감리교회] 260623_저녁기도회_이만한 믿음을 보지 못하였노라_마태복음 8장 5-13절_김은국 목사",
-      "url": "https://www.youtube.com/watch?v=SeQDpRqmPCI",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 김은국",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-24T01:58:06Z"
-    },
-    {
-      "id": "a1b768ca-b09f-4b60-9934-0d50343e66e1",
-      "videoId": "2RLzhyppI14",
-      "title": "[한빛감리교회] 260623_새벽기도회_이만한 믿음을 보지 못하였노라_마태복음 8장 5-13절_김은국 목사",
-      "url": "https://www.youtube.com/watch?v=2RLzhyppI14",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 김은국",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-24T01:58:06Z"
     }
   ]
 }

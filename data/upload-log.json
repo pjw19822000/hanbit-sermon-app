@@ -1,6 +1,32 @@
 {
   "entries": [
     {
+      "id": "2e5767d5-cf7d-413a-b5eb-1b56ac860087",
+      "videoId": "KMecyZZsXks",
+      "title": "[한빛감리교회] 260703_새벽기도회_부르심을 받은 자니라_로마서 1장 1-7절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=KMecyZZsXks",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-03T01:31:32Z"
+    },
+    {
+      "id": "3722d0db-7c17-4798-9fea-42c15aa1a0d5",
+      "videoId": "RLMBrhTtPK8",
+      "title": "[한빛감리교회] 260702_저녁기도회_성령이 너희에게 임하시면_사도행전 1장 8절_이진협 목사",
+      "url": "https://www.youtube.com/watch?v=RLMBrhTtPK8",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진협",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-03T01:31:32Z"
+    },
+    {
       "id": "0f755f0d-2640-4496-92ff-9d603062cfe0",
       "videoId": "shugYqzygeA",
       "title": "[한빛감리교회] 260702_새벽기도회_성령이 너희에게 임하시면_사도행전 1장 8절_이진협 목사",
@@ -10,8 +36,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-02T02:00:03Z"
+      "action": "updated",
+      "syncedAt": "2026-07-03T01:31:32Z"
     },
     {
       "id": "c1e47b03-1fa5-47b4-9a04-6480cc182930",
@@ -391,45 +417,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-26T02:02:26Z"
-    },
-    {
-      "id": "a0ce751f-6f25-4e4e-8cd9-dd40cedf94cc",
-      "videoId": "0gFg5lhoenI",
-      "title": "[한빛감리교회] CTS 2026 기도 컨퍼런스 홍보",
-      "url": "https://www.youtube.com/watch?v=0gFg5lhoenI",
-      "bucket": "prayer-ministry",
-      "folderLabel": "기도사역말씀 · 기도 컨퍼런스",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-25T02:00:47Z"
-    },
-    {
-      "id": "27b4065b-baf6-4cc7-b6d3-13362757cfaf",
-      "videoId": "_I1i02A8Fnc",
-      "title": "[한빛감리교회] 260624_수요저녁예배_너희에게 전하노라_신명기 10장 12-13절_이진협 목사",
-      "url": "https://www.youtube.com/watch?v=_I1i02A8Fnc",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진협",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-25T02:00:47Z"
-    },
-    {
-      "id": "418b5fdf-3eaf-4a43-a198-214f9ae44005",
-      "videoId": "GT3I4GqFH44",
-      "title": "[한빛감리교회] 260624_새벽기도회_하나님의 편에 서는 사람_사무엘상 24장 8-12절_유영광 목사",
-      "url": "https://www.youtube.com/watch?v=GT3I4GqFH44",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 유영광",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-25T02:00:47Z"
     }
   ]
 }

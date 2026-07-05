@@ -1,17 +1,56 @@
 {
   "entries": [
     {
-      "id": "bed0bfad-8c62-47c8-ad69-d4a22e41ebb4",
-      "videoId": "meuo6v1BnAE",
-      "title": "[한빛감리교회] 260703_저녁기도회(다음세대를 위한 기도회)_내 손을 힘 있게 하옵소서_느헤미야 6장 5-9절_백길부 목사",
-      "url": "https://www.youtube.com/watch?v=meuo6v1BnAE",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 백길부",
+      "id": "289fa989-d41c-4728-bc57-1a92bf058067",
+      "videoId": "Pim3eS6mF18",
+      "title": "[한빛감리교회] 260705_주일3부예배_이 복을 영원히 누리리이다_역대상 17장 23-27절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=Pim3eS6mF18",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-07-04T01:30:42Z"
+      "syncedAt": "2026-07-05T01:46:19Z"
+    },
+    {
+      "id": "20f0e99f-1163-4d92-beed-7eb1627c3fe1",
+      "videoId": "N7qEC6e0wpI",
+      "title": "[한빛감리교회] 260705_주일2부예배_이 복을 영원히 누리리이다_역대상 17장 23-27절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=N7qEC6e0wpI",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-05T01:46:19Z"
+    },
+    {
+      "id": "e2a38165-29b6-424c-868b-97c9d65f3e16",
+      "videoId": "mq1tvtJybro",
+      "title": "[한빛감리교회] 260705_주일1부예배_이 복을 영원히 누리리이다_역대상 17장 23-27절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=mq1tvtJybro",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-05T01:46:19Z"
+    },
+    {
+      "id": "cab9520f-948b-42bf-b23c-c81923ddd566",
+      "videoId": "S2P7FpxNdMg",
+      "title": "[한빛감리교회] 260705_새벽기도회_주님을 기다리며 하늘의 시민권으로 살아야 한다_빌립보서 3장 17-21절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=S2P7FpxNdMg",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-05T01:46:19Z"
     },
     {
       "id": "471456f0-93b3-4aab-ab37-e250043ac358",
@@ -23,8 +62,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-04T01:30:42Z"
+      "action": "updated",
+      "syncedAt": "2026-07-05T01:46:19Z"
     },
     {
       "id": "b690bb4c-275f-46e4-9da8-14a37bd1cb36",
@@ -33,6 +72,19 @@
       "url": "https://www.youtube.com/watch?v=St3bJfz3xik",
       "bucket": "associate",
       "folderLabel": "부사역자 · 김대웅",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-05T01:46:19Z"
+    },
+    {
+      "id": "bed0bfad-8c62-47c8-ad69-d4a22e41ebb4",
+      "videoId": "meuo6v1BnAE",
+      "title": "[한빛감리교회] 260703_저녁기도회(다음세대를 위한 기도회)_내 손을 힘 있게 하옵소서_느헤미야 6장 5-9절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=meuo6v1BnAE",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -417,19 +469,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-28T02:06:43Z"
-    },
-    {
-      "id": "92faf187-0da0-48d9-836f-2e3b651a5a70",
-      "videoId": "KMfXHx_gbzo",
-      "title": "[한빛감리교회] 260626_새벽기도회_나라가 임하옵소서_마태복음 6장 10절_이진현 목사",
-      "url": "https://www.youtube.com/watch?v=KMfXHx_gbzo",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진현",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-27T01:56:17Z"
     }
   ]
 }

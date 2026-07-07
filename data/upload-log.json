@@ -1,6 +1,32 @@
 {
   "entries": [
     {
+      "id": "450dfec7-03d0-4656-89d9-9a282e1ecb96",
+      "videoId": "8xczfyLmOKc",
+      "title": "[한빛감리교회] 260707_새벽기도회_무엇이든 열매 맺는 기도의 원리_요한복음 15장 1-7절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=8xczfyLmOKc",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-07T01:50:13Z"
+    },
+    {
+      "id": "300fb2d1-3abe-4276-92c2-5d9e968e2584",
+      "videoId": "x3cjUB6IRGU",
+      "title": "[한빛감리교회] 260706_저녁기도회_바벨론과 같은 세상에서: 뜻을 정한 믿음_다니엘 1장 8-16절_유영광 목사",
+      "url": "https://www.youtube.com/watch?v=x3cjUB6IRGU",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 유영광",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-07T01:50:13Z"
+    },
+    {
       "id": "666eff73-6e2a-47a5-9b80-d18f1efa8eb9",
       "videoId": "Lz3ttFkXClA",
       "title": "[한빛감리교회] 260706_새벽기도회_바벨론과 같은 세상에서: 뜻을 정한 믿음_다니엘 1장 8-16절_유영광 목사",
@@ -10,21 +36,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-06T01:52:53Z"
-    },
-    {
-      "id": "9dea775a-6df2-4a03-ab48-9de52949be19",
-      "videoId": "VVg32lcjfck",
-      "title": "[한빛감리교회] 260705_젊은이예배_너희 몸을 거룩한 산 제물로 드리라!_시편106장 1-12편_이다니엘목사",
-      "url": "https://www.youtube.com/watch?v=VVg32lcjfck",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이다니엘",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-06T01:52:53Z"
+      "action": "updated",
+      "syncedAt": "2026-07-07T01:50:13Z"
     },
     {
       "id": "52197e56-b9e3-4e7f-9d8b-a556340cc63e",
@@ -37,6 +50,19 @@
       "issues": [
         "예배 종류 불명"
       ],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-07T01:50:13Z"
+    },
+    {
+      "id": "9dea775a-6df2-4a03-ab48-9de52949be19",
+      "videoId": "VVg32lcjfck",
+      "title": "[한빛감리교회] 260705_젊은이예배_너희 몸을 거룩한 산 제물로 드리라!_시편106장 1-12편_이다니엘목사",
+      "url": "https://www.youtube.com/watch?v=VVg32lcjfck",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
+      "status": "classified",
+      "issues": [],
       "source": "api",
       "action": "added",
       "syncedAt": "2026-07-06T01:52:53Z"
@@ -393,84 +419,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-06-30T02:01:18Z"
-    },
-    {
-      "id": "b8d2a337-1f94-4da3-85ca-134287b88719",
-      "videoId": "kMSwjvP3XOU",
-      "title": "[한빛감리교회] 260628_젊은이예배_제자로 살아가기를 결단하라! 2_마태복음 22장 34-40절_이다니엘 목사",
-      "url": "https://www.youtube.com/watch?v=kMSwjvP3XOU",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이다니엘",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-29T02:06:55Z"
-    },
-    {
-      "id": "c7ba985d-682c-48b5-8b59-f195a49afabe",
-      "videoId": "js0ZI7CEo7E",
-      "title": "[한빛감리교회] 260628_주일3부예배 설교_기도를 오래해야 하는 이유_출애굽기 33장 8-11절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=js0ZI7CEo7E",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-06-29T02:06:55Z"
-    },
-    {
-      "id": "d5ec03d8-7a74-4159-bace-3d9f26a7dd1f",
-      "videoId": "uvYojoUDucM",
-      "title": "[한빛감리교회] 260628_주일3부예배_기도를 오래해야 하는 이유_출애굽기 33장 8-11절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=uvYojoUDucM",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-29T02:06:55Z"
-    },
-    {
-      "id": "a00a91ea-4921-45c2-80cf-7aead7b3dbd8",
-      "videoId": "z20eD5WaEOU",
-      "title": "[한빛감리교회] 260628_주일2부예배_기도를 오래해야 하는 이유_출애굽기 33장 8-11절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=z20eD5WaEOU",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-29T02:06:55Z"
-    },
-    {
-      "id": "86544042-e98f-488e-8de3-b522a30418cb",
-      "videoId": "XwuzGaL0Huk",
-      "title": "[한빛감리교회] 260628_주일1부예배_기도를 오래해야 하는 이유_출애굽기 33장 8-11절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=XwuzGaL0Huk",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-29T02:06:55Z"
-    },
-    {
-      "id": "478c7346-9602-4e53-8e6f-a2d5f5029c0d",
-      "videoId": "qLqks4A34wc",
-      "title": "[한빛감리교회] 260628_새벽기도회_지체하지 않는 믿음_여호수아 18장 1-3절_유영광 목사",
-      "url": "https://www.youtube.com/watch?v=qLqks4A34wc",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 유영광",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-06-29T02:06:55Z"
     }
   ]
 }

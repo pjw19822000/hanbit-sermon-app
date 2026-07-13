@@ -1,17 +1,58 @@
 {
   "entries": [
     {
-      "id": "988dcccb-a64b-4053-950c-77d346c94366",
-      "videoId": "vj5lkgg7Ve8",
-      "title": "[한빛감리교회] 260711_저녁기도회_기도는 하나님의 요청이다_에스더 4장 13-17절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=vj5lkgg7Ve8",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
+      "id": "ac5dfd3f-2d46-432d-a3b6-80ad70a27be3",
+      "videoId": "iUe1L1M_-nY",
+      "title": "[한빛감리교회] 260712_주일저녁예배_기도를 오래해야 하는 이유_사도행전 16장 9- 10절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=iUe1L1M_-nY",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일저녁예배",
+      "status": "needs_review",
+      "issues": [
+        "예배 종류 불명"
+      ],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-13T01:23:41Z"
+    },
+    {
+      "id": "143130d5-a5f5-4f22-bf42-837c33ec68b0",
+      "videoId": "kKHeIWyEVc8",
+      "title": "[한빛감리교회] 260713_새벽기도회_여호와가 이와 같이 말하노라_예레미야 2장 1-6절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=kKHeIWyEVc8",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-07-12T01:22:22Z"
+      "syncedAt": "2026-07-13T01:23:41Z"
+    },
+    {
+      "id": "53a09ad2-77d2-4d56-a888-78dcfc083a14",
+      "videoId": "2Bt9o9N3LM0",
+      "title": "[한빛감리교회] 260712_젊은이 예배_하늘에 속한 자_빌립보서 3장 17- 4장1절_이다니엘 목사",
+      "url": "https://www.youtube.com/watch?v=2Bt9o9N3LM0",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-13T01:23:41Z"
+    },
+    {
+      "id": "62100f89-0b6e-4963-b37c-ab9fc37b75b0",
+      "videoId": "psED4PE2SFA",
+      "title": "[한빛감리교회] 260712_주일3부예배 설교_기도 응답의 경로_창세기 18장 1-5절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=psED4PE2SFA",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-13T01:23:41Z"
     },
     {
       "id": "298a3ee5-bff7-44a5-8e64-a15498b6b7c3",
@@ -23,8 +64,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-12T01:22:22Z"
+      "action": "updated",
+      "syncedAt": "2026-07-13T01:23:41Z"
     },
     {
       "id": "b009dded-bff7-4ad9-9edf-77aaf7b7d0ca",
@@ -36,8 +77,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-12T01:22:22Z"
+      "action": "updated",
+      "syncedAt": "2026-07-13T01:23:41Z"
     },
     {
       "id": "6713e7e2-afe8-4623-a879-9da3b4a734e2",
@@ -49,8 +90,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-12T01:22:22Z"
+      "action": "updated",
+      "syncedAt": "2026-07-13T01:23:41Z"
     },
     {
       "id": "520b3332-c715-4fca-9093-c7501f1c71ec",
@@ -59,6 +100,19 @@
       "url": "https://www.youtube.com/watch?v=cZmdVYDsRcU",
       "bucket": "associate",
       "folderLabel": "부사역자 · 백길부",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-13T01:23:41Z"
+    },
+    {
+      "id": "988dcccb-a64b-4053-950c-77d346c94366",
+      "videoId": "vj5lkgg7Ve8",
+      "title": "[한빛감리교회] 260711_저녁기도회_기도는 하나님의 요청이다_에스더 4장 13-17절_이동수 목사",
+      "url": "https://www.youtube.com/watch?v=vj5lkgg7Ve8",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이동수",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -313,19 +367,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-06T01:52:53Z"
-    },
-    {
-      "id": "b690bb4c-275f-46e4-9da8-14a37bd1cb36",
-      "videoId": "St3bJfz3xik",
-      "title": "[한빛감리교회] 260704_새벽기도회_대담한 평안으로 이끄는 기도_시편 4편 1-8절_김대웅 전도사",
-      "url": "https://www.youtube.com/watch?v=St3bJfz3xik",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 김대웅",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-05T01:46:19Z"
     }
   ]
 }

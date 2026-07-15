@@ -1,6 +1,32 @@
 {
   "entries": [
     {
+      "id": "83f29d9e-f3ba-42b9-94b2-66a2ae50b163",
+      "videoId": "2MhW91zE7cg",
+      "title": "[한빛감리교회] 260715_새벽기도회_기적의 원리_요한복음 2장 1-5절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=2MhW91zE7cg",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-15T01:10:02Z"
+    },
+    {
+      "id": "0b976eea-ed18-4091-a9a5-09baeb45fd51",
+      "videoId": "JJzCYYk8IpI",
+      "title": "[한빛감리교회] 260714_저녁기도회_네가 부르짖을 때, 내가 응답하리라_예레미야 33장 2-3절_김은국 목사",
+      "url": "https://www.youtube.com/watch?v=JJzCYYk8IpI",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 김은국",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-15T01:10:02Z"
+    },
+    {
       "id": "aab0457b-07cd-4326-b93f-7acf3325d1df",
       "videoId": "TTcfCDvdU9o",
       "title": "[한빛감리교회] 260714_새벽기도회_시험이 축복입니다_다니엘 3장 16-18절_백용현 담임목사",
@@ -10,8 +36,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-14T01:13:09Z"
+      "action": "updated",
+      "syncedAt": "2026-07-15T01:10:02Z"
     },
     {
       "id": "fbbad473-e029-4450-9366-032dd6060674",
@@ -23,8 +49,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-14T01:13:09Z"
+      "action": "updated",
+      "syncedAt": "2026-07-15T01:10:02Z"
     },
     {
       "id": "143130d5-a5f5-4f22-bf42-837c33ec68b0",
@@ -274,34 +300,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-08T01:21:36Z"
-    },
-    {
-      "id": "666eff73-6e2a-47a5-9b80-d18f1efa8eb9",
-      "videoId": "Lz3ttFkXClA",
-      "title": "[한빛감리교회] 260706_새벽기도회_바벨론과 같은 세상에서: 뜻을 정한 믿음_다니엘 1장 8-16절_유영광 목사",
-      "url": "https://www.youtube.com/watch?v=Lz3ttFkXClA",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 유영광",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-07T01:50:13Z"
-    },
-    {
-      "id": "52197e56-b9e3-4e7f-9d8b-a556340cc63e",
-      "videoId": "l4kcsRRtzBI",
-      "title": "[한빛감리교회] 260705_주일저녁예배_기도하는 사람은 문제를 해결합니다_다니엘 2장 17-23절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=l4kcsRRtzBI",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일저녁예배",
-      "status": "needs_review",
-      "issues": [
-        "예배 종류 불명"
-      ],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-07T01:50:13Z"
     }
   ]
 }

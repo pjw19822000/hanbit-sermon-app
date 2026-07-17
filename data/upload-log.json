@@ -1,17 +1,30 @@
 {
   "entries": [
     {
-      "id": "3aafecfb-6c65-4d5f-93ae-6ffea07b6775",
-      "videoId": "kNc8TNRz6RE",
-      "title": "[한빛감리교회] 260715_수요저녁예배_기도의 규칙_데살로니가전서 5장 16-18절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=kNc8TNRz6RE",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 수요저녁예배",
+      "id": "309f455d-eb9e-443d-8033-16710170f1a7",
+      "videoId": "sJ6QxmfInRw",
+      "title": "[한빛감리교회] 260716_저녁기도회_하나님의 편에 서십시오_사무엘상 24장 8-12절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=sJ6QxmfInRw",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-07-16T01:19:11Z"
+      "syncedAt": "2026-07-17T01:22:42Z"
+    },
+    {
+      "id": "3498fd17-589f-403d-947e-befe470ee7d2",
+      "videoId": "lLpeAPnIfew",
+      "title": "[한빛감리교회] 260717_새벽기도회_이만한 믿음_누가복음 7장 6-10절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=lLpeAPnIfew",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-17T01:22:42Z"
     },
     {
       "id": "43ec7c43-1e69-4284-8e79-d32d9f197b5e",
@@ -20,6 +33,19 @@
       "url": "https://www.youtube.com/watch?v=qUOFtFj6vH4",
       "bucket": "baek-regular",
       "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-17T01:22:42Z"
+    },
+    {
+      "id": "3aafecfb-6c65-4d5f-93ae-6ffea07b6775",
+      "videoId": "kNc8TNRz6RE",
+      "title": "[한빛감리교회] 260715_수요저녁예배_기도의 규칙_데살로니가전서 5장 16-18절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=kNc8TNRz6RE",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 수요저녁예배",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -274,19 +300,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-10T01:27:09Z"
-    },
-    {
-      "id": "591de726-ddf6-43bc-bf10-ac0c1f85c908",
-      "videoId": "DoOEKkeY7zA",
-      "title": "[한빛감리교회] 260708_새벽기도회_너희 모든 쓸 것을 채우시리라_빌립보서 4장 19절_이진협 목사",
-      "url": "https://www.youtube.com/watch?v=DoOEKkeY7zA",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진협",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-09T01:29:29Z"
     }
   ]
 }

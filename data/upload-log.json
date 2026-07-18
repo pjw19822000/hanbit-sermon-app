@@ -1,17 +1,30 @@
 {
   "entries": [
     {
-      "id": "309f455d-eb9e-443d-8033-16710170f1a7",
-      "videoId": "sJ6QxmfInRw",
-      "title": "[한빛감리교회] 260716_저녁기도회_하나님의 편에 서십시오_사무엘상 24장 8-12절_백길부 목사",
-      "url": "https://www.youtube.com/watch?v=sJ6QxmfInRw",
+      "id": "e836c942-0691-4af8-a3db-c84ff375c991",
+      "videoId": "ljdbw1MYWyc",
+      "title": "[한빛감리교회] 260717_저녁기도회_오늘의 돌보심을 신뢰하는 기도_마태복음 6장 11절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=ljdbw1MYWyc",
       "bucket": "associate",
-      "folderLabel": "부사역자 · 백길부",
+      "folderLabel": "부사역자 · 이진현",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-07-17T01:22:42Z"
+      "syncedAt": "2026-07-18T01:14:56Z"
+    },
+    {
+      "id": "cfb18c6d-d780-41ed-9037-2f6e753f3e55",
+      "videoId": "8ztC0OLCHbQ",
+      "title": "[한빛감리교회] 260718_새벽기도회_주께서 너희를 높이시리라_야고보서 4장 5-10절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=8ztC0OLCHbQ",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-18T01:14:56Z"
     },
     {
       "id": "3498fd17-589f-403d-947e-befe470ee7d2",
@@ -20,6 +33,19 @@
       "url": "https://www.youtube.com/watch?v=lLpeAPnIfew",
       "bucket": "baek-regular",
       "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-18T01:14:56Z"
+    },
+    {
+      "id": "309f455d-eb9e-443d-8033-16710170f1a7",
+      "videoId": "sJ6QxmfInRw",
+      "title": "[한빛감리교회] 260716_저녁기도회_하나님의 편에 서십시오_사무엘상 24장 8-12절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=sJ6QxmfInRw",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -261,45 +287,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-11T01:20:25Z"
-    },
-    {
-      "id": "31213cdc-434f-4991-af3b-09abe37f80e8",
-      "videoId": "cgWz9LYY8Hc",
-      "title": "[한빛감리교회] 260709_저녁기도회_기도는 방법이 아니라 믿음이다_여호수아 6장 1-5절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=cgWz9LYY8Hc",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-10T01:27:09Z"
-    },
-    {
-      "id": "e4aff933-1653-4e36-bfca-fdcba0f2dae5",
-      "videoId": "ZqrLY9G7Yzg",
-      "title": "[한빛감리교회] 260709_새벽기도회_기도는 방법이 아니라 믿음이다_여호수아 6장 1-5절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=ZqrLY9G7Yzg",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-10T01:27:09Z"
-    },
-    {
-      "id": "8329ebd4-9452-4954-9d5b-766f82dc0b54",
-      "videoId": "7hlrCeTa1qY",
-      "title": "[한빛감리교회] 260708_수요저녁예배_여호와께서 그를 범사에 형통하게 하셨더라_창세기 39장 19-23절_김은국 목사",
-      "url": "https://www.youtube.com/watch?v=7hlrCeTa1qY",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 김은국",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-10T01:27:09Z"
     }
   ]
 }

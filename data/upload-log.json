@@ -1,17 +1,69 @@
 {
   "entries": [
     {
-      "id": "e836c942-0691-4af8-a3db-c84ff375c991",
-      "videoId": "ljdbw1MYWyc",
-      "title": "[한빛감리교회] 260717_저녁기도회_오늘의 돌보심을 신뢰하는 기도_마태복음 6장 11절_이진현 목사",
-      "url": "https://www.youtube.com/watch?v=ljdbw1MYWyc",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진현",
+      "id": "1da65f86-2e0a-4731-a627-ea7f6454d986",
+      "videoId": "ZS4uCHe6Q4I",
+      "title": "[한빛감리교회] 260719_주일3부예배_복음은 하나님의 능력입니다_로마서 1장 15-17절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=ZS4uCHe6Q4I",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-07-18T01:14:56Z"
+      "syncedAt": "2026-07-19T01:20:42Z"
+    },
+    {
+      "id": "94fa15f2-b2b1-43e2-b85e-deb1460390b0",
+      "videoId": "iTxGuaqyzIw",
+      "title": "[한빛감리교회] 260719_주일2부예배_복음은 하나님의 능력입니다_로마서 1장 15-17절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=iTxGuaqyzIw",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-19T01:20:42Z"
+    },
+    {
+      "id": "2a334783-47fd-49c9-89de-c62d70b0ed43",
+      "videoId": "lGXa7lceOP4",
+      "title": "[한빛감리교회] 260719_주일1부예배_복음은 하나님의 능력입니다_로마서 1장 15-17절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=lGXa7lceOP4",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-19T01:20:42Z"
+    },
+    {
+      "id": "01cc262d-ef52-41ce-998d-29d4c746d821",
+      "videoId": "CbGyAN9cH30",
+      "title": "[한빛감리교회] 260719_새벽기도회_비우시는 하나님_빌립보서 2장 5-8절_박정원 목사",
+      "url": "https://www.youtube.com/watch?v=CbGyAN9cH30",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 박정원",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-19T01:20:42Z"
+    },
+    {
+      "id": "1a1c8b4b-764e-45aa-9276-0d27dc4890b2",
+      "videoId": "3wlfjnzE-NU",
+      "title": "[한빛감리교회] 260718_저녁기도회_채우시는 하나님_빌립보서 2장 1-4절_박정원 목사",
+      "url": "https://www.youtube.com/watch?v=3wlfjnzE-NU",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 박정원",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-19T01:20:42Z"
     },
     {
       "id": "cfb18c6d-d780-41ed-9037-2f6e753f3e55",
@@ -20,6 +72,19 @@
       "url": "https://www.youtube.com/watch?v=8ztC0OLCHbQ",
       "bucket": "baek-regular",
       "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-19T01:20:42Z"
+    },
+    {
+      "id": "e836c942-0691-4af8-a3db-c84ff375c991",
+      "videoId": "ljdbw1MYWyc",
+      "title": "[한빛감리교회] 260717_저녁기도회_오늘의 돌보심을 신뢰하는 기도_마태복음 6장 11절_이진현 목사",
+      "url": "https://www.youtube.com/watch?v=ljdbw1MYWyc",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진현",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -261,32 +326,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-12T01:22:22Z"
-    },
-    {
-      "id": "645370e0-0900-4eec-8ffc-91dcaf80ede2",
-      "videoId": "OlDiCjCYB1Q",
-      "title": "[한빛감리교회] 260710_저녁기도회(다음세대를 위한 기도회)_잃어버린 자를 찾아 구원하려 함이니라_누가복음 19장 1-10절_김은국 목사",
-      "url": "https://www.youtube.com/watch?v=OlDiCjCYB1Q",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 김은국",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-11T01:20:25Z"
-    },
-    {
-      "id": "a32cc707-cc61-43d5-aedd-a827bb6deed7",
-      "videoId": "tqYwIaHTlgA",
-      "title": "[한빛감리교회] 260710_새벽기도회_잃어버린 자를 찾아 구원하려 함이니라_누가복음 19장 1-10절_김은국 목사",
-      "url": "https://www.youtube.com/watch?v=tqYwIaHTlgA",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 김은국",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-11T01:20:25Z"
     }
   ]
 }

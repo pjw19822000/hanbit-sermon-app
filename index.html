@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css?v=54">
+  <link rel="stylesheet" href="css/style.css?v=56">
   <script>
     window.__hanbitBip = null;
     window.addEventListener('beforeinstallprompt', function(e) {
@@ -138,7 +138,8 @@
       <form id="admin-login-form" onsubmit="event.preventDefault();App.doLogin();">
       <div class="form-group">
         <label class="form-label">이메일</label>
-        <input type="email" class="form-input" id="admin-email" autocomplete="username">
+        <input type="email" class="form-input" id="admin-email" list="admin-email-history" autocomplete="off" placeholder="이메일 입력">
+        <datalist id="admin-email-history"></datalist>
       </div>
       <div class="form-group">
         <label class="form-label">비밀번호</label>
@@ -194,13 +195,13 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/firebase-config.js?v=54"></script>
-<script src="js/firebase.js?v=54"></script>
-<script src="js/store.js?v=54"></script>
-<script src="js/ui.js?v=54"></script>
-<script src="js/admin.js?v=54"></script>
-<script src="js/app.js?v=54"></script>
-<script src="js/pwa.js?v=54"></script>
+<script src="js/firebase-config.js?v=56"></script>
+<script src="js/firebase.js?v=56"></script>
+<script src="js/store.js?v=56"></script>
+<script src="js/ui.js?v=56"></script>
+<script src="js/admin.js?v=56"></script>
+<script src="js/app.js?v=56"></script>
+<script src="js/pwa.js?v=56"></script>
 <script>Pwa.init();</script>
 </body>
 </html>

@@ -166,8 +166,7 @@ function detectWorship(t) {
   if (/새벽\s*기도회|새벽기도회/.test(t)) return '새벽기도회';
   if (/저녁\s*기도회|저녁기도회/.test(t)) return '저녁기도회';
   if (/수요\s*저녁\s*예배|수요저녁예배/.test(t)) return '수요저녁예배';
-  if (/주일\s*[123]부|주일[123]부/.test(t)) return '주일예배';
-  if (/주일\s*저녁|주일저녁/.test(t)) return '주일저녁예배';
+  if (/주일\s*[123]부|주일[123]부|주일\s*저녁|주일저녁/.test(t)) return '주일예배';
   if (/젊은\s*이\s*예배|젊은이예배/.test(t)) return '젊은이예배';
   return '';
 }

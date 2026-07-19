@@ -908,18 +908,42 @@ const App = (() => {
     navReplace({ s: 'home' });
   }
 
+  const LS_ADMIN_EMAILS = 'hanbit-admin-emails';
+
+  function getAdminEmailHistory() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(LS_ADMIN_EMAILS) || '[]');
+      return Array.isArray(raw) ? raw.filter(e => typeof e === 'string' && e.trim()) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function rememberAdminEmail(email) {
+    const em = (email || '').trim();
+    if (!em) return;
+    const list = getAdminEmailHistory().filter(e => e.toLowerCase() !== em.toLowerCase());
+    list.unshift(em);
+    try { localStorage.setItem(LS_ADMIN_EMAILS, JSON.stringify(list.slice(0, 10))); } catch { /* ignore */ }
+  }
+
+  function fillAdminEmailDatalist() {
+    const dl = document.getElementById('admin-email-history');
+    if (!dl) return;
+    dl.innerHTML = getAdminEmailHistory()
+      .map(e => `<option value="${String(e).replace(/"/g, '&quot;')}"></option>`)
+      .join('');
+  }
+
   function prepareAdminLogin() {
     const emailEl = document.getElementById('admin-email');
-    if (emailEl && !emailEl.value && typeof Firebase !== 'undefined') {
-      emailEl.value = Firebase.adminEmail() || '';
-    }
+    if (emailEl) emailEl.value = '';
+    fillAdminEmailDatalist();
     const err = document.getElementById('login-err');
     if (err) err.style.display = 'none';
     const pwEl = document.getElementById('admin-pw');
-    if (emailEl && pwEl) {
-      if (emailEl.value.trim()) pwEl.focus();
-      else emailEl.focus();
-    }
+    if (pwEl) pwEl.value = '';
+    if (emailEl) emailEl.focus();
   }
 
   function doLogin(openAdminAfter) {
@@ -927,6 +951,8 @@ const App = (() => {
     const pw = document.getElementById('admin-pw')?.value;
     Admin.login(email, pw).then(ok => {
       if (ok) {
+        rememberAdminEmail(email);
+        fillAdminEmailDatalist();
         UI.toast(openAdminAfter ? '관리자 설정으로 이동합니다' : '관리자 로그인됨 · 목록에서 편집하세요');
         finishLoginRedirect(!!openAdminAfter);
       } else {

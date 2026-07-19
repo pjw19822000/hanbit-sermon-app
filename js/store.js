@@ -595,7 +595,7 @@ const Store = (() => {
       book: o.book ?? v.book,
       bookOrder: o.bookOrder ?? v.bookOrder ?? 999,
       chapter: o.chapter ?? v.chapter ?? 0,
-      worship: o.worship ?? v.worship,
+      worship: normalizeWorship(o.worship ?? v.worship),
       themes: o.themes ?? v.themes ?? [],
       isBaek: o.isBaek ?? v.isBaek,
       eventBucket: o.eventBucket ?? v.eventBucket,
@@ -679,11 +679,15 @@ const Store = (() => {
     return baseVideos.find(v => v.id === id) || customVideos.find(v => v.id === id);
   }
 
+  function normalizeWorship(w) {
+    if (w === '주일저녁예배' || w === '주일저녁') return '주일예배';
+    return w || '';
+  }
+
   function detectWorshipFromTitle(title) {
     const t = title || '';
     if (/수요\s*.*?예배|수요저녁/.test(t)) return '수요저녁예배';
-    if (/주일\s*저녁|주일저녁/.test(t)) return '주일저녁예배';
-    if (/주일\s*[123]부|주일[123]부|주일\s*.*?예배|주일예배/.test(t)) return '주일예배';
+    if (/주일\s*저녁|주일저녁|주일\s*[123]부|주일[123]부|주일\s*.*?예배|주일예배/.test(t)) return '주일예배';
     if (/저녁\s*.*?기도|저녁기도회/.test(t)) return '저녁기도회';
     if (/새벽\s*.*?기도|새벽기도회/.test(t)) return '새벽기도회';
     for (const w of BAEK_WORSHIPS) {
@@ -736,8 +740,8 @@ const Store = (() => {
     else if (!themes.length) themes = ['기타'];
     patch.themes = themes;
 
-    let worship = patch.worship || v?.worship || detectWorshipFromTitle(title);
-    if (route?.worship) worship = route.worship;
+    let worship = normalizeWorship(patch.worship || v?.worship || detectWorshipFromTitle(title));
+    if (route?.worship) worship = normalizeWorship(route.worship);
     if (worship) patch.worship = worship;
 
     const sp = patch.speaker || v?.speaker || extractSpeakerFromTitle(title);

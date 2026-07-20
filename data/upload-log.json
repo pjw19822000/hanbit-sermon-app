@@ -1,6 +1,58 @@
 {
   "entries": [
     {
+      "id": "ae1212af-7e0b-40a4-927d-5891c7de6b1f",
+      "videoId": "FV6tQbyv1nU",
+      "title": "[한빛감리교회] 260719_젊은이예배_날마다 붉은 줄을 바라보라!_여호수아 2장 9-11절_이다니엘 목사",
+      "url": "https://www.youtube.com/watch?v=FV6tQbyv1nU",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-20T01:24:29Z"
+    },
+    {
+      "id": "bc72049a-bd46-4360-ba68-257aca98d73c",
+      "videoId": "FTKyCByseOU",
+      "title": "[한빛감리교회] 260720_새벽기도회_마음을 다하여 여호와를 섬기라_사무엘상 12장 20-24절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=FTKyCByseOU",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-20T01:24:29Z"
+    },
+    {
+      "id": "6fd7f1ef-bd8e-45cd-a9ea-af32443427a8",
+      "videoId": "_5Q5Fy9RPwE",
+      "title": "[한빛감리교회] 260719_주일저녁예배_기도로 돌파하라_다니엘 6장 7-10절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=_5Q5Fy9RPwE",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-20T01:24:29Z"
+    },
+    {
+      "id": "b734710d-91dd-4b7e-82ca-38e5ce8360ed",
+      "videoId": "m0lkkS15ESs",
+      "title": "[한빛감리교회] 260719_주일3부예배 설교_복음은 하나님의 능력입니다_로마서 1장 15-17절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=m0lkkS15ESs",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-20T01:24:29Z"
+    },
+    {
       "id": "1da65f86-2e0a-4731-a627-ea7f6454d986",
       "videoId": "ZS4uCHe6Q4I",
       "title": "[한빛감리교회] 260719_주일3부예배_복음은 하나님의 능력입니다_로마서 1장 15-17절_백용현 담임목사",
@@ -10,8 +62,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-19T01:20:42Z"
+      "action": "updated",
+      "syncedAt": "2026-07-20T01:24:29Z"
     },
     {
       "id": "94fa15f2-b2b1-43e2-b85e-deb1460390b0",
@@ -23,8 +75,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-19T01:20:42Z"
+      "action": "updated",
+      "syncedAt": "2026-07-20T01:24:29Z"
     },
     {
       "id": "2a334783-47fd-49c9-89de-c62d70b0ed43",
@@ -36,8 +88,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-19T01:20:42Z"
+      "action": "updated",
+      "syncedAt": "2026-07-20T01:24:29Z"
     },
     {
       "id": "01cc262d-ef52-41ce-998d-29d4c746d821",
@@ -49,8 +101,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-19T01:20:42Z"
+      "action": "updated",
+      "syncedAt": "2026-07-20T01:24:29Z"
     },
     {
       "id": "1a1c8b4b-764e-45aa-9276-0d27dc4890b2",
@@ -62,8 +114,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-19T01:20:42Z"
+      "action": "updated",
+      "syncedAt": "2026-07-20T01:24:29Z"
     },
     {
       "id": "cfb18c6d-d780-41ed-9037-2f6e753f3e55",
@@ -207,125 +259,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-14T01:13:09Z"
-    },
-    {
-      "id": "ac5dfd3f-2d46-432d-a3b6-80ad70a27be3",
-      "videoId": "iUe1L1M_-nY",
-      "title": "[한빛감리교회] 260712_주일저녁예배_기도를 오래해야 하는 이유_사도행전 16장 9- 10절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=iUe1L1M_-nY",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일저녁예배",
-      "status": "needs_review",
-      "issues": [
-        "예배 종류 불명"
-      ],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-13T01:23:41Z"
-    },
-    {
-      "id": "53a09ad2-77d2-4d56-a888-78dcfc083a14",
-      "videoId": "2Bt9o9N3LM0",
-      "title": "[한빛감리교회] 260712_젊은이 예배_하늘에 속한 자_빌립보서 3장 17- 4장1절_이다니엘 목사",
-      "url": "https://www.youtube.com/watch?v=2Bt9o9N3LM0",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이다니엘",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-13T01:23:41Z"
-    },
-    {
-      "id": "62100f89-0b6e-4963-b37c-ab9fc37b75b0",
-      "videoId": "psED4PE2SFA",
-      "title": "[한빛감리교회] 260712_주일3부예배 설교_기도 응답의 경로_창세기 18장 1-5절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=psED4PE2SFA",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-13T01:23:41Z"
-    },
-    {
-      "id": "298a3ee5-bff7-44a5-8e64-a15498b6b7c3",
-      "videoId": "Kaun31T7nks",
-      "title": "[한빛감리교회] 260712_주일3부예배_기도 응답의 경로_창세기 18장 1-5절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=Kaun31T7nks",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-13T01:23:41Z"
-    },
-    {
-      "id": "b009dded-bff7-4ad9-9edf-77aaf7b7d0ca",
-      "videoId": "pdjDE2w2HEo",
-      "title": "[한빛감리교회] 260712_주일2부예배_기도 응답의 경로_창세기 18장 1-5절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=pdjDE2w2HEo",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-13T01:23:41Z"
-    },
-    {
-      "id": "6713e7e2-afe8-4623-a879-9da3b4a734e2",
-      "videoId": "YdjH5JWKqus",
-      "title": "[한빛감리교회] 260712_주일1부예배_기도 응답의 경로_창세기 18장 1-5절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=YdjH5JWKqus",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 주일예배",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-13T01:23:41Z"
-    },
-    {
-      "id": "520b3332-c715-4fca-9093-c7501f1c71ec",
-      "videoId": "cZmdVYDsRcU",
-      "title": "[한빛감리교회] 260712_새벽기도회_내 손을 힘 있게 하옵소서_느헤미야 6장 5-9절_백길부 목사",
-      "url": "https://www.youtube.com/watch?v=cZmdVYDsRcU",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 백길부",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-13T01:23:41Z"
-    },
-    {
-      "id": "988dcccb-a64b-4053-950c-77d346c94366",
-      "videoId": "vj5lkgg7Ve8",
-      "title": "[한빛감리교회] 260711_저녁기도회_기도는 하나님의 요청이다_에스더 4장 13-17절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=vj5lkgg7Ve8",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-12T01:22:22Z"
-    },
-    {
-      "id": "4dd22297-ac75-431b-802b-169888ecce89",
-      "videoId": "PoOF3sgzlhA",
-      "title": "[한빛감리교회] 260711_새벽기도회_쉼을 넘어 동행의 축복으로_마태복음 11장 25-30절_이진현 목사",
-      "url": "https://www.youtube.com/watch?v=PoOF3sgzlhA",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진현",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-12T01:22:22Z"
     }
   ]
 }

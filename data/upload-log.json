@@ -1,6 +1,58 @@
 {
   "entries": [
     {
+      "id": "a5c93401-7e5b-4b99-865d-e78825b8c547",
+      "videoId": "JnhxdVhqFBo",
+      "title": "[한빛감리교회] 260724_새벽기도회_기도는 하나님의 계획이다_사무엘상 30장 6-8절_이동수 목사",
+      "url": "https://www.youtube.com/watch?v=JnhxdVhqFBo",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이동수",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-24T01:22:02Z"
+    },
+    {
+      "id": "b8124644-d88d-4d04-9e76-4671848598ea",
+      "videoId": "P95zJ9rzVg0",
+      "title": "[한빛감리교회] 260724_새벽기도회_기도는 하나님의 계획이다_사무엘상 30장 6-8절_이동수 목사",
+      "url": "https://www.youtube.com/watch?v=P95zJ9rzVg0",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이동수",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-24T01:22:02Z"
+    },
+    {
+      "id": "8f148c18-d358-4f59-a1d0-26a1b2c9f1b6",
+      "videoId": "Z73v7X0oIG0",
+      "title": "[한빛감리교회] 260724_새벽기도회_기도는 하나님의 계획이다_사무엘상 30장 6-8절_이동수 목사",
+      "url": "https://www.youtube.com/watch?v=Z73v7X0oIG0",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이동수",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-24T01:22:02Z"
+    },
+    {
+      "id": "b9d7f46d-c3f1-4551-8347-e3ebb4a04318",
+      "videoId": "d5PoF6pyxOw",
+      "title": "[한빛감리교회] 260723_저녁기도회_죄를 이기는 길_창세기 3장 1-6절_이진협 목사",
+      "url": "https://www.youtube.com/watch?v=d5PoF6pyxOw",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이진협",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-24T01:22:02Z"
+    },
+    {
       "id": "66fc9a5e-069c-4d32-8201-92095a150d20",
       "videoId": "T-yaO_Wicyo",
       "title": "[한빛감리교회] 260723_새벽기도회_죄를 이기는 길_창세기 3장 1-6절_백용현 담임목사",
@@ -10,8 +62,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-23T01:26:26Z"
+      "action": "updated",
+      "syncedAt": "2026-07-24T01:22:02Z"
     },
     {
       "id": "ef0f1708-0fc8-40c0-ba89-de191f1b8518",
@@ -23,8 +75,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-23T01:26:26Z"
+      "action": "updated",
+      "syncedAt": "2026-07-24T01:22:02Z"
     },
     {
       "id": "34649ae4-ab0f-4e40-ba70-d00c79eb1eac",

@@ -1,17 +1,30 @@
 {
   "entries": [
     {
-      "id": "a5c93401-7e5b-4b99-865d-e78825b8c547",
-      "videoId": "JnhxdVhqFBo",
-      "title": "[한빛감리교회] 260724_새벽기도회_기도는 하나님의 계획이다_사무엘상 30장 6-8절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=JnhxdVhqFBo",
+      "id": "92431ba0-b0b9-4706-babc-64afcdf90179",
+      "videoId": "CAIQg1BN9LA",
+      "title": "[한빛감리교회] 260725_새벽기도회_진정한 통치자: 두려움 앞에서 붙드는 하나님_다니엘 2장 16-23절_유영광 목사",
+      "url": "https://www.youtube.com/watch?v=CAIQg1BN9LA",
       "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
+      "folderLabel": "부사역자 · 유영광",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-07-24T01:22:02Z"
+      "syncedAt": "2026-07-25T01:23:03Z"
+    },
+    {
+      "id": "a5c93401-7e5b-4b99-865d-e78825b8c547",
+      "videoId": "JnhxdVhqFBo",
+      "title": "[한빛감리교회] 260724_저녁기도회(다음세대를 위한 기도회)_하나님의 기쁨이 되는 삶_사무엘하 15장 25-26절_백길부 목사",
+      "url": "https://www.youtube.com/watch?v=JnhxdVhqFBo",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 백길부",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-25T01:23:03Z"
     },
     {
       "id": "b8124644-d88d-4d04-9e76-4671848598ea",
@@ -23,21 +36,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-24T01:22:02Z"
-    },
-    {
-      "id": "8f148c18-d358-4f59-a1d0-26a1b2c9f1b6",
-      "videoId": "Z73v7X0oIG0",
-      "title": "[한빛감리교회] 260724_새벽기도회_기도는 하나님의 계획이다_사무엘상 30장 6-8절_이동수 목사",
-      "url": "https://www.youtube.com/watch?v=Z73v7X0oIG0",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이동수",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-24T01:22:02Z"
+      "action": "updated",
+      "syncedAt": "2026-07-25T01:23:03Z"
     },
     {
       "id": "b9d7f46d-c3f1-4551-8347-e3ebb4a04318",
@@ -46,6 +46,19 @@
       "url": "https://www.youtube.com/watch?v=d5PoF6pyxOw",
       "bucket": "associate",
       "folderLabel": "부사역자 · 이진협",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-07-25T01:23:03Z"
+    },
+    {
+      "id": "8f148c18-d358-4f59-a1d0-26a1b2c9f1b6",
+      "videoId": "Z73v7X0oIG0",
+      "title": "[한빛감리교회] 260724_새벽기도회_기도는 하나님의 계획이다_사무엘상 30장 6-8절_이동수 목사",
+      "url": "https://www.youtube.com/watch?v=Z73v7X0oIG0",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이동수",
       "status": "classified",
       "issues": [],
       "source": "api",
@@ -274,58 +287,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-19T01:20:42Z"
-    },
-    {
-      "id": "e836c942-0691-4af8-a3db-c84ff375c991",
-      "videoId": "ljdbw1MYWyc",
-      "title": "[한빛감리교회] 260717_저녁기도회_오늘의 돌보심을 신뢰하는 기도_마태복음 6장 11절_이진현 목사",
-      "url": "https://www.youtube.com/watch?v=ljdbw1MYWyc",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 이진현",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-18T01:14:56Z"
-    },
-    {
-      "id": "3498fd17-589f-403d-947e-befe470ee7d2",
-      "videoId": "lLpeAPnIfew",
-      "title": "[한빛감리교회] 260717_새벽기도회_이만한 믿음_누가복음 7장 6-10절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=lLpeAPnIfew",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 새벽기도회",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-18T01:14:56Z"
-    },
-    {
-      "id": "309f455d-eb9e-443d-8033-16710170f1a7",
-      "videoId": "sJ6QxmfInRw",
-      "title": "[한빛감리교회] 260716_저녁기도회_하나님의 편에 서십시오_사무엘상 24장 8-12절_백길부 목사",
-      "url": "https://www.youtube.com/watch?v=sJ6QxmfInRw",
-      "bucket": "associate",
-      "folderLabel": "부사역자 · 백길부",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-17T01:22:42Z"
-    },
-    {
-      "id": "43ec7c43-1e69-4284-8e79-d32d9f197b5e",
-      "videoId": "qUOFtFj6vH4",
-      "title": "[한빛감리교회] 260716_새벽기도회_하나님께 소망을 두라_시편 43편 1-5절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=qUOFtFj6vH4",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 새벽기도회",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-17T01:22:42Z"
     }
   ]
 }

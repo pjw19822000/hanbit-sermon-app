@@ -1,6 +1,71 @@
 {
   "entries": [
     {
+      "id": "dcb7cd4f-13fc-4819-b188-4fe55048fc38",
+      "videoId": "dGjhR_ux788",
+      "title": "[한빛감리교회] 260725_저녁기도회_진정한 통치자: 두려움 앞에서 붙드는 하나님_다니엘 2장 16-23절_유영광 목사",
+      "url": "https://www.youtube.com/watch?v=dGjhR_ux788",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 유영광",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-26T01:25:49Z"
+    },
+    {
+      "id": "66eb9855-b742-45e9-943a-5171684afff5",
+      "videoId": "hrMbu0cSw6I",
+      "title": "[한빛감리교회] 260726_주일3부예배_말이 바뀌면 인생이 달라집니다_마가복음 11장 23-24절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=hrMbu0cSw6I",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-26T01:25:49Z"
+    },
+    {
+      "id": "911fac6f-a53f-4f12-9c99-bd12f1124cd5",
+      "videoId": "p1urdSCznWU",
+      "title": "[한빛감리교회] 260726_주일2부예배_말이 바뀌면 인생이 달라집니다_마가복음 11장 23-24절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=p1urdSCznWU",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-26T01:25:49Z"
+    },
+    {
+      "id": "c0e7915b-353d-4f0a-8356-f804d5e1d932",
+      "videoId": "fEIHtC4R6no",
+      "title": "[한빛감리교회] 260726_주일1부예배_말이 바뀌면 인생이 달라집니다_마가복음 11장 23-24절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=fEIHtC4R6no",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-26T01:25:49Z"
+    },
+    {
+      "id": "ad12b75f-82f0-4a13-9d4b-c33118f9e4b0",
+      "videoId": "K0issnCQbeo",
+      "title": "[한빛감리교회] 260726_새벽기도회_오직 마음을 다하여 진실히 섬기라_사무엘상 12장 20-24절_김은국 목사",
+      "url": "https://www.youtube.com/watch?v=K0issnCQbeo",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 김은국",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-26T01:25:49Z"
+    },
+    {
       "id": "92431ba0-b0b9-4706-babc-64afcdf90179",
       "videoId": "CAIQg1BN9LA",
       "title": "[한빛감리교회] 260725_새벽기도회_진정한 통치자: 두려움 앞에서 붙드는 하나님_다니엘 2장 16-23절_유영광 목사",
@@ -10,8 +75,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-25T01:23:03Z"
+      "action": "updated",
+      "syncedAt": "2026-07-26T01:25:49Z"
     },
     {
       "id": "a5c93401-7e5b-4b99-865d-e78825b8c547",
@@ -274,19 +339,6 @@
       "source": "api",
       "action": "updated",
       "syncedAt": "2026-07-20T01:24:29Z"
-    },
-    {
-      "id": "cfb18c6d-d780-41ed-9037-2f6e753f3e55",
-      "videoId": "8ztC0OLCHbQ",
-      "title": "[한빛감리교회] 260718_새벽기도회_주께서 너희를 높이시리라_야고보서 4장 5-10절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=8ztC0OLCHbQ",
-      "bucket": "baek-regular",
-      "folderLabel": "백용현 담임목사 · 새벽기도회",
-      "status": "classified",
-      "issues": [],
-      "source": "api",
-      "action": "updated",
-      "syncedAt": "2026-07-19T01:20:42Z"
     }
   ]
 }

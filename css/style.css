@@ -300,13 +300,34 @@ body.app-toolbar-visible .topbar { padding-right: 4.75rem; }
 .adm-menu-actions { flex-shrink: 0; }
 .adm-add-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; align-items: center; }
 .adm-add-row .form-input { flex: 1; min-width: 100px; font-size: 0.85em; }
-.adm-rule-card {
-  padding: 0.65rem 0.75rem; margin-bottom: 0.55rem;
+.adm-quick-add {
+  padding: 0.85rem 0.9rem; margin-bottom: 0.75rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface, #fff);
+}
+.adm-quick-title { font-weight: 700; font-size: 0.95em; margin-bottom: 0.55rem; }
+.adm-folder-group {
+  margin-bottom: 0.65rem; padding: 0.55rem 0.7rem;
   border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg2, #f7fafc);
 }
-.adm-rule-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
-.adm-rule-label { flex: 1; min-width: 8rem; }
-.adm-rule-priority { flex-shrink: 0; }
+.adm-folder-title { font-weight: 700; font-size: 0.9em; margin-bottom: 0.4rem; color: var(--primary-light, #2c5282); }
+.adm-folder-rule { padding: 0.35rem 0; border-top: 1px solid var(--border); }
+.adm-folder-rule:first-of-type { border-top: none; }
+.adm-folder-rule.is-off { opacity: 0.55; }
+.adm-folder-rule-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-top: 0.35rem; }
+.adm-kw-row { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
+.adm-kw-chip {
+  display: inline-flex; align-items: center; gap: 0.2rem;
+  padding: 0.15rem 0.45rem; font-size: 0.82em; font-weight: 600;
+  background: var(--surface, #fff); border: 1px solid var(--border); border-radius: 999px;
+}
+.adm-kw-x {
+  border: none; background: transparent; color: var(--text-muted); cursor: pointer;
+  font-size: 1rem; line-height: 1; padding: 0 0.1rem;
+}
+.adm-muted { color: var(--text-muted); font-size: 0.85em; }
+.adm-rules-advanced { margin-top: 1rem; font-size: 0.88em; color: var(--text-muted); }
+.adm-rules-advanced summary { cursor: pointer; margin-bottom: 0.4rem; }
 .adm-bulk-source { padding: 0.65rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border); }
 .adm-bulk-count { font-weight: 600; margin-top: 0.25rem; }
 .adm-log-list { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; font-size: 0.82em; }

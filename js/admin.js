@@ -785,154 +785,297 @@ const Admin = (() => {
     } catch (e) { UI.toast('저장 실패'); }
   }
 
-  function ruleTargetOptions(rule) {
-    const cat = rule.category || 'praise';
-    if (cat === 'praise') {
-      const opts = Store.getSubMenuItems('praise').map(p =>
-        `<option value="${UI.esc(p.id)}" ${rule.praiseSub === p.id ? 'selected' : ''}>${UI.esc(p.label)}</option>`).join('');
-      const extra = rule.praiseSub && !Store.getSubMenuItems('praise').some(p => p.id === rule.praiseSub)
-        ? `<option value="${UI.esc(rule.praiseSub)}" selected>${UI.esc(rule.praiseSub)}</option>` : '';
-      return `<select class="form-input" data-rule-field="praiseSub">${extra}${opts}
-        <option value="other" ${rule.praiseSub === 'other' ? 'selected' : ''}>기타(other)</option></select>`;
-    }
-    if (cat === 'events') {
-      return `<select class="form-input" data-rule-field="eventSub">${Store.getSubMenuItems('events').map(e =>
-        `<option value="${UI.esc(e.id)}" ${rule.eventSub === e.id ? 'selected' : ''}>${UI.esc(e.label)}</option>`).join('')}</select>`;
-    }
-    if (cat === 'prayer') {
-      return `<select class="form-input" data-rule-field="prayerSeries">${Object.entries(Store.PRAYER_LABELS).map(([id, label]) =>
-        `<option value="${UI.esc(id)}" ${rule.prayerSeries === id ? 'selected' : ''}>${UI.esc(label)}</option>`).join('')}</select>`;
-    }
-    return `<span class="adm-hint" style="padding:0">하위 없음</span>`;
+  function ruleFolderKey(rule) {
+    if (!rule) return '';
+    if (rule.category === 'praise') return `praise|${rule.praiseSub || ''}`;
+    if (rule.category === 'events') return `events|${rule.eventSub || ''}`;
+    if (rule.category === 'prayer') return `prayer|${rule.prayerSeries || ''}`;
+    if (rule.category === 'testimony') return 'testimony|';
+    return `${rule.category}|`;
   }
 
-  function renderRuleCard(rule, idx) {
-    const catOpts = [
-      { id: 'praise', label: '찬양' },
-      { id: 'events', label: '주제·행사' },
-      { id: 'testimony', label: '간증' },
-      { id: 'prayer', label: '기도사역말씀' }
-    ].map(c => `<option value="${c.id}" ${rule.category === c.id ? 'selected' : ''}>${c.label}</option>`).join('');
-    const kws = (rule.keywords || []).join(', ');
-    const ex = (rule.excludeKeywords || []).join(', ');
-    return `<div class="adm-rule-card" data-rule-idx="${idx}">
-      <div class="adm-rule-head">
-        <label class="adm-check-row" style="margin:0"><input type="checkbox" data-rule-field="enabled" ${rule.enabled !== false ? 'checked' : ''}> 사용</label>
-        <input class="form-input adm-rule-label" data-rule-field="label" value="${UI.esc(rule.label || '')}" placeholder="규칙 이름">
-        <input class="form-input adm-rule-priority" data-rule-field="priority" type="number" value="${UI.esc(String(rule.priority ?? 0))}" title="우선순위(높을수록 먼저)" style="width:4.5rem">
-        <button type="button" class="btn btn-outline btn-sm" onclick="Admin.removeClassificationRule(${idx})">삭제</button>
-      </div>
-      <div class="adm-grid3" style="margin-top:0.4rem">
-        <div class="form-group" style="margin:0"><label class="form-label">분류</label>
-          <select class="form-input" data-rule-field="category" onchange="Admin.onRuleCategoryChange(${idx})">${catOpts}</select></div>
-        <div class="form-group" style="margin:0" data-rule-target><label class="form-label">하위</label>${ruleTargetOptions(rule)}</div>
-        <div class="form-group" style="margin:0"><label class="form-label">ID</label>
-          <input class="form-input" data-rule-field="id" value="${UI.esc(rule.id || '')}" placeholder="영문 id"></div>
-      </div>
-      <div class="form-group" style="margin-top:0.45rem;margin-bottom:0"><label class="form-label">포함 키워드 (쉼표 구분)</label>
-        <input class="form-input" data-rule-field="keywords" value="${UI.esc(kws)}" placeholder="예: 기드온, 기드온 앙상블"></div>
-      <div class="form-group" style="margin-top:0.35rem;margin-bottom:0"><label class="form-label">제외 키워드 (있으면 매칭 안 함)</label>
-        <input class="form-input" data-rule-field="excludeKeywords" value="${UI.esc(ex)}" placeholder="예: 목사, 전도사"></div>
-    </div>`;
+  function parseFolderKey(key) {
+    const [category, sub = ''] = String(key || '').split('|');
+    return { category, sub };
+  }
+
+  function folderLabelFromKey(key) {
+    const { category, sub } = parseFolderKey(key);
+    if (category === 'praise') {
+      const p = Store.getSubMenuItems('praise').find(x => x.id === sub);
+      return `찬양 · ${p?.label || sub || '기타'}`;
+    }
+    if (category === 'events') {
+      const e = Store.getSubMenuItems('events').find(x => x.id === sub);
+      return `주제·행사 · ${e?.label || sub}`;
+    }
+    if (category === 'prayer') {
+      return `기도사역 · ${Store.PRAYER_LABELS[sub] || sub}`;
+    }
+    if (category === 'testimony') return '간증';
+    return key;
+  }
+
+  function folderSelectOptions(selectedKey) {
+    const opts = [];
+    Store.getSubMenuItems('praise').forEach(p => {
+      opts.push({ value: `praise|${p.id}`, label: `찬양 · ${p.label}` });
+    });
+    opts.push({ value: 'praise|other', label: '찬양 · 기타' });
+    opts.push({ value: 'praise|__new__', label: '찬양 · ＋ 새 폴더 만들기…' });
+    Store.getSubMenuItems('events').forEach(e => {
+      opts.push({ value: `events|${e.id}`, label: `주제·행사 · ${e.label}` });
+    });
+    Object.entries(Store.PRAYER_LABELS).forEach(([id, label]) => {
+      opts.push({ value: `prayer|${id}`, label: `기도사역 · ${label}` });
+    });
+    opts.push({ value: 'testimony|', label: '간증' });
+    return opts.map(o =>
+      `<option value="${UI.esc(o.value)}" ${selectedKey === o.value ? 'selected' : ''}>${UI.esc(o.label)}</option>`
+    ).join('');
+  }
+
+  function slugifyFolderId(label) {
+    const map = { '기드온': 'gideon', '앙상블': 'ensemble', '임마누엘': 'immanuel', '마라나타': 'maranata', '저스테이': 'justay' };
+    let s = String(label || '').trim();
+    for (const [ko, en] of Object.entries(map)) s = s.split(ko).join(en);
+    s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    s = s.replace(/[^a-zA-Z0-9가-힣]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+    if (!s || /[^a-z0-9-]/.test(s)) {
+      s = 'folder-' + Date.now().toString(36);
+    }
+    return s.slice(0, 40);
+  }
+
+  function groupRulesByFolder(rules) {
+    const map = new Map();
+    (rules || []).forEach((rule, idx) => {
+      const key = ruleFolderKey(rule);
+      if (!map.has(key)) map.set(key, { key, rules: [], indices: [] });
+      map.get(key).rules.push(rule);
+      map.get(key).indices.push(idx);
+    });
+    return [...map.values()];
+  }
+
+  function renderKeywordChips(keywords, ruleIdx) {
+    return (keywords || []).map((kw, ki) =>
+      `<span class="adm-kw-chip">${UI.esc(kw)}<button type="button" class="adm-kw-x" title="삭제" onclick="Admin.removeRuleKeyword(${ruleIdx},${ki})">×</button></span>`
+    ).join('');
   }
 
   function renderRulesPanel() {
     const rules = Store.getClassificationRules();
-    const cards = rules.map((r, i) => renderRuleCard(r, i)).join('');
+    const groups = groupRulesByFolder(rules);
     const unclassN = Store.unclassifiedVideos().length;
+    const groupsHtml = groups.length
+      ? groups.map(g => {
+          const ruleRows = g.rules.map((rule, localI) => {
+            const idx = g.indices[localI];
+            const off = rule.enabled === false;
+            return `<div class="adm-folder-rule${off ? ' is-off' : ''}" data-rule-idx="${idx}">
+              <div class="adm-kw-row">${renderKeywordChips(rule.keywords, idx) || '<span class="adm-muted">키워드 없음</span>'}
+                <button type="button" class="btn btn-outline btn-sm" onclick="Admin.promptAddKeyword(${idx})">＋ 단어</button>
+              </div>
+              <div class="adm-folder-rule-actions">
+                <label class="adm-check-row" style="margin:0"><input type="checkbox" ${!off ? 'checked' : ''} onchange="Admin.toggleRuleEnabled(${idx}, this.checked)"> 사용</label>
+                <button type="button" class="btn btn-outline btn-sm" onclick="Admin.removeClassificationRule(${idx})">규칙 삭제</button>
+              </div>
+            </div>`;
+          }).join('');
+          return `<div class="adm-folder-group">
+            <div class="adm-folder-title">${UI.esc(folderLabelFromKey(g.key))}</div>
+            ${ruleRows}
+          </div>`;
+        }).join('')
+      : '<div class="no-data">등록된 분류 규칙이 없습니다.</div>';
+
     return `<div class="login-box adm-box">
-      <p class="adm-hint">제목에 키워드가 있으면 해당 폴더로 자동 분류합니다. 우선순위가 높은 규칙이 먼저 적용됩니다. 「저장」 후 「미분류에 적용」으로 기존 미분류 영상에 반영하세요.</p>
-      <div id="adm-rules-list">${cards}</div>
-      <div class="adm-row" style="margin-top:0.75rem">
-        <button type="button" class="btn btn-outline" onclick="Admin.addClassificationRule()">규칙 추가</button>
-        <button type="button" class="btn btn-primary" onclick="Admin.saveClassificationRules()">저장</button>
-        <button type="button" class="btn btn-outline" onclick="Admin.applyClassificationRules()">미분류에 적용 (${unclassN})</button>
-        <button type="button" class="btn btn-outline" onclick="Admin.resetClassificationRules()">기본값 복원</button>
+      <p class="adm-hint">제목에 특정 단어가 있으면 선택한 폴더로 자동 분류합니다.</p>
+
+      <div class="adm-quick-add">
+        <div class="adm-quick-title">새 분류 추가</div>
+        <div class="form-group" style="margin-bottom:0.5rem">
+          <label class="form-label">1. 제목에 이 단어가 있으면</label>
+          <input class="form-input" id="adm-quick-kw" placeholder="예: 기드온" autocomplete="off">
+        </div>
+        <div class="form-group" style="margin-bottom:0.5rem">
+          <label class="form-label">2. 이 폴더로 이동</label>
+          <select class="form-input" id="adm-quick-folder" onchange="Admin.onQuickFolderChange()">${folderSelectOptions('praise|' + (Store.getSubMenuItems('praise')[0]?.id || 'sharon'))}</select>
+        </div>
+        <div class="form-group" id="adm-quick-new-wrap" style="display:none;margin-bottom:0.5rem">
+          <label class="form-label">새 폴더 이름</label>
+          <input class="form-input" id="adm-quick-new-name" placeholder="예: 기드온 앙상블" autocomplete="off">
+        </div>
+        <div class="adm-row" style="margin-top:0.35rem">
+          <button type="button" class="btn btn-primary" onclick="Admin.quickAddClassification()">추가하고 미분류에 적용</button>
+          <button type="button" class="btn btn-outline" onclick="Admin.quickAddClassification(false)">추가만</button>
+        </div>
       </div>
+
+      <div class="section-label" style="margin-top:1.1rem">현재 분류 규칙</div>
+      <div id="adm-rules-list">${groupsHtml}</div>
+
+      <details class="adm-rules-advanced">
+        <summary>고급 · 기본값 복원</summary>
+        <p class="adm-hint" style="padding:0.35rem 0">잘못 바꿨을 때 처음 규칙으로 되돌립니다.</p>
+        <button type="button" class="btn btn-outline btn-sm" onclick="Admin.resetClassificationRules()">기본값 복원</button>
+        <button type="button" class="btn btn-outline btn-sm" onclick="Admin.applyClassificationRules()">미분류에 다시 적용 (${unclassN})</button>
+      </details>
     </div>`;
   }
 
-  function collectClassificationRulesFromDom() {
-    return [...document.querySelectorAll('#adm-rules-list .adm-rule-card')].map(card => {
-      const get = (field) => card.querySelector(`[data-rule-field="${field}"]`);
-      const splitKws = (s) => String(s || '').split(/[,，\n]/).map(x => x.trim()).filter(Boolean);
-      const category = get('category')?.value || 'praise';
-      const rule = {
-        id: (get('id')?.value || '').trim() || `rule-${Date.now()}`,
-        enabled: !!get('enabled')?.checked,
-        label: (get('label')?.value || '').trim() || '규칙',
-        keywords: splitKws(get('keywords')?.value),
-        excludeKeywords: splitKws(get('excludeKeywords')?.value),
-        category,
-        praiseSub: '',
-        eventSub: '',
-        prayerSeries: '',
-        priority: parseInt(get('priority')?.value, 10) || 0
-      };
-      if (category === 'praise') rule.praiseSub = get('praiseSub')?.value || '';
-      if (category === 'events') rule.eventSub = get('eventSub')?.value || '';
-      if (category === 'prayer') rule.prayerSeries = get('prayerSeries')?.value || '';
-      return rule;
-    });
+  function onQuickFolderChange() {
+    const val = document.getElementById('adm-quick-folder')?.value || '';
+    const wrap = document.getElementById('adm-quick-new-wrap');
+    if (wrap) wrap.style.display = val === 'praise|__new__' ? 'block' : 'none';
   }
 
-  function refreshRulesPanelFromList(rules) {
-    const list = document.getElementById('adm-rules-list');
-    if (!list) return;
-    list.innerHTML = rules.map((r, i) => renderRuleCard(r, i)).join('');
-  }
-
-  function addClassificationRule() {
-    const rules = collectClassificationRulesFromDom();
-    rules.unshift({
-      id: `custom-${Date.now()}`,
-      enabled: true,
-      label: '새 규칙',
-      keywords: [],
-      excludeKeywords: [],
-      category: 'praise',
-      praiseSub: Store.getSubMenuItems('praise')[0]?.id || '',
-      eventSub: '',
-      prayerSeries: '',
-      priority: 80
-    });
-    refreshRulesPanelFromList(rules);
-  }
-
-  function removeClassificationRule(idx) {
-    const rules = collectClassificationRulesFromDom();
-    rules.splice(idx, 1);
-    refreshRulesPanelFromList(rules);
-  }
-
-  function onRuleCategoryChange(idx) {
-    const rules = collectClassificationRulesFromDom();
-    const r = rules[idx];
-    if (!r) return;
-    if (r.category === 'praise' && !r.praiseSub) {
-      r.praiseSub = Store.getSubMenuItems('praise')[0]?.id || 'other';
+  async function ensurePraiseFolder(label) {
+    const name = String(label || '').trim();
+    if (!name) throw new Error('새 폴더 이름을 입력하세요');
+    let id = slugifyFolderId(name);
+    const existing = Store.getSubMenuItems('praise');
+    const byLabel = existing.find(p => p.label === name);
+    if (byLabel) return byLabel.id;
+    if (existing.some(p => p.id === id) || (Store.SUB_MENU_REGISTRY.praise || []).some(p => p.id === id)) {
+      id = `${id}-${Date.now().toString(36).slice(-4)}`;
     }
-    if (r.category === 'events' && !r.eventSub) {
-      r.eventSub = Store.getSubMenuItems('events')[0]?.id || 'seminar';
-    }
-    if (r.category === 'prayer' && !r.prayerSeries) {
-      r.prayerSeries = Object.keys(Store.PRAYER_LABELS)[0] || '';
-    }
-    refreshRulesPanelFromList(rules);
+    const cfg = Store.getConfig();
+    const custom = { ...(cfg.customSubMenus || {}) };
+    const list = [...(custom.praise || [])];
+    list.push({ id, label: name });
+    custom.praise = list;
+    const deleted = (cfg.deletedSubMenus || []).filter(k => k !== `praise:${id}`);
+    await Store.saveMenuCustomization({ customSubMenus: custom, deletedSubMenus: deleted });
+    return id;
   }
 
-  async function saveClassificationRules() {
-    const rules = collectClassificationRulesFromDom();
-    if (rules.some(r => !r.keywords.length)) {
-      UI.toast('키워드가 비어 있는 규칙이 있습니다');
-      return;
+  function findRuleIndexForFolder(rules, folderKey) {
+    return rules.findIndex(r => ruleFolderKey(r) === folderKey && r.enabled !== false);
+  }
+
+  async function quickAddClassification(alsoApply = true) {
+    const kw = document.getElementById('adm-quick-kw')?.value?.trim();
+    if (!kw) { UI.toast('단어를 입력하세요'); return; }
+    let folderVal = document.getElementById('adm-quick-folder')?.value || '';
+    try {
+      if (folderVal === 'praise|__new__') {
+        const newName = document.getElementById('adm-quick-new-name')?.value?.trim();
+        const id = await ensurePraiseFolder(newName);
+        folderVal = `praise|${id}`;
+      }
+      const { category, sub } = parseFolderKey(folderVal);
+      if (!category) { UI.toast('폴더를 선택하세요'); return; }
+      if (category === 'praise' && !sub) { UI.toast('찬양 폴더를 선택하세요'); return; }
+      if (category === 'events' && !sub) { UI.toast('행사 폴더를 선택하세요'); return; }
+      if (category === 'prayer' && !sub) { UI.toast('기도 시리즈를 선택하세요'); return; }
+
+      const rules = Store.getClassificationRules();
+      const folderKey = `${category}|${sub || ''}`;
+      let idx = findRuleIndexForFolder(rules, folderKey);
+      if (idx >= 0) {
+        const set = new Set(rules[idx].keywords || []);
+        set.add(kw);
+        rules[idx].keywords = [...set];
+        rules[idx].enabled = true;
+        if (!rules[idx].label || rules[idx].label === '새 규칙') {
+          rules[idx].label = folderLabelFromKey(folderKey);
+        }
+      } else {
+        const rule = {
+          id: `custom-${Date.now()}`,
+          enabled: true,
+          label: folderLabelFromKey(folderKey),
+          keywords: [kw],
+          excludeKeywords: [],
+          category,
+          praiseSub: category === 'praise' ? sub : '',
+          eventSub: category === 'events' ? sub : '',
+          prayerSeries: category === 'prayer' ? sub : '',
+          priority: 80
+        };
+        rules.unshift(rule);
+      }
+      await Store.saveClassificationRules(rules);
+      let moved = 0;
+      if (alsoApply) {
+        moved = await Store.applyClassificationRulesToVideos();
+      }
+      UI.toast(alsoApply
+        ? (moved ? `저장됨 · ${moved}편 분류됨` : '저장됨 · 적용할 미분류 없음')
+        : '저장됨');
+      showTab('rules');
+      if (typeof App !== 'undefined' && App.refreshList) App.refreshList();
+    } catch (e) {
+      UI.toast('실패: ' + (e.message || ''));
     }
+  }
+
+  async function promptAddKeyword(idx) {
+    const rules = Store.getClassificationRules();
+    const rule = rules[idx];
+    if (!rule) return;
+    const kw = prompt(`「${folderLabelFromKey(ruleFolderKey(rule))}」에 추가할 단어`, '');
+    if (kw == null) return;
+    const t = kw.trim();
+    if (!t) return;
+    const set = new Set(rule.keywords || []);
+    set.add(t);
+    rule.keywords = [...set];
     try {
       await Store.saveClassificationRules(rules);
-      UI.toast('분류 규칙 저장됨');
+      UI.toast('키워드 추가됨');
       showTab('rules');
     } catch (e) {
       UI.toast('저장 실패: ' + (e.message || ''));
+    }
+  }
+
+  async function removeRuleKeyword(ruleIdx, kwIdx) {
+    const rules = Store.getClassificationRules();
+    const rule = rules[ruleIdx];
+    if (!rule) return;
+    rule.keywords = (rule.keywords || []).filter((_, i) => i !== kwIdx);
+    if (!rule.keywords.length) {
+      if (!confirm('키워드가 모두 없어집니다. 이 규칙을 삭제할까요?')) {
+        showTab('rules');
+        return;
+      }
+      rules.splice(ruleIdx, 1);
+    }
+    try {
+      await Store.saveClassificationRules(rules);
+      showTab('rules');
+    } catch (e) {
+      UI.toast('저장 실패: ' + (e.message || ''));
+    }
+  }
+
+  async function toggleRuleEnabled(idx, on) {
+    const rules = Store.getClassificationRules();
+    if (!rules[idx]) return;
+    rules[idx].enabled = !!on;
+    try {
+      await Store.saveClassificationRules(rules);
+    } catch (e) {
+      UI.toast('저장 실패: ' + (e.message || ''));
+      showTab('rules');
+    }
+  }
+
+  async function removeClassificationRule(idx) {
+    const rules = Store.getClassificationRules();
+    const rule = rules[idx];
+    if (!rule) return;
+    if (!confirm(`「${folderLabelFromKey(ruleFolderKey(rule))}」 규칙을 삭제할까요?`)) return;
+    rules.splice(idx, 1);
+    try {
+      await Store.saveClassificationRules(rules);
+      UI.toast('삭제됨');
+      showTab('rules');
+    } catch (e) {
+      UI.toast('삭제 실패: ' + (e.message || ''));
     }
   }
 
@@ -954,20 +1097,20 @@ const Admin = (() => {
     if (!n) { UI.toast(pool ? '선택된 영상이 없습니다' : '미분류 영상이 없습니다'); return; }
     if (!confirm(`${pool ? '선택 ' : '미분류 '}${n}편에 분류 규칙을 적용할까요?`)) return;
     try {
-      const listEl = document.getElementById('adm-rules-list');
-      if (listEl) {
-        const rules = collectClassificationRulesFromDom();
-        if (rules.length) await Store.saveClassificationRules(rules);
-      }
       const moved = await Store.applyClassificationRulesToVideos(pool);
       UI.toast(moved ? `${moved}편 분류 적용됨` : '규칙에 맞는 영상이 없습니다');
-      if (listEl) showTab('rules');
+      if (document.getElementById('adm-quick-kw')) showTab('rules');
       if (typeof App !== 'undefined' && App.refreshList) App.refreshList();
       if (moved) clearSelection();
     } catch (e) {
       UI.toast('적용 실패: ' + (e.message || ''));
     }
   }
+
+  // 하위 호환 (옛 호출명)
+  function addClassificationRule() { quickAddClassification(false); }
+  function saveClassificationRules() { UI.toast('위에서 「추가하고 미분류에 적용」을 사용하세요'); }
+  function onRuleCategoryChange() { /* no-op */ }
 
   function renderVideosPanel() {
     return `<div class="adm-box">
@@ -1352,6 +1495,7 @@ const Admin = (() => {
     deleteSubMenu, restoreSubMenu, addSubMenu, addAssociate,
     addClassificationRule, removeClassificationRule, onRuleCategoryChange,
     saveClassificationRules, resetClassificationRules, applyClassificationRules,
+    quickAddClassification, onQuickFolderChange, promptAddKeyword, removeRuleKeyword, toggleRuleEnabled,
     isSortMode, toggleSortMode, resetListOrder, initListSort, toggleEditPrayerYear
   };
 })();

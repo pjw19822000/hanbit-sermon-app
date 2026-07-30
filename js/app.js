@@ -681,11 +681,13 @@ const App = (() => {
     const sel = Admin.getSelectionCount();
     const allChecked = videos.every(v => Admin.isSelected(v.id));
     const sortOn = showSort && Admin.isSortMode?.();
+    const isUnclass = listCtx?.view === 'unclassified';
     return `<span class="adm-sel-bar">
       <label class="adm-sel-all"><input type="checkbox" ${allChecked ? 'checked' : ''} onchange="Admin.toggleSelectAll(this.checked)"> 전체</label>
       <span class="adm-sel-count">${sel}편 선택</span>
       <button type="button" class="sub-nav-btn" onclick="Admin.clearSelection()">해제</button>
       <button type="button" class="sub-nav-btn adm-move-selected" onclick="Admin.openBulkSelected()" ${sel ? '' : 'disabled'}>선택 이동</button>
+      ${isUnclass ? '<button type="button" class="sub-nav-btn" onclick="Admin.applyClassificationRules()">규칙 적용</button>' : ''}
       ${showSort ? `<button type="button" class="sub-nav-btn" onclick="Admin.openBulkFromList()">폴더 전체</button>
       <button type="button" class="sub-nav-btn${sortOn ? ' is-active' : ''}" onclick="Admin.toggleSortMode()">${sortOn ? '순서 편집 중' : '순서 편집'}</button>
       ${sortOn ? '<button type="button" class="sub-nav-btn" onclick="Admin.resetListOrder()">기본 순서</button>' : ''}` : ''}

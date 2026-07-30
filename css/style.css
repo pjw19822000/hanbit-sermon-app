@@ -300,6 +300,13 @@ body.app-toolbar-visible .topbar { padding-right: 4.75rem; }
 .adm-menu-actions { flex-shrink: 0; }
 .adm-add-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; align-items: center; }
 .adm-add-row .form-input { flex: 1; min-width: 100px; font-size: 0.85em; }
+.adm-rule-card {
+  padding: 0.65rem 0.75rem; margin-bottom: 0.55rem;
+  border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg2, #f7fafc);
+}
+.adm-rule-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.adm-rule-label { flex: 1; min-width: 8rem; }
+.adm-rule-priority { flex-shrink: 0; }
 .adm-bulk-source { padding: 0.65rem; background: var(--bg2); border-radius: var(--radius); border: 1px solid var(--border); }
 .adm-bulk-count { font-weight: 600; margin-top: 0.25rem; }
 .adm-log-list { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; font-size: 0.82em; }

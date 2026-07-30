@@ -129,6 +129,7 @@ const Admin = (() => {
     tabsEl.innerHTML =
       tabBtn('home', '홈 문구', currentTab) +
       tabBtn('menus', '메뉴', currentTab) +
+      tabBtn('rules', '분류 규칙', currentTab) +
       tabBtn('im', '이임 목사', currentTab) +
       tabBtn('videos', '영상', currentTab) +
       tabBtn('bulk', '일괄 이동', currentTab) +
@@ -146,6 +147,7 @@ const Admin = (() => {
       el.innerHTML = renderMenusPanel();
       initMenuSort();
     }
+    else if (currentTab === 'rules') el.innerHTML = renderRulesPanel();
     else if (currentTab === 'im') el.innerHTML = renderImPastorPanel();
     else if (currentTab === 'videos') el.innerHTML = renderVideosPanel();
     else if (currentTab === 'bulk') {
@@ -783,6 +785,190 @@ const Admin = (() => {
     } catch (e) { UI.toast('저장 실패'); }
   }
 
+  function ruleTargetOptions(rule) {
+    const cat = rule.category || 'praise';
+    if (cat === 'praise') {
+      const opts = Store.getSubMenuItems('praise').map(p =>
+        `<option value="${UI.esc(p.id)}" ${rule.praiseSub === p.id ? 'selected' : ''}>${UI.esc(p.label)}</option>`).join('');
+      const extra = rule.praiseSub && !Store.getSubMenuItems('praise').some(p => p.id === rule.praiseSub)
+        ? `<option value="${UI.esc(rule.praiseSub)}" selected>${UI.esc(rule.praiseSub)}</option>` : '';
+      return `<select class="form-input" data-rule-field="praiseSub">${extra}${opts}
+        <option value="other" ${rule.praiseSub === 'other' ? 'selected' : ''}>기타(other)</option></select>`;
+    }
+    if (cat === 'events') {
+      return `<select class="form-input" data-rule-field="eventSub">${Store.getSubMenuItems('events').map(e =>
+        `<option value="${UI.esc(e.id)}" ${rule.eventSub === e.id ? 'selected' : ''}>${UI.esc(e.label)}</option>`).join('')}</select>`;
+    }
+    if (cat === 'prayer') {
+      return `<select class="form-input" data-rule-field="prayerSeries">${Object.entries(Store.PRAYER_LABELS).map(([id, label]) =>
+        `<option value="${UI.esc(id)}" ${rule.prayerSeries === id ? 'selected' : ''}>${UI.esc(label)}</option>`).join('')}</select>`;
+    }
+    return `<span class="adm-hint" style="padding:0">하위 없음</span>`;
+  }
+
+  function renderRuleCard(rule, idx) {
+    const catOpts = [
+      { id: 'praise', label: '찬양' },
+      { id: 'events', label: '주제·행사' },
+      { id: 'testimony', label: '간증' },
+      { id: 'prayer', label: '기도사역말씀' }
+    ].map(c => `<option value="${c.id}" ${rule.category === c.id ? 'selected' : ''}>${c.label}</option>`).join('');
+    const kws = (rule.keywords || []).join(', ');
+    const ex = (rule.excludeKeywords || []).join(', ');
+    return `<div class="adm-rule-card" data-rule-idx="${idx}">
+      <div class="adm-rule-head">
+        <label class="adm-check-row" style="margin:0"><input type="checkbox" data-rule-field="enabled" ${rule.enabled !== false ? 'checked' : ''}> 사용</label>
+        <input class="form-input adm-rule-label" data-rule-field="label" value="${UI.esc(rule.label || '')}" placeholder="규칙 이름">
+        <input class="form-input adm-rule-priority" data-rule-field="priority" type="number" value="${UI.esc(String(rule.priority ?? 0))}" title="우선순위(높을수록 먼저)" style="width:4.5rem">
+        <button type="button" class="btn btn-outline btn-sm" onclick="Admin.removeClassificationRule(${idx})">삭제</button>
+      </div>
+      <div class="adm-grid3" style="margin-top:0.4rem">
+        <div class="form-group" style="margin:0"><label class="form-label">분류</label>
+          <select class="form-input" data-rule-field="category" onchange="Admin.onRuleCategoryChange(${idx})">${catOpts}</select></div>
+        <div class="form-group" style="margin:0" data-rule-target><label class="form-label">하위</label>${ruleTargetOptions(rule)}</div>
+        <div class="form-group" style="margin:0"><label class="form-label">ID</label>
+          <input class="form-input" data-rule-field="id" value="${UI.esc(rule.id || '')}" placeholder="영문 id"></div>
+      </div>
+      <div class="form-group" style="margin-top:0.45rem;margin-bottom:0"><label class="form-label">포함 키워드 (쉼표 구분)</label>
+        <input class="form-input" data-rule-field="keywords" value="${UI.esc(kws)}" placeholder="예: 기드온, 기드온 앙상블"></div>
+      <div class="form-group" style="margin-top:0.35rem;margin-bottom:0"><label class="form-label">제외 키워드 (있으면 매칭 안 함)</label>
+        <input class="form-input" data-rule-field="excludeKeywords" value="${UI.esc(ex)}" placeholder="예: 목사, 전도사"></div>
+    </div>`;
+  }
+
+  function renderRulesPanel() {
+    const rules = Store.getClassificationRules();
+    const cards = rules.map((r, i) => renderRuleCard(r, i)).join('');
+    const unclassN = Store.unclassifiedVideos().length;
+    return `<div class="login-box adm-box">
+      <p class="adm-hint">제목에 키워드가 있으면 해당 폴더로 자동 분류합니다. 우선순위가 높은 규칙이 먼저 적용됩니다. 「저장」 후 「미분류에 적용」으로 기존 미분류 영상에 반영하세요.</p>
+      <div id="adm-rules-list">${cards}</div>
+      <div class="adm-row" style="margin-top:0.75rem">
+        <button type="button" class="btn btn-outline" onclick="Admin.addClassificationRule()">규칙 추가</button>
+        <button type="button" class="btn btn-primary" onclick="Admin.saveClassificationRules()">저장</button>
+        <button type="button" class="btn btn-outline" onclick="Admin.applyClassificationRules()">미분류에 적용 (${unclassN})</button>
+        <button type="button" class="btn btn-outline" onclick="Admin.resetClassificationRules()">기본값 복원</button>
+      </div>
+    </div>`;
+  }
+
+  function collectClassificationRulesFromDom() {
+    return [...document.querySelectorAll('#adm-rules-list .adm-rule-card')].map(card => {
+      const get = (field) => card.querySelector(`[data-rule-field="${field}"]`);
+      const splitKws = (s) => String(s || '').split(/[,，\n]/).map(x => x.trim()).filter(Boolean);
+      const category = get('category')?.value || 'praise';
+      const rule = {
+        id: (get('id')?.value || '').trim() || `rule-${Date.now()}`,
+        enabled: !!get('enabled')?.checked,
+        label: (get('label')?.value || '').trim() || '규칙',
+        keywords: splitKws(get('keywords')?.value),
+        excludeKeywords: splitKws(get('excludeKeywords')?.value),
+        category,
+        praiseSub: '',
+        eventSub: '',
+        prayerSeries: '',
+        priority: parseInt(get('priority')?.value, 10) || 0
+      };
+      if (category === 'praise') rule.praiseSub = get('praiseSub')?.value || '';
+      if (category === 'events') rule.eventSub = get('eventSub')?.value || '';
+      if (category === 'prayer') rule.prayerSeries = get('prayerSeries')?.value || '';
+      return rule;
+    });
+  }
+
+  function refreshRulesPanelFromList(rules) {
+    const list = document.getElementById('adm-rules-list');
+    if (!list) return;
+    list.innerHTML = rules.map((r, i) => renderRuleCard(r, i)).join('');
+  }
+
+  function addClassificationRule() {
+    const rules = collectClassificationRulesFromDom();
+    rules.unshift({
+      id: `custom-${Date.now()}`,
+      enabled: true,
+      label: '새 규칙',
+      keywords: [],
+      excludeKeywords: [],
+      category: 'praise',
+      praiseSub: Store.getSubMenuItems('praise')[0]?.id || '',
+      eventSub: '',
+      prayerSeries: '',
+      priority: 80
+    });
+    refreshRulesPanelFromList(rules);
+  }
+
+  function removeClassificationRule(idx) {
+    const rules = collectClassificationRulesFromDom();
+    rules.splice(idx, 1);
+    refreshRulesPanelFromList(rules);
+  }
+
+  function onRuleCategoryChange(idx) {
+    const rules = collectClassificationRulesFromDom();
+    const r = rules[idx];
+    if (!r) return;
+    if (r.category === 'praise' && !r.praiseSub) {
+      r.praiseSub = Store.getSubMenuItems('praise')[0]?.id || 'other';
+    }
+    if (r.category === 'events' && !r.eventSub) {
+      r.eventSub = Store.getSubMenuItems('events')[0]?.id || 'seminar';
+    }
+    if (r.category === 'prayer' && !r.prayerSeries) {
+      r.prayerSeries = Object.keys(Store.PRAYER_LABELS)[0] || '';
+    }
+    refreshRulesPanelFromList(rules);
+  }
+
+  async function saveClassificationRules() {
+    const rules = collectClassificationRulesFromDom();
+    if (rules.some(r => !r.keywords.length)) {
+      UI.toast('키워드가 비어 있는 규칙이 있습니다');
+      return;
+    }
+    try {
+      await Store.saveClassificationRules(rules);
+      UI.toast('분류 규칙 저장됨');
+      showTab('rules');
+    } catch (e) {
+      UI.toast('저장 실패: ' + (e.message || ''));
+    }
+  }
+
+  async function resetClassificationRules() {
+    if (!confirm('분류 규칙을 기본값으로 되돌릴까요?')) return;
+    try {
+      await Store.resetClassificationRules();
+      UI.toast('기본값으로 복원됨');
+      showTab('rules');
+    } catch (e) {
+      UI.toast('복원 실패: ' + (e.message || ''));
+    }
+  }
+
+  async function applyClassificationRules() {
+    const selected = [...selectedIds];
+    const pool = selected.length ? selected : null;
+    const n = pool ? pool.length : Store.unclassifiedVideos().length;
+    if (!n) { UI.toast(pool ? '선택된 영상이 없습니다' : '미분류 영상이 없습니다'); return; }
+    if (!confirm(`${pool ? '선택 ' : '미분류 '}${n}편에 분류 규칙을 적용할까요?`)) return;
+    try {
+      const listEl = document.getElementById('adm-rules-list');
+      if (listEl) {
+        const rules = collectClassificationRulesFromDom();
+        if (rules.length) await Store.saveClassificationRules(rules);
+      }
+      const moved = await Store.applyClassificationRulesToVideos(pool);
+      UI.toast(moved ? `${moved}편 분류 적용됨` : '규칙에 맞는 영상이 없습니다');
+      if (listEl) showTab('rules');
+      if (typeof App !== 'undefined' && App.refreshList) App.refreshList();
+      if (moved) clearSelection();
+    } catch (e) {
+      UI.toast('적용 실패: ' + (e.message || ''));
+    }
+  }
+
   function renderVideosPanel() {
     return `<div class="adm-box">
       <p class="adm-hint">Cloudflare 기본 목록 + Firebase 수정(숨김·편집·추가)이 합쳐져 표시됩니다.</p>
@@ -1164,6 +1350,8 @@ const Admin = (() => {
     previewBulkRoute, executeBulkMove, refreshBulkMoveCount,
     toggleSelect, toggleSelectAll, clearSelection, isSelected, getSelectionCount,
     deleteSubMenu, restoreSubMenu, addSubMenu, addAssociate,
+    addClassificationRule, removeClassificationRule, onRuleCategoryChange,
+    saveClassificationRules, resetClassificationRules, applyClassificationRules,
     isSortMode, toggleSortMode, resetListOrder, initListSort, toggleEditPrayerYear
   };
 })();

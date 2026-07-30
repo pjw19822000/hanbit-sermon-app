@@ -61,6 +61,29 @@ const Store = (() => {
     'youth-camp': '청소년 기도캠프'
   };
 
+  /** 제목 키워드 → 분류. 설정에서 수정 가능. priority 높을수록 우선. */
+  const DEFAULT_CLASSIFICATION_RULES = [
+    { id: 'prayer-pastor-seminar', enabled: true, label: '목회자 세미나', keywords: ['목회자 세미나', '목회자세미나'], excludeKeywords: [], category: 'prayer', prayerSeries: 'pastor-seminar', priority: 95 },
+    { id: 'prayer-youth-camp', enabled: true, label: '청소년 기도캠프', keywords: ['청소년 기도 캠프', '청소년 기도캠프', '기도 캠프', '기도캠프', '청소년 동계 수련회', '동계 수련회'], excludeKeywords: [], category: 'prayer', prayerSeries: 'youth-camp', priority: 94 },
+    { id: 'prayer-conference', enabled: true, label: '기도 컨퍼런스', keywords: ['기도 컨퍼런스', '기도컨퍼런스'], excludeKeywords: [], category: 'prayer', prayerSeries: 'prayer-conference', priority: 93 },
+    { id: 'prayer-50day', enabled: true, label: '50일 기도학교', keywords: ['50일 기도학교'], excludeKeywords: [], category: 'prayer', prayerSeries: '50day-school', priority: 92 },
+    { id: 'prayer-100year', enabled: true, label: '100년 기도운동', keywords: ['100년 기도', '100 년 기도'], excludeKeywords: [], category: 'prayer', prayerSeries: '100year-prayer', priority: 91 },
+    { id: 'prayer-24h', enabled: true, label: '24시간 기도회', keywords: ['24시간 기도', '24 시간 기도', '영적 돌파', '영적돌파', '신앙적인 체험과 기도', '순례자의 삶과 기도'], excludeKeywords: [], category: 'prayer', prayerSeries: '24h-prayer', priority: 90 },
+    { id: 'events-samoritreat', enabled: true, label: '사모리트릿·사모세니마', keywords: ['사모리트릿', '사모세니마'], excludeKeywords: [], category: 'events', eventSub: 'promo', priority: 85 },
+    { id: 'events-pastor-conference', enabled: true, label: '목자 컨퍼런스', keywords: ['목자 컨퍼런스', '목자컨퍼런스'], excludeKeywords: [], category: 'events', eventSub: 'pastor-conference', priority: 84 },
+    { id: 'testimony', enabled: true, label: '간증', keywords: ['간증'], excludeKeywords: ['목자 컨퍼런스', '목자컨퍼런스'], category: 'testimony', priority: 83 },
+    { id: 'praise-sharon', enabled: true, label: '샤론찬양대', keywords: ['샤론'], excludeKeywords: [], category: 'praise', praiseSub: 'sharon', priority: 75 },
+    { id: 'praise-hallelujah', enabled: true, label: '할렐루야찬양대', keywords: ['할렐루야'], excludeKeywords: ['목사', '전도사', '집사', '저녁기도회', '새벽기도회', '저녁 기도', '새벽 기도'], category: 'praise', praiseSub: 'hallelujah', priority: 74 },
+    { id: 'praise-festival', enabled: true, label: '찬양제', keywords: ['찬양제'], excludeKeywords: [], category: 'praise', praiseSub: 'festival', priority: 73 },
+    { id: 'praise-generic', enabled: true, label: '찬양(기타)', keywords: ['연합찬양', '찬양 세미나', '찬양세미나', '찬양대', '경배와 찬양', '경배와찬양'], excludeKeywords: [], category: 'praise', praiseSub: 'other', priority: 60 },
+    { id: 'events-outreach-sendoff', enabled: true, label: '아웃리치 발대식', keywords: ['발대식'], excludeKeywords: [], category: 'events', eventSub: 'outreach-sendoff', priority: 55 },
+    { id: 'events-outreach-report', enabled: true, label: '아웃리치 보고예배', keywords: ['보고 예배', '보고예배'], excludeKeywords: [], category: 'events', eventSub: 'outreach-report', priority: 54 },
+    { id: 'events-outreach', enabled: true, label: '아웃리치·선교', keywords: ['아웃리치', '선교 대회', '선교대회'], excludeKeywords: [], category: 'events', eventSub: 'outreach', priority: 53 },
+    { id: 'events-revival', enabled: true, label: '초청설교·부흥회', keywords: ['특별 새벽 부흥', '특별새벽부흥', '특별 새벽 기도', '특별새벽기도'], excludeKeywords: [], category: 'events', eventSub: 'revival', priority: 52 },
+    { id: 'events-seminar', enabled: true, label: '세미나/수련회', keywords: ['세미나', '수련회', '영성 수련', '영성수련', '기도 세미나'], excludeKeywords: ['목회자 세미나', '목회자세미나'], category: 'events', eventSub: 'seminar', priority: 51 },
+    { id: 'events-promo', enabled: true, label: '홍보', keywords: ['홍보', '스케치', '광고'], excludeKeywords: [], category: 'events', eventSub: 'promo', priority: 50 }
+  ];
+
   const SUB_MENU_REGISTRY = {
     baek: [
       { id: 'bible', label: '성경별' },
@@ -2091,6 +2114,115 @@ const Store = (() => {
     await saveConfig(patch);
   }
 
+  function cloneClassificationRule(r) {
+    return {
+      id: r.id,
+      enabled: r.enabled !== false,
+      label: r.label || r.id,
+      keywords: [...(r.keywords || [])],
+      excludeKeywords: [...(r.excludeKeywords || [])],
+      category: r.category || '',
+      praiseSub: r.praiseSub || '',
+      eventSub: r.eventSub || '',
+      prayerSeries: r.prayerSeries || '',
+      priority: Number(r.priority) || 0
+    };
+  }
+
+  function getDefaultClassificationRules() {
+    return DEFAULT_CLASSIFICATION_RULES.map(cloneClassificationRule);
+  }
+
+  function getClassificationRules() {
+    const saved = config?.classificationRules;
+    if (Array.isArray(saved) && saved.length) {
+      return saved.map(cloneClassificationRule).sort((a, b) => (b.priority || 0) - (a.priority || 0));
+    }
+    return getDefaultClassificationRules().sort((a, b) => (b.priority || 0) - (a.priority || 0));
+  }
+
+  function normalizeRuleText(s) {
+    return String(s ?? '').normalize('NFC');
+  }
+
+  function titleMatchesClassificationRule(title, rule) {
+    if (!rule || rule.enabled === false) return false;
+    const t = normalizeRuleText(title);
+    if (!t) return false;
+    const excludes = rule.excludeKeywords || [];
+    if (excludes.some(k => k && t.includes(normalizeRuleText(k)))) return false;
+    const kws = (rule.keywords || []).filter(Boolean);
+    if (!kws.length) return false;
+    return kws.some(k => t.includes(normalizeRuleText(k)));
+  }
+
+  function matchClassificationRule(title) {
+    const rules = getClassificationRules().filter(r => r.enabled !== false);
+    for (const r of rules) {
+      if (titleMatchesClassificationRule(title, r)) return r;
+    }
+    return null;
+  }
+
+  function classificationRuleToRoute(rule) {
+    if (!rule?.category) return null;
+    const route = { category: rule.category };
+    if (rule.category === 'praise') route.praiseSub = rule.praiseSub || '';
+    if (rule.category === 'events') route.eventSub = rule.eventSub || '';
+    if (rule.category === 'prayer') route.prayerSeries = rule.prayerSeries || '';
+    return route;
+  }
+
+  function describeClassificationRule(rule) {
+    if (!rule) return '';
+    const cat = MOVE_CATEGORIES.find(c => c.id === rule.category)?.label || rule.category;
+    let sub = '';
+    if (rule.category === 'praise') {
+      sub = getSubMenuItems('praise').find(p => p.id === rule.praiseSub)?.label || rule.praiseSub || '';
+    } else if (rule.category === 'events') {
+      sub = getSubMenuItems('events').find(e => e.id === rule.eventSub)?.label || rule.eventSub || '';
+    } else if (rule.category === 'prayer') {
+      sub = PRAYER_LABELS[rule.prayerSeries] || rule.prayerSeries || '';
+    }
+    return sub ? `${cat} · ${sub}` : cat;
+  }
+
+  async function saveClassificationRules(rules) {
+    if (typeof Admin !== 'undefined' && !Admin.isIn()) throw new Error('관리자 로그인이 필요합니다');
+    const list = (rules || []).map(cloneClassificationRule);
+    await saveConfig({ classificationRules: list });
+  }
+
+  async function resetClassificationRules() {
+    await saveClassificationRules(getDefaultClassificationRules());
+  }
+
+  async function applyClassificationRulesToVideos(ids) {
+    const targets = ids?.length
+      ? ids.map(id => getVideo(id)).filter(Boolean)
+      : unclassifiedVideos();
+    const byKey = new Map();
+    for (const v of targets) {
+      const title = v.title || v.displayTitle || '';
+      const rule = matchClassificationRule(title);
+      if (!rule) continue;
+      const route = classificationRuleToRoute(rule);
+      if (!route?.category) continue;
+      if (route.category === 'praise' && !route.praiseSub) continue;
+      if (route.category === 'events' && !route.eventSub) continue;
+      if (route.category === 'prayer' && !route.prayerSeries) continue;
+      const key = JSON.stringify(route);
+      if (!byKey.has(key)) byKey.set(key, { route, ids: [] });
+      byKey.get(key).ids.push(v.id);
+    }
+    let moved = 0;
+    for (const { route, ids: groupIds } of byKey.values()) {
+      const patch = buildRoutePatch(route);
+      moved += await bulkApplyOverride(groupIds, patch, route);
+    }
+    return moved;
+  }
+
   return {
     load, getConfig, saveConfig, getOverrides, setOverride,
     allVisible, baekRegular, miscUnclassifiedVideos, prayerMinistry, associates, events, praise, testimony,
@@ -2116,6 +2248,10 @@ const Store = (() => {
     inferPrayerYear,
     worshipYear, isWorshipYearHub, youtubeYear, isMiscUnclassifiedYearHub, MISC_UNCLASSIFIED_BUCKET,
     MOVE_CATEGORIES, PRAYER_YEAR_SERIES, EVENT_BUCKET_MAP, BAEK_WORSHIPS,
+    DEFAULT_CLASSIFICATION_RULES, getDefaultClassificationRules, getClassificationRules,
+    matchClassificationRule, titleMatchesClassificationRule, classificationRuleToRoute,
+    describeClassificationRule, saveClassificationRules, resetClassificationRules,
+    applyClassificationRulesToVideos,
     db: () => db, prayerYear
   };
 })();

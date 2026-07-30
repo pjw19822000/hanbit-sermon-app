@@ -5,6 +5,66 @@ from datetime import datetime
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CSV_PATH = os.path.join(ROOT, 'HanbitMethodistChurch_Videos.csv')
 OUT_PATH = os.path.join(ROOT, 'data', 'videos.json')
+CONFIG_PATH = os.path.join(ROOT, 'data', 'config.json')
+
+DEFAULT_CLASSIFICATION_RULES = [
+  {'id': 'prayer-pastor-seminar', 'enabled': True, 'label': '목회자 세미나', 'keywords': ['목회자 세미나', '목회자세미나'], 'excludeKeywords': [], 'category': 'prayer', 'prayerSeries': 'pastor-seminar', 'priority': 95},
+  {'id': 'prayer-youth-camp', 'enabled': True, 'label': '청소년 기도캠프', 'keywords': ['청소년 기도 캠프', '청소년 기도캠프', '기도 캠프', '기도캠프', '청소년 동계 수련회', '동계 수련회'], 'excludeKeywords': [], 'category': 'prayer', 'prayerSeries': 'youth-camp', 'priority': 94},
+  {'id': 'prayer-conference', 'enabled': True, 'label': '기도 컨퍼런스', 'keywords': ['기도 컨퍼런스', '기도컨퍼런스'], 'excludeKeywords': [], 'category': 'prayer', 'prayerSeries': 'prayer-conference', 'priority': 93},
+  {'id': 'prayer-50day', 'enabled': True, 'label': '50일 기도학교', 'keywords': ['50일 기도학교'], 'excludeKeywords': [], 'category': 'prayer', 'prayerSeries': '50day-school', 'priority': 92},
+  {'id': 'prayer-100year', 'enabled': True, 'label': '100년 기도운동', 'keywords': ['100년 기도', '100 년 기도'], 'excludeKeywords': [], 'category': 'prayer', 'prayerSeries': '100year-prayer', 'priority': 91},
+  {'id': 'prayer-24h', 'enabled': True, 'label': '24시간 기도회', 'keywords': ['24시간 기도', '24 시간 기도', '영적 돌파', '영적돌파', '신앙적인 체험과 기도', '순례자의 삶과 기도'], 'excludeKeywords': [], 'category': 'prayer', 'prayerSeries': '24h-prayer', 'priority': 90},
+  {'id': 'events-samoritreat', 'enabled': True, 'label': '사모리트릿·사모세니마', 'keywords': ['사모리트릿', '사모세니마'], 'excludeKeywords': [], 'category': 'events', 'eventSub': 'promo', 'priority': 85},
+  {'id': 'events-pastor-conference', 'enabled': True, 'label': '목자 컨퍼런스', 'keywords': ['목자 컨퍼런스', '목자컨퍼런스'], 'excludeKeywords': [], 'category': 'events', 'eventSub': 'pastor-conference', 'priority': 84},
+  {'id': 'testimony', 'enabled': True, 'label': '간증', 'keywords': ['간증'], 'excludeKeywords': ['목자 컨퍼런스', '목자컨퍼런스'], 'category': 'testimony', 'priority': 83},
+  {'id': 'praise-sharon', 'enabled': True, 'label': '샤론찬양대', 'keywords': ['샤론'], 'excludeKeywords': [], 'category': 'praise', 'praiseSub': 'sharon', 'priority': 75},
+  {'id': 'praise-hallelujah', 'enabled': True, 'label': '할렐루야찬양대', 'keywords': ['할렐루야'], 'excludeKeywords': ['목사', '전도사', '집사', '저녁기도회', '새벽기도회', '저녁 기도', '새벽 기도'], 'category': 'praise', 'praiseSub': 'hallelujah', 'priority': 74},
+  {'id': 'praise-festival', 'enabled': True, 'label': '찬양제', 'keywords': ['찬양제'], 'excludeKeywords': [], 'category': 'praise', 'praiseSub': 'festival', 'priority': 73},
+  {'id': 'praise-generic', 'enabled': True, 'label': '찬양(기타)', 'keywords': ['연합찬양', '찬양 세미나', '찬양세미나', '찬양대', '경배와 찬양', '경배와찬양'], 'excludeKeywords': [], 'category': 'praise', 'praiseSub': 'other', 'priority': 60},
+  {'id': 'events-outreach-sendoff', 'enabled': True, 'label': '아웃리치 발대식', 'keywords': ['발대식'], 'excludeKeywords': [], 'category': 'events', 'eventSub': 'outreach-sendoff', 'priority': 55},
+  {'id': 'events-outreach-report', 'enabled': True, 'label': '아웃리치 보고예배', 'keywords': ['보고 예배', '보고예배'], 'excludeKeywords': [], 'category': 'events', 'eventSub': 'outreach-report', 'priority': 54},
+  {'id': 'events-outreach', 'enabled': True, 'label': '아웃리치·선교', 'keywords': ['아웃리치', '선교 대회', '선교대회'], 'excludeKeywords': [], 'category': 'events', 'eventSub': 'outreach', 'priority': 53},
+  {'id': 'events-revival', 'enabled': True, 'label': '초청설교·부흥회', 'keywords': ['특별 새벽 부흥', '특별새벽부흥', '특별 새벽 기도', '특별새벽기도'], 'excludeKeywords': [], 'category': 'events', 'eventSub': 'revival', 'priority': 52},
+  {'id': 'events-seminar', 'enabled': True, 'label': '세미나/수련회', 'keywords': ['세미나', '수련회', '영성 수련', '영성수련', '기도 세미나'], 'excludeKeywords': ['목회자 세미나', '목회자세미나'], 'category': 'events', 'eventSub': 'seminar', 'priority': 51},
+  {'id': 'events-promo', 'enabled': True, 'label': '홍보', 'keywords': ['홍보', '스케치', '광고'], 'excludeKeywords': [], 'category': 'events', 'eventSub': 'promo', 'priority': 50},
+]
+
+def load_classification_rules():
+  rules = None
+  if os.path.isfile(CONFIG_PATH):
+    try:
+      with open(CONFIG_PATH, encoding='utf-8') as f:
+        cfg = json.load(f)
+      saved = cfg.get('classificationRules')
+      if isinstance(saved, list) and saved:
+        rules = saved
+    except Exception:
+      rules = None
+  if not rules:
+    rules = DEFAULT_CLASSIFICATION_RULES
+  return sorted(rules, key=lambda r: int(r.get('priority') or 0), reverse=True)
+
+CLASSIFICATION_RULES = load_classification_rules()
+
+def title_matches_rule(title, rule):
+  if not rule or rule.get('enabled') is False:
+    return False
+  t = title or ''
+  for ex in rule.get('excludeKeywords') or []:
+    if ex and ex in t:
+      return False
+  kws = [k for k in (rule.get('keywords') or []) if k]
+  if not kws:
+    return False
+  return any(k in t for k in kws)
+
+def match_classification_rule(title, categories=None):
+  for rule in CLASSIFICATION_RULES:
+    if categories and rule.get('category') not in categories:
+      continue
+    if title_matches_rule(title, rule):
+      return rule
+  return None
 
 BIBLE_BOOKS = [
   '창세기','출애굽기','레위기','민수기','신명기','여호수아','사사기','룻기',
@@ -150,32 +210,37 @@ def worship(t):
   return ''
 
 def prayer_series(t):
-  if re.search(r'목회자\s*세미나|목회자세미나', t): return 'pastor-seminar'
-  if re.search(r'청소년\s*동계\s*수련회|동계\s*수련회', t): return 'youth-camp'
-  if re.search(r'기도\s*컨퍼런스|\[\d{4}\s*기도컨퍼런스\]', t, re.I): return 'prayer-conference'
-  if re.search(r'50일\s*기도학교', t): return '50day-school'
-  if re.search(r'100\s*년\s*기도', t): return '100year-prayer'
-  if re.search(r'24\s*시간\s*기도|영적\s*돌파', t): return '24h-prayer'
-  if re.search(r'기도회\s*\d+부|기도\s*\(\d+부\)|신앙적인\s*체험과\s*기도|순례자의\s*삶과\s*기도', t): return '24h-prayer'
-  if re.search(r'목회자\s*세미나|목회자세미나', t): return 'pastor-seminar'
-  if re.search(r'청소년\s*기도\s*캠프|기도\s*캠프', t): return 'youth-camp'
+  rule = match_classification_rule(t, categories={'prayer'})
+  if rule and rule.get('prayerSeries'):
+    return rule['prayerSeries']
+  # fallback: 부 번호 등 키워드로 잡기 어려운 패턴
+  if re.search(r'기도회\s*\d+부|기도\s*\(\d+부\)', t):
+    return '24h-prayer'
   return ''
 
 def is_samoritreat(t):
+  rule = match_classification_rule(t, categories={'events'})
+  if rule and rule.get('eventSub') == 'promo' and any(k in t for k in ('사모리트릿', '사모세니마')):
+    return True
   return bool(re.search(r'사모리트릿|사모세니마', t, re.I))
 
 def is_pastor_conference(t):
+  rule = match_classification_rule(t, categories={'events'})
+  if rule and rule.get('eventSub') == 'pastor-conference':
+    return True
   return bool(re.search(r'목자\s*컨퍼런스', t))
 
 def is_testimony(t):
+  rule = match_classification_rule(t, categories={'testimony'})
+  if rule:
+    return True
   if is_pastor_conference(t):
     return False
   return '간증' in t
 
 def is_praise_title(t):
-  if re.search(r'할렐루야', t) and re.search(r'목사|전도사|집사|저녁기도회|새벽기도회|저녁\s*기도|새벽\s*기도', t):
-    return False
-  return bool(re.search(r'샤론_|샤론\s|찬양제|연합찬양|찬양\s*세미나|찬양대|경배와\s*찬양|할렐루야', t))
+  rule = match_classification_rule(t, categories={'praise'})
+  return bool(rule)
 
 def guest_role_bucket(t, ps):
   if ps or not re.search(r'선교사|교수|총장|찬양사역자', t):
@@ -188,23 +253,21 @@ def guest_role_bucket(t, ps):
 
 def event_bucket(t, ps):
   if ps: return ''
-  if is_samoritreat(t): return 'promo'
-  if is_pastor_conference(t): return 'pastor-conference'
-  if is_testimony(t): return 'testimony'
-  if is_praise_title(t): return 'praise'
-  if re.search(r'아웃리치|발대식|보고\s*예배|선교\s*대회', t):
-    if '발대식' in t: return 'outreach-sendoff'
-    if '보고' in t: return 'outreach-report'
-    return 'outreach'
-  if re.search(r'특별\s*새벽\s*부흥|특별새벽부흥|특별\s*새벽\s*기도|특별새벽기도', t): return 'revival'
-  if re.search(r'세미나|수련회|영성\s*수련', t) and not re.search(r'목회자\s*세미나', t): return 'seminar'
-  if re.search(r'홍보|스케치|광고|#', t): return 'promo'
+  rule = match_classification_rule(t, categories={'events', 'testimony', 'praise'})
+  if rule:
+    cat = rule.get('category')
+    if cat == 'praise':
+      return 'praise'
+    if cat == 'testimony':
+      return 'testimony'
+    if cat == 'events':
+      return rule.get('eventSub') or ''
   return ''
 
 def praise_sub(t):
-  if '샤론' in t: return 'sharon'
-  if '할렐루야' in t: return 'hallelujah'
-  if '찬양제' in t: return 'festival'
+  rule = match_classification_rule(t, categories={'praise'})
+  if rule:
+    return rule.get('praiseSub') or 'other'
   return 'other'
 
 def themes(st, title):

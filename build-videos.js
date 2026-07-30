@@ -172,14 +172,51 @@ function detectWorship(t) {
 }
 
 function detectPrayerSeries(t) {
-  for (const p of PRAYER_MINISTRY) {
-    if (p.test(t)) return p.id;
-  }
+  // build-videos.js: 단순 키워드 — 운영 분류는 build-videos.py + config.classificationRules
+  if (/목회자\s*세미나|목회자세미나/i.test(t)) return 'pastor-seminar';
+  if (/청소년\s*기도\s*캠프|기도\s*캠프|동계\s*수련회/i.test(t)) return 'youth-camp';
+  if (/기도\s*컨퍼런스|\[\d{4}\s*기도컨퍼런스\]/i.test(t)) return 'prayer-conference';
+  if (/50일\s*기도학교/i.test(t)) return '50day-school';
+  if (/100\s*년\s*기도/i.test(t)) return '100year-prayer';
+  if (/24\s*시간\s*기도|영적\s*돌파|기도회\s*\d+부|신앙적인\s*체험과\s*기도|순례자의\s*삶과\s*기도/i.test(t)) return '24h-prayer';
   return '';
+}
+
+function loadClassificationRules() {
+  try {
+    const cfgPath = path.join(ROOT, 'data', 'config.json');
+    if (fs.existsSync(cfgPath)) {
+      const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+      if (Array.isArray(cfg.classificationRules) && cfg.classificationRules.length) {
+        return [...cfg.classificationRules].sort((a, b) => (b.priority || 0) - (a.priority || 0));
+      }
+    }
+  } catch { /* ignore */ }
+  return null;
+}
+
+function matchRule(title, rules, categories) {
+  if (!rules) return null;
+  for (const rule of rules) {
+    if (rule.enabled === false) continue;
+    if (categories && !categories.has(rule.category)) continue;
+    const t = title || '';
+    if ((rule.excludeKeywords || []).some(k => k && t.includes(k))) continue;
+    const kws = (rule.keywords || []).filter(Boolean);
+    if (kws.length && kws.some(k => t.includes(k))) return rule;
+  }
+  return null;
 }
 
 function detectEventBucket(t, prayerSeries) {
   if (prayerSeries) return '';
+  const rules = loadClassificationRules();
+  const rule = matchRule(t, rules, new Set(['events', 'testimony', 'praise']));
+  if (rule) {
+    if (rule.category === 'praise') return 'praise';
+    if (rule.category === 'testimony') return 'testimony';
+    if (rule.category === 'events') return rule.eventSub || '';
+  }
   if (/샤론_|샤론\s|할렐루야_|찬양제|연합찬양|찬양\s*세미나/.test(t)) return 'praise';
   if (/아웃리치|발대식|보고\s*예배|선교\s*대회|선교사/.test(t) && !/설교/.test(t.slice(0, 30))) {
     if (/발대식/.test(t)) return 'outreach-sendoff';
@@ -193,6 +230,9 @@ function detectEventBucket(t, prayerSeries) {
 }
 
 function detectPraiseSub(t) {
+  const rules = loadClassificationRules();
+  const rule = matchRule(t, rules, new Set(['praise']));
+  if (rule) return rule.praiseSub || 'other';
   if (/샤론/.test(t)) return 'sharon';
   if (/할렐루야/.test(t)) return 'hallelujah';
   if (/찬양제/.test(t)) return 'festival';

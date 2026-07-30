@@ -1,6 +1,32 @@
 {
   "entries": [
     {
+      "id": "6ba29042-c3ba-4103-9f11-74cb9b350600",
+      "videoId": "jRqfiRq4fDo",
+      "title": "[한빛감리교회] 260730_새벽기도회_네 믿음이 크도다_마태복음 15장 21-28절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=jRqfiRq4fDo",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-30T01:13:22Z"
+    },
+    {
+      "id": "b60247ae-9348-402d-8b84-4a6dde44245a",
+      "videoId": "N69mpItFwgs",
+      "title": "[한빛감리교회] 260729_수요저녁예배_여호와의 불이 내려서_열왕기상 18장 36-39절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=N69mpItFwgs",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 수요저녁예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-07-30T01:13:22Z"
+    },
+    {
       "id": "f976b901-8125-4b38-89be-8a4b1a3cd155",
       "videoId": "XHDqaeHspUo",
       "title": "[한빛감리교회] 260729_새벽기도회_하나님이 너희 가운데 계시사_여호수아 3장 8-13절_백용현 담임목사",
@@ -10,8 +36,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-29T01:19:41Z"
+      "action": "updated",
+      "syncedAt": "2026-07-30T01:13:22Z"
     },
     {
       "id": "19555a88-8c77-42a5-bdc2-9b8b76f50485",
@@ -23,8 +49,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-07-29T01:19:41Z"
+      "action": "updated",
+      "syncedAt": "2026-07-30T01:13:22Z"
     },
     {
       "id": "37788637-639d-4e4e-96e9-11a67f22b7d7",

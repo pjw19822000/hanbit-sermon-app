@@ -1,6 +1,86 @@
 {
   "entries": [
     {
+      "id": "bb94bd5a-d570-42f0-80ee-5260ba0d1370",
+      "videoId": "t5ZZjpGwYc4",
+      "title": "[한빛감리교회] 260801_저녁기도회_기도의 능력을 회복하기 위하여_시편 25편 1-5절_이다니엘 목사",
+      "url": "https://www.youtube.com/watch?v=t5ZZjpGwYc4",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이다니엘",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-08-02T01:25:06Z"
+    },
+    {
+      "id": "5873eb17-f9f5-4c1b-b4f6-777b60ca93c8",
+      "videoId": "Pe7bI_vW1I0",
+      "title": "[한빛감리교회] 260802_주일3부예배_지혜와 계시의 영을 너희에게 주사_에베소서 1장 15-19절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=Pe7bI_vW1I0",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-08-02T01:25:06Z"
+    },
+    {
+      "id": "e861721d-52ed-4fa4-bee5-0dbf45a45bc2",
+      "videoId": "uiFqDOd43qI",
+      "title": "[한빛감리교회] 260802_주일2부예배_지혜와 계시의 영을 너희에게 주사_에베소서 1장 15-19절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=uiFqDOd43qI",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-08-02T01:25:06Z"
+    },
+    {
+      "id": "892b6ac2-a99f-41a9-a904-700ba6670593",
+      "videoId": "izOP3S4lSwI",
+      "title": "[한빛감리교회] 260802_주일1부예배_지혜와 계시의 영을 너희에게 주사_에베소서 1장 15-19절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=izOP3S4lSwI",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 주일예배",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-08-02T01:25:06Z"
+    },
+    {
+      "id": "ac40e251-40e6-4caa-8bca-e1d4bd5ae19e",
+      "videoId": "Z3QCmf6R9aI",
+      "title": "[한빛감리교회] 260802_새벽기도회_기도는 하나님의 계획이다_사무엘상 30장 6-8절_이동수 목사",
+      "url": "https://www.youtube.com/watch?v=Z3QCmf6R9aI",
+      "bucket": "associate",
+      "folderLabel": "부사역자 · 이동수",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-08-02T01:25:06Z"
+    },
+    {
+      "id": "7ff1ef7b-332f-4dbc-95a4-e01ca33de40d",
+      "videoId": "g4mwl85cLMk",
+      "title": "[한빛감리교회] 100일 감사 일천번제",
+      "url": "https://www.youtube.com/watch?v=g4mwl85cLMk",
+      "bucket": "other",
+      "folderLabel": "관리자 · 분류되지 않음",
+      "status": "needs_review",
+      "issues": [
+        "분류(bucket) 없음"
+      ],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-08-02T01:25:06Z"
+    },
+    {
       "id": "2178ad13-89f1-4ba6-9483-bb05551e55d8",
       "videoId": "L6aXBCs5eJw",
       "title": "[한빛감리교회] 260801_새벽기도회_구별된 음식_레위기 11장 1-4절_백용현 담임목사",
@@ -10,8 +90,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-08-01T01:27:18Z"
+      "action": "updated",
+      "syncedAt": "2026-08-02T01:25:06Z"
     },
     {
       "id": "ff0701c9-af14-4d3d-9052-3c054c8cc8b1",
@@ -23,8 +103,8 @@
       "status": "classified",
       "issues": [],
       "source": "api",
-      "action": "added",
-      "syncedAt": "2026-08-01T01:27:18Z"
+      "action": "updated",
+      "syncedAt": "2026-08-02T01:25:06Z"
     },
     {
       "id": "77d48b3c-5da2-404c-8b7e-c4d5eda35468",

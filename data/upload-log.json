@@ -1,17 +1,30 @@
 {
   "entries": [
     {
-      "id": "be2d2955-8697-401d-9d76-1fc203e67f6f",
-      "videoId": "opFbJm486eI",
-      "title": "[한빛감리교회] 260806_저녁기도회_베데스다_요한복음 5장 1-9절_백용현 담임목사",
-      "url": "https://www.youtube.com/watch?v=opFbJm486eI",
+      "id": "55f86f43-382a-47bc-81bb-ec015fc77715",
+      "videoId": "FTJ5Rquusm8",
+      "title": "[한빛감리교회] 260808_새벽기도회_갈대상자_출애굽기 2장 2-6절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=FTJ5Rquusm8",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "added",
+      "syncedAt": "2026-08-08T00:41:08Z"
+    },
+    {
+      "id": "1f20f500-b6fc-432d-b784-313ba7b79e02",
+      "videoId": "FkBr-pLzJR0",
+      "title": "[한빛감리교회] 260807_저녁기도회(다음세대를 위한 기도회)_즐거워하느니라_로마서 5장 1-8절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=FkBr-pLzJR0",
       "bucket": "baek-regular",
       "folderLabel": "백용현 담임목사 · 저녁기도회",
       "status": "classified",
       "issues": [],
       "source": "api",
       "action": "added",
-      "syncedAt": "2026-08-07T01:58:16Z"
+      "syncedAt": "2026-08-08T00:41:08Z"
     },
     {
       "id": "5b2af71f-9ae6-44df-887b-4e16ceb1d13d",
@@ -20,6 +33,19 @@
       "url": "https://www.youtube.com/watch?v=iSb7Rc_HBW8",
       "bucket": "baek-regular",
       "folderLabel": "백용현 담임목사 · 새벽기도회",
+      "status": "classified",
+      "issues": [],
+      "source": "api",
+      "action": "updated",
+      "syncedAt": "2026-08-08T00:41:08Z"
+    },
+    {
+      "id": "be2d2955-8697-401d-9d76-1fc203e67f6f",
+      "videoId": "opFbJm486eI",
+      "title": "[한빛감리교회] 260806_저녁기도회_베데스다_요한복음 5장 1-9절_백용현 담임목사",
+      "url": "https://www.youtube.com/watch?v=opFbJm486eI",
+      "bucket": "baek-regular",
+      "folderLabel": "백용현 담임목사 · 저녁기도회",
       "status": "classified",
       "issues": [],
       "source": "api",
